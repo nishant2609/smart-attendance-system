@@ -6,39 +6,37 @@ import kotlinx.coroutines.tasks.await
 
 class AuthRepositoryImpl : AuthRepository {
 
-    private val firebaseAuth = FirebaseAuth.getInstance()
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    override suspend fun loginWithEmail(
+    override suspend fun login(
         email: String,
         password: String
-    ): String {
+    ): String? {
 
         val result = firebaseAuth
             .signInWithEmailAndPassword(email, password)
             .await()
 
         return result.user?.uid
-            ?: throw IllegalStateException("Login failed")
     }
 
-    override suspend fun registerWithEmail(
+    override suspend fun register(
         email: String,
         password: String
-    ): String {
+    ): String? {
 
         val result = firebaseAuth
             .createUserWithEmailAndPassword(email, password)
             .await()
 
         return result.user?.uid
-            ?: throw IllegalStateException("Registration failed")
-    }
-
-    override suspend fun logout() {
-        firebaseAuth.signOut()
     }
 
     override fun getCurrentUserId(): String? {
         return firebaseAuth.currentUser?.uid
+    }
+
+    override fun logout() {
+        firebaseAuth.signOut()
     }
 }

@@ -6,10 +6,12 @@ class LoginUseCase(
     private val authRepository: AuthRepository
 ) {
 
-    suspend operator fun invoke(email: String, password: String): String {
-        require(email.isNotBlank()) { "Email cannot be empty" }
-        require(password.isNotBlank()) { "Password cannot be empty" }
+    suspend operator fun invoke(
+        email: String,
+        password: String
+    ): String {
 
-        return authRepository.loginWithEmail(email, password)
+        return authRepository.login(email, password)
+            ?: throw Exception("Login failed")
     }
 }

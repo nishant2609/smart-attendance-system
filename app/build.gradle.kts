@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.gms.google-services") version "4.4.2" apply false
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -37,7 +37,9 @@ android {
         jvmTarget = "11"
     }
 
-    // ❌ Removed Compose
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -51,12 +53,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.ktx)
-    implementation(project(":domain"))
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
-
-apply(plugin = "com.google.gms.google-services")

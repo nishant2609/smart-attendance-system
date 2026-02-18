@@ -1,15 +1,21 @@
 package com.nishant.smartattendance.domain.usecase
 
 import com.nishant.smartattendance.domain.repository.AuthRepository
+import com.nishant.smartattendance.domain.repository.UserRepository
 
 class RegisterUseCase(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val userRepository: UserRepository
 ) {
 
-    suspend operator fun invoke(email: String, password: String): String {
-        require(email.isNotBlank()) { "Email cannot be empty" }
-        require(password.length >= 6) { "Password must be at least 6 characters" }
+    suspend operator fun invoke(
+        email: String,
+        password: String
+    ) {
 
-        return authRepository.registerWithEmail(email, password)
+        val uid = authRepository.register(email, password)
+            ?: throw Exception("Registration failed")
+
+        userRepository.createUserDocument(uid, email)
     }
 }
