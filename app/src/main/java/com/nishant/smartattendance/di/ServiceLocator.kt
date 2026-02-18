@@ -6,6 +6,11 @@ import com.nishant.smartattendance.domain.repository.AttendanceRepository
 import com.nishant.smartattendance.domain.repository.StudentRepository
 import com.nishant.smartattendance.domain.usecase.AddStudentUseCase
 import com.nishant.smartattendance.domain.usecase.MarkAttendanceUseCase
+import com.nishant.smartattendance.data.repository.AuthRepositoryImpl
+import com.nishant.smartattendance.domain.repository.AuthRepository
+import com.nishant.smartattendance.domain.usecase.LoginUseCase
+import com.nishant.smartattendance.domain.usecase.RegisterUseCase
+
 
 object ServiceLocator {
 
@@ -26,4 +31,20 @@ object ServiceLocator {
     val markAttendanceUseCase: MarkAttendanceUseCase by lazy {
         MarkAttendanceUseCase(attendanceRepository)
     }
+
+    // Auth Repository
+    val authRepository: AuthRepository by lazy {
+        AuthRepositoryImpl()
+    }
+
+    // Auth UseCases
+    val loginUseCase: LoginUseCase by lazy {
+        LoginUseCase(authRepository)
+    }
+
+    val registerUseCase: RegisterUseCase by lazy {
+        RegisterUseCase(authRepository)
+    }
+
+
 }
