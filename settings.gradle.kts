@@ -23,3 +23,4 @@ rootProject.name = "SmartAttendance"
 include(":app")
 include(":core")
 include(":domain")
+include(":data")
