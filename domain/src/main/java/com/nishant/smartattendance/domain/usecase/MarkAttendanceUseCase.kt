@@ -10,6 +10,7 @@ class MarkAttendanceUseCase(
     suspend operator fun invoke(record: AttendanceRecord) {
 
         val alreadyMarked = attendanceRepository.isAttendanceMarked(
+            classId = record.classId,
             studentId = record.studentId,
             date = record.date
         )

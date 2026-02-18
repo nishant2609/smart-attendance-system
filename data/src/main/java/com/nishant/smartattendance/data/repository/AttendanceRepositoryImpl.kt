@@ -36,14 +36,18 @@ class AttendanceRepositoryImpl(
     }
 
     override suspend fun isAttendanceMarked(
+        classId: String,
         studentId: String,
         date: String
     ): Boolean {
 
-        val snapshot = firestore.collection("attendance")
+        val document = firestore.collection("attendance")
+            .document(classId)
+            .collection(date)
+            .document(studentId)
             .get()
             .await()
 
-        return snapshot.documents.any { it.id == studentId }
+        return document.exists()
     }
 }
