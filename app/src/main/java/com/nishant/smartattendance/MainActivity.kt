@@ -1,10 +1,9 @@
 package com.nishant.smartattendance
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.nishant.smartattendance.base.BaseActivity
 
 class MainActivity : BaseActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
