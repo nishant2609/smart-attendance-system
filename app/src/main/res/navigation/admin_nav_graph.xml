@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/admin_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nishant.smartattendance.feature.admin.HomeFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/studentsFragment"
+        android:name="com.nishant.smartattendance.feature.admin.StudentsFragment"
+        android:label="Students" />
+
+    <fragment
+        android:id="@+id/attendanceFragment"
+        android:name="com.nishant.smartattendance.feature.admin.AttendanceFragment"
+        android:label="Attendance" />
+
+</navigation>

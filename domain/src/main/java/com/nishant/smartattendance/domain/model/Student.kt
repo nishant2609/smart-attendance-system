@@ -1,11 +1,15 @@
 package com.nishant.smartattendance.domain.model
 
 data class Student(
-    val id: String,
-    val name: String,
-    val rollNumber: String,
-    val classId: String,
-    val email: String,
-    val faceEmbedding: List<Float>,
-    val isClaimed: Boolean
+    val uid: String = "",
+    val srn: String = "",
+    val rollNo: String = "",
+    val name: String = "",
+    val email: String = "",
+    val phone: String = "",
+    val courseId: String = "",
+    val section: String = "",
+    val faceRegistered: Boolean = false,
+    val address: String = "",
+    val profileComplete: Boolean = false
 )
