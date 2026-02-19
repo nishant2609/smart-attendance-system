@@ -1,5 +1,6 @@
 package com.nishant.smartattendance.feature.admin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,24 +41,17 @@ class StudentsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         loadCourses()
-
-        binding.fabAddStudent.setOnClickListener {
-            showAddStudentBottomSheet()
-        }
+        binding.fabAddStudent.setOnClickListener { showAddStudentBottomSheet() }
     }
 
     private fun loadCourses() {
         lifecycleScope.launch {
             try {
                 courses = courseRepository.getAllCourses()
-
                 val courseNames = courses.map { it.name }
                 val courseAdapter = ArrayAdapter(
-                    requireContext(),
-                    android.R.layout.simple_spinner_item,
-                    courseNames
+                    requireContext(), android.R.layout.simple_spinner_item, courseNames
                 )
                 courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerCourse.adapter = courseAdapter
@@ -77,7 +71,6 @@ class StudentsFragment : Fragment() {
                     selectedCourse = courses[0]
                     setupSectionSpinner(courses[0].sections)
                 }
-
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -86,9 +79,7 @@ class StudentsFragment : Fragment() {
 
     private fun setupSectionSpinner(sections: List<String>) {
         val sectionAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            sections
+            requireContext(), android.R.layout.simple_spinner_item, sections
         )
         sectionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerSection.adapter = sectionAdapter
@@ -113,7 +104,12 @@ class StudentsFragment : Fragment() {
                     course.name, selectedSection
                 )
                 binding.rvStudents.layoutManager = LinearLayoutManager(requireContext())
-                binding.rvStudents.adapter = StudentAdapter(students)
+                binding.rvStudents.adapter = StudentAdapter(students) { student ->
+                    // Open student detail
+                    val intent = Intent(requireContext(), StudentDetailActivity::class.java)
+                    intent.putExtra("SRN", student.srn)
+                    startActivity(intent)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -132,9 +128,8 @@ class StudentsFragment : Fragment() {
         val etPhone = sheetView.findViewById<TextInputEditText>(R.id.etPhone)
         val spinnerCourse = sheetView.findViewById<Spinner>(R.id.spinnerCourse)
         val spinnerSection = sheetView.findViewById<Spinner>(R.id.spinnerSection)
-        val btnSave = sheetView.findViewById<Button>(R.id.btnSaveStudent)
+        val btnSave = sheetView.findViewById<android.widget.Button>(R.id.btnSaveStudent)
 
-        // Setup course spinner in bottom sheet
         val courseNames = courses.map { it.name }
         val courseAdapter = ArrayAdapter(
             requireContext(), android.R.layout.simple_spinner_item, courseNames

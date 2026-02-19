@@ -26,6 +26,7 @@
         <activity android:name=".feature.auth.RegisterActivity" />
         <activity android:name=".feature.admin.AdminDashboardActivity" />
         <activity android:name=".feature.student.StudentDashboardActivity" />
+        <activity android:name=".feature.admin.StudentDetailActivity" />
         <activity android:name=".MainActivity" />
 
     </application>

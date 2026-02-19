@@ -13,5 +13,6 @@ data class Student(
     val joinedAt: Long = 0L,
     val faceRegistered: Boolean = false,
     val address: String = "",
+    val dateOfBirth: String = "",
     val profileComplete: Boolean = false
 )

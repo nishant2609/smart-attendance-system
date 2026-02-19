@@ -7,7 +7,8 @@ import com.nishant.smartattendance.databinding.ItemStudentBinding
 import com.nishant.smartattendance.domain.model.Student
 
 class StudentAdapter(
-    private val students: List<Student>
+    private val students: List<Student>,
+    private val onStudentClick: (Student) -> Unit
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
     inner class StudentViewHolder(val binding: ItemStudentBinding) :
@@ -32,6 +33,7 @@ class StudentAdapter(
             else
                 holder.itemView.context.getColor(android.R.color.holo_red_light)
         )
+        holder.itemView.setOnClickListener { onStudentClick(student) }
     }
 
     override fun getItemCount() = students.size
