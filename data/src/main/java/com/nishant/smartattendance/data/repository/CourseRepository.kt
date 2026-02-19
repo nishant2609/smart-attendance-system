@@ -47,6 +47,21 @@ class CourseRepository {
         }
     }
 
+    suspend fun deleteSubjectFromCourse(courseId: String, subject: String): Boolean {
+        return try {
+            val doc = coursesRef.whereEqualTo("name", courseId).get().await()
+            if (doc.isEmpty) return false
+            val docRef = doc.documents[0].reference
+            val current = (doc.documents[0].get("subjects") as? List<*>)
+                ?.filterIsInstance<String>()?.toMutableList() ?: mutableListOf()
+            current.remove(subject)
+            docRef.update("subjects", current).await()
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
+
     suspend fun seedCoursesIfEmpty() {
         val existing = coursesRef.get().await()
         if (!existing.isEmpty) return

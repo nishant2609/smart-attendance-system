@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".feature.admin.SubjectManagementActivity" />
         <activity android:name=".feature.auth.LoginActivity" />
         <activity android:name=".feature.auth.RegisterActivity" />
         <activity android:name=".feature.admin.AdminDashboardActivity" />

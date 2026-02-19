@@ -13,6 +13,7 @@ import com.nishant.smartattendance.data.repository.AttendanceRepository
 import com.nishant.smartattendance.data.repository.CourseRepository
 import com.nishant.smartattendance.data.repository.StudentRepository
 import com.nishant.smartattendance.databinding.FragmentHomeBinding
+import com.nishant.smartattendance.domain.model.Course
 import com.nishant.smartattendance.feature.auth.LoginActivity
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -63,12 +64,23 @@ class HomeFragment : Fragment() {
                 binding.tvTodayPresent.text = todayPresent.toString()
 
                 binding.rvCourses.layoutManager = LinearLayoutManager(requireContext())
-                binding.rvCourses.adapter = CourseAdapter(courses)
+                binding.rvCourses.adapter = CourseAdapter(courses) { course ->
+                    openSubjectManagement(course)
+                }
 
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
+    }
+
+    private fun openSubjectManagement(course: Course) {
+        val intent = Intent(requireContext(), SubjectManagementActivity::class.java).apply {
+            putExtra("COURSE_NAME", course.name)
+            putExtra("COURSE_FULL_NAME", course.fullName)
+            putStringArrayListExtra("SUBJECTS", ArrayList(course.subjects))
+        }
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

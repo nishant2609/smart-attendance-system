@@ -7,7 +7,8 @@ import com.nishant.smartattendance.databinding.ItemCourseCardBinding
 import com.nishant.smartattendance.domain.model.Course
 
 class CourseAdapter(
-    private val courses: List<Course>
+    private val courses: List<Course>,
+    private val onCourseClick: (Course) -> Unit
 ) : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
 
     inner class CourseViewHolder(val binding: ItemCourseCardBinding) :
@@ -25,6 +26,7 @@ class CourseAdapter(
         holder.binding.tvCourseName.text = course.name
         holder.binding.tvCourseFullName.text = course.fullName
         holder.binding.tvSectionCount.text = "${course.sections.size} Sections"
+        holder.itemView.setOnClickListener { onCourseClick(course) }
     }
 
     override fun getItemCount() = courses.size
