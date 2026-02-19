@@ -4,22 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="@drawable/bg_bottom_sheet">
 
+    <!-- Handle bar -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bg_sheet_handle" />
+
+    <!-- Title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add New Student"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#1A1A1A"
-        android:padding="20dp" />
+        android:textColor="#1A237E"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E8EAF6"
+        android:layout_marginBottom="8dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:paddingBottom="20dp"
         android:clipToPadding="false">
 
@@ -101,42 +121,49 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Course *"
-                android:textSize="14sp"
-                android:textColor="#555555"
-                android:layout_marginBottom="4dp" />
+                android:text="COURSE *"
+                android:textSize="11sp"
+                android:textColor="#9FA8DA"
+                android:textAllCaps="true"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="6dp" />
 
             <Spinner
                 android:id="@+id/spinnerCourse"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/spinner_background" />
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_spinner_polished" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Section *"
-                android:textSize="14sp"
-                android:textColor="#555555"
-                android:layout_marginBottom="4dp" />
+                android:text="SECTION *"
+                android:textSize="11sp"
+                android:textColor="#9FA8DA"
+                android:textAllCaps="true"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="6dp" />
 
             <Spinner
                 android:id="@+id/spinnerSection"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="24dp"
-                android:background="@drawable/spinner_background" />
+                android:background="@drawable/bg_spinner_polished" />
 
             <Button
                 android:id="@+id/btnSaveStudent"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="Save Student"
-                android:backgroundTint="#3F51B5"
                 android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_btn_primary_blue"
                 android:layout_marginBottom="16dp" />
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

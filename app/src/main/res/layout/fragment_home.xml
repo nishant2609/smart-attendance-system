@@ -1,155 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="#F0F2FF"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <!-- Top bar with title and logout -->
-        <LinearLayout
+        <!-- ═══════════════════════════════════════ -->
+        <!--              GRADIENT HEADER            -->
+        <!-- ═══════════════════════════════════════ -->
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="4dp">
+            android:layout_height="220dp"
+            android:background="@drawable/bg_admin_header"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="32dp">
 
+            <!-- Decorative circle top-right -->
+            <View
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:background="@drawable/bg_header_circle"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="-50dp"
+                android:layout_marginTop="-50dp" />
+
+            <!-- Small decorative circle bottom-left -->
+            <View
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_header_circle"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="-30dp"
+                android:layout_marginBottom="-30dp" />
+
+            <!-- Greeting block -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/llGreeting"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome, Admin 👋"
-                    android:textSize="22sp"
+                    android:text="Welcome Back 👋"
+                    android:textColor="#B3C5FF"
+                    android:textSize="14sp"
+                    android:letterSpacing="0.04" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin Dashboard"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26sp"
                     android:textStyle="bold"
-                    android:textColor="#1A1A1A" />
+                    android:layout_marginTop="4dp" />
 
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#888888" />
+                    android:textColor="#9FA8DA"
+                    android:textSize="13sp"
+                    android:layout_marginTop="6dp" />
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnLogout"
+            <!-- Logout button -->
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="Logout"
-                android:textSize="12sp"
-                android:backgroundTint="#F44336"
-                android:textColor="#FFFFFF" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_logout_chip"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_logout"
+                    app:tint="#FFCDD2"
+                    android:layout_marginEnd="6dp" />
 
-        <!-- Stats Cards Row -->
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"
+                    android:textColor="#FFCDD2"
+                    android:textSize="12sp"
+                    android:background="@null"
+                    android:padding="0dp"
+                    android:includeFontPadding="false" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!--              STATS CARDS                -->
+        <!-- ═══════════════════════════════════════ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="16dp">
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="4dp">
 
-            <androidx.cardview.widget.CardView
+            <!-- Total Students Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="#3F51B5"
-                    android:padding="12dp">
+                    android:padding="20dp">
+
+                    <!-- Icon badge -->
+                    <FrameLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_stat_icon_blue">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_people"
+                            app:tint="#3F51B5" />
+
+                    </FrameLayout>
 
                     <TextView
                         android:id="@+id/tvTotalStudents"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="32sp"
+                        android:textColor="#1A237E"
+                        android:textSize="34sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF" />
+                        android:layout_marginTop="12dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total Students"
+                        android:textColor="#7986CB"
                         android:textSize="12sp"
-                        android:textColor="#CCDDFF" />
+                        android:layout_marginTop="2dp" />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Present Today Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="#4CAF50"
-                    android:padding="12dp">
+                    android:padding="20dp">
+
+                    <!-- Icon badge -->
+                    <FrameLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_stat_icon_green">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_circle"
+                            app:tint="#2E7D32" />
+
+                    </FrameLayout>
 
                     <TextView
                         android:id="@+id/tvTodayPresent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="32sp"
+                        android:textColor="#2E7D32"
+                        android:textSize="34sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF" />
+                        android:layout_marginTop="12dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Present Today"
+                        android:textColor="#66BB6A"
                         android:textSize="12sp"
-                        android:textColor="#CCFFCC" />
+                        android:layout_marginTop="2dp" />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
-        <!-- Course Summary -->
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- ═══════════════════════════════════════ -->
+        <!--             COURSES SECTION             -->
+        <!-- ═══════════════════════════════════════ -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Courses"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#1A1A1A"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="8dp" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="12dp">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="20dp"
+                android:background="@drawable/bg_section_accent"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Courses"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E" />
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCourses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="24dp"
+            android:clipToPadding="false"
             android:nestedScrollingEnabled="false" />
 
     </LinearLayout>
-</ScrollView>
+
+</androidx.core.widget.NestedScrollView>

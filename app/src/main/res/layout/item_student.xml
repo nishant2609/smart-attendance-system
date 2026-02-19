@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="2dp">
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:strokeWidth="0dp"
+    app:rippleColor="#1A1A237E">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="12dp"
+        android:padding="16dp"
         android:gravity="center_vertical">
 
+        <!-- Avatar circle -->
+        <FrameLayout
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/bg_avatar_circle"
+            android:layout_marginEnd="14dp">
+
+            <TextView
+                android:id="@+id/tvStudentInitial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="A"
+                android:textColor="#1A237E"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+        <!-- Name + SRN + Roll -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,35 +48,41 @@
                 android:id="@+id/tvStudentName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
-                android:textColor="#1A1A1A" />
+                android:textColor="#1A237E" />
 
             <TextView
                 android:id="@+id/tvStudentSrn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textColor="#888888" />
+                android:textSize="12sp"
+                android:textColor="#7986CB"
+                android:layout_marginTop="2dp" />
 
             <TextView
                 android:id="@+id/tvStudentRoll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textColor="#888888" />
+                android:textSize="12sp"
+                android:textColor="#7986CB"
+                android:layout_marginTop="1dp" />
 
         </LinearLayout>
 
+        <!-- Face status badge -->
         <TextView
             android:id="@+id/tvFaceStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No Face"
             android:textSize="11sp"
-            android:textColor="#FF5722"
-            android:background="#FFF3F0"
-            android:padding="4dp" />
+            android:textColor="#E65100"
+            android:background="@drawable/bg_badge_low"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp" />
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
