@@ -1,4 +1,3 @@
-
 package com.nishant.smartattendance.data.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,6 +29,27 @@ class StudentRepository {
         } catch (e: Exception) {
             false
         }
+    }
+
+    suspend fun getStudentByEmail(email: String): Student? {
+        val result = studentsRef
+            .whereEqualTo("email", email)
+            .get()
+            .await()
+        if (result.isEmpty) return null
+        val doc = result.documents[0]
+        return Student(
+            uid = doc.id,
+            srn = doc.getString("srn") ?: "",
+            rollNo = doc.getString("rollNo") ?: "",
+            name = doc.getString("name") ?: "",
+            email = doc.getString("email") ?: "",
+            phone = doc.getString("phone") ?: "",
+            courseId = doc.getString("courseId") ?: "",
+            section = doc.getString("section") ?: "",
+            faceRegistered = doc.getBoolean("faceRegistered") ?: false,
+            profileComplete = doc.getBoolean("profileComplete") ?: false
+        )
     }
 
     suspend fun getStudentsByCourseAndSection(

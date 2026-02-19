@@ -1,6 +1,5 @@
 package com.nishant.smartattendance.data.repository
 
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.nishant.smartattendance.domain.model.AttendanceRecord
 import kotlinx.coroutines.tasks.await
@@ -17,12 +16,13 @@ class AttendanceRepository {
             val batch = db.batch()
             records.forEach { record ->
                 val docRef = attendanceRef.document(
-                    "${record.srn}_${record.courseId}_${record.date}"
+                    "${record.srn}_${record.courseId}_${record.subject}_${record.date}"
                 )
                 batch.set(docRef, mapOf(
                     "srn" to record.srn,
                     "studentName" to record.studentName,
                     "courseId" to record.courseId,
+                    "subject" to record.subject,
                     "section" to record.section,
                     "date" to record.date,
                     "status" to record.status,
@@ -37,26 +37,9 @@ class AttendanceRepository {
         }
     }
 
-    suspend fun getTodayAttendanceCount(): Long {
-        val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            .format(Date())
+    suspend fun getAttendanceBySrn(srn: String): List<AttendanceRecord> {
         return attendanceRef
-            .whereEqualTo("date", today)
-            .whereEqualTo("status", "present")
-            .get()
-            .await()
-            .size().toLong()
-    }
-
-    suspend fun getAttendanceByCourseAndDate(
-        courseId: String,
-        section: String,
-        date: String
-    ): List<AttendanceRecord> {
-        return attendanceRef
-            .whereEqualTo("courseId", courseId)
-            .whereEqualTo("section", section)
-            .whereEqualTo("date", date)
+            .whereEqualTo("srn", srn)
             .get()
             .await()
             .documents.map { doc ->
@@ -65,11 +48,27 @@ class AttendanceRepository {
                     srn = doc.getString("srn") ?: "",
                     studentName = doc.getString("studentName") ?: "",
                     courseId = doc.getString("courseId") ?: "",
+                    subject = doc.getString("subject") ?: "",
                     section = doc.getString("section") ?: "",
                     date = doc.getString("date") ?: "",
                     status = doc.getString("status") ?: "absent",
-                    markedVia = doc.getString("markedVia") ?: "manual"
+                    markedVia = doc.getString("markedVia") ?: "manual",
+                    timestamp = doc.getLong("timestamp") ?: 0L
                 )
-            }
+            }.sortedByDescending { it.date }
+    }
+
+    suspend fun getTodayAttendanceCount(): Long {
+        val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+        val records = attendanceRef
+            .whereEqualTo("date", today)
+            .whereEqualTo("status", "present")
+            .get()
+            .await()
+        // Count unique students, not records
+        return records.documents
+            .map { it.getString("srn") ?: "" }
+            .distinct()
+            .size.toLong()
     }
 }

@@ -10,55 +10,30 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Top bar with title and logout -->
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome 👋"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1A1A1A"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvCourseInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Stats Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="4dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome, Admin 👋"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="#1A1A1A" />
-
-                <TextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="#888888" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="Logout"
-                android:textSize="12sp"
-                android:backgroundTint="#F44336"
-                android:textColor="#FFFFFF" />
-
-        </LinearLayout>
-
-        <!-- Stats Cards Row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="16dp">
+            android:layout_marginBottom="12dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -78,18 +53,18 @@
                     android:padding="12dp">
 
                     <TextView
-                        android:id="@+id/tvTotalStudents"
+                        android:id="@+id/tvAttendancePercent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="32sp"
+                        android:text="0%"
+                        android:textSize="28sp"
                         android:textStyle="bold"
                         android:textColor="#FFFFFF" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total Students"
+                        android:text="Attendance"
                         android:textSize="12sp"
                         android:textColor="#CCDDFF" />
 
@@ -114,18 +89,18 @@
                     android:padding="12dp">
 
                     <TextView
-                        android:id="@+id/tvTodayPresent"
+                        android:id="@+id/tvClassesAttended"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textSize="32sp"
+                        android:textSize="28sp"
                         android:textStyle="bold"
                         android:textColor="#FFFFFF" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Present Today"
+                        android:text="Classes Attended"
                         android:textSize="12sp"
                         android:textColor="#CCFFCC" />
 
@@ -134,11 +109,11 @@
 
         </LinearLayout>
 
-        <!-- Course Summary -->
+        <!-- Recent Records -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Courses"
+            android:text="Recent Attendance"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#1A1A1A"
@@ -146,7 +121,7 @@
             android:layout_marginTop="8dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCourses"
+            android:id="@+id/rvRecentAttendance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false" />

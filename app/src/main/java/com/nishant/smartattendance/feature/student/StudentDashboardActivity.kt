@@ -1,11 +1,11 @@
 package com.nishant.smartattendance.feature.student
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.nishant.smartattendance.R
 import com.nishant.smartattendance.databinding.ActivityStudentDashboardBinding
-import com.nishant.smartattendance.feature.auth.LoginActivity
 
 class StudentDashboardActivity : AppCompatActivity() {
 
@@ -16,12 +16,10 @@ class StudentDashboardActivity : AppCompatActivity() {
         binding = ActivityStudentDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvTitle.text = "Student Dashboard"
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.studentNavHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        binding.btnLogout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finishAffinity()
-        }
+        binding.studentBottomNav.setupWithNavController(navController)
     }
 }
