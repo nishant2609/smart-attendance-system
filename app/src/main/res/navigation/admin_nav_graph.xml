@@ -2,20 +2,20 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/admin_nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/nav_home"
         android:name="com.nishant.smartattendance.feature.admin.HomeFragment"
         android:label="Home" />
 
     <fragment
-        android:id="@+id/studentsFragment"
+        android:id="@+id/nav_students"
         android:name="com.nishant.smartattendance.feature.admin.StudentsFragment"
         android:label="Students" />
 
     <fragment
-        android:id="@+id/attendanceFragment"
+        android:id="@+id/nav_attendance"
         android:name="com.nishant.smartattendance.feature.admin.AttendanceFragment"
         android:label="Attendance" />
 
