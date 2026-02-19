@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.nishant.smartattendance.data.repository.AttendanceRepository
+import com.nishant.smartattendance.data.repository.CourseRepository
 import com.nishant.smartattendance.data.repository.StudentRepository
 import com.nishant.smartattendance.databinding.FragmentStudentHomeBinding
 import com.nishant.smartattendance.domain.model.Student
@@ -21,6 +22,7 @@ class StudentHomeFragment : Fragment() {
 
     private val studentRepository = StudentRepository()
     private val attendanceRepository = AttendanceRepository()
+    private val courseRepository = CourseRepository()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,22 +47,34 @@ class StudentHomeFragment : Fragment() {
                     binding.tvCourseInfo.text = "Profile not set up yet. Contact admin."
                     return@launch
                 }
-                displayStudentInfo(student)
-                loadAttendanceStats(student)
+
+                // Get course to calculate current semester
+                val courses = courseRepository.getAllCourses()
+                val course = courses.find { it.name == student.courseId }
+                val currentSemester = if (course != null) {
+                    studentRepository.calculateCurrentSemester(
+                        student.joinedAt, course.totalSemesters
+                    )
+                } else student.currentSemester
+
+                displayStudentInfo(student, currentSemester)
+                loadAttendanceStats(student, currentSemester)
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
 
-    private fun displayStudentInfo(student: Student) {
+    private fun displayStudentInfo(student: Student, currentSemester: Int) {
         binding.tvWelcome.text = "Welcome, ${student.name} 👋"
-        binding.tvCourseInfo.text = "${student.courseId} - Section ${student.section} | Roll: ${student.rollNo}"
+        binding.tvCourseInfo.text = "${student.courseId} | Sem $currentSemester | Section ${student.section} | Roll: ${student.rollNo}"
     }
 
-    private suspend fun loadAttendanceStats(student: Student) {
-        val records = attendanceRepository.getAttendanceBySrn(student.srn)
-            .filter { it.subject.isNotEmpty() }
+    private suspend fun loadAttendanceStats(student: Student, currentSemester: Int) {
+        val records = attendanceRepository.getAttendanceBySrnAndSemester(
+            student.srn, currentSemester
+        ).filter { it.subject.isNotEmpty() }
 
         val totalClasses = records.size
         val presentCount = records.count { it.status == "present" }
@@ -69,7 +83,6 @@ class StudentHomeFragment : Fragment() {
         binding.tvAttendancePercent.text = "$percentage%"
         binding.tvClassesAttended.text = presentCount.toString()
 
-        // Show recent 5 records
         binding.rvRecentAttendance.layoutManager = LinearLayoutManager(requireContext())
         binding.rvRecentAttendance.adapter = AttendanceRecordAdapter(records.take(5))
     }

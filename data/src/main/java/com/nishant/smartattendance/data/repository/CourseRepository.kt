@@ -15,31 +15,43 @@ class CourseRepository {
                 id = doc.id,
                 name = doc.getString("name") ?: "",
                 fullName = doc.getString("fullName") ?: "",
+                totalSemesters = (doc.getLong("totalSemesters") ?: 4).toInt(),
                 sections = (doc.get("sections") as? List<*>)
                     ?.filterIsInstance<String>() ?: emptyList(),
-                subjects = (doc.get("subjects") as? List<*>)
-                    ?.filterIsInstance<String>() ?: emptyList()
+                semesters = parseSemesters(doc.get("semesters"))
             )
         }
     }
 
-    suspend fun getSubjectsByCourse(courseId: String): List<String> {
-        val doc = coursesRef.whereEqualTo("name", courseId).get().await()
-        if (doc.isEmpty) return emptyList()
-        return (doc.documents[0].get("subjects") as? List<*>)
-            ?.filterIsInstance<String>() ?: emptyList()
+    private fun parseSemesters(raw: Any?): Map<String, List<String>> {
+        val map = raw as? Map<*, *> ?: return emptyMap()
+        return map.entries.associate { (key, value) ->
+            key.toString() to ((value as? List<*>)?.filterIsInstance<String>() ?: emptyList())
+        }
     }
 
-    suspend fun addSubjectToCourse(courseId: String, subject: String): Boolean {
+    suspend fun getSubjectsForSemester(courseId: String, semester: Int): List<String> {
+        val doc = coursesRef.whereEqualTo("name", courseId).get().await()
+        if (doc.isEmpty) return emptyList()
+        val semesters = parseSemesters(doc.documents[0].get("semesters"))
+        return semesters[semester.toString()] ?: emptyList()
+    }
+
+    suspend fun addSubjectToSemester(
+        courseId: String, semester: Int, subject: String
+    ): Boolean {
         return try {
             val doc = coursesRef.whereEqualTo("name", courseId).get().await()
             if (doc.isEmpty) return false
             val docRef = doc.documents[0].reference
-            val current = (doc.documents[0].get("subjects") as? List<*>)
-                ?.filterIsInstance<String>()?.toMutableList() ?: mutableListOf()
-            if (!current.contains(subject)) {
-                current.add(subject)
-                docRef.update("subjects", current).await()
+            val semesters = parseSemesters(
+                doc.documents[0].get("semesters")
+            ).toMutableMap()
+            val subjects = semesters[semester.toString()]?.toMutableList() ?: mutableListOf()
+            if (!subjects.contains(subject)) {
+                subjects.add(subject)
+                semesters[semester.toString()] = subjects
+                docRef.update("semesters", semesters).await()
             }
             true
         } catch (e: Exception) {
@@ -47,15 +59,20 @@ class CourseRepository {
         }
     }
 
-    suspend fun deleteSubjectFromCourse(courseId: String, subject: String): Boolean {
+    suspend fun deleteSubjectFromSemester(
+        courseId: String, semester: Int, subject: String
+    ): Boolean {
         return try {
             val doc = coursesRef.whereEqualTo("name", courseId).get().await()
             if (doc.isEmpty) return false
             val docRef = doc.documents[0].reference
-            val current = (doc.documents[0].get("subjects") as? List<*>)
-                ?.filterIsInstance<String>()?.toMutableList() ?: mutableListOf()
-            current.remove(subject)
-            docRef.update("subjects", current).await()
+            val semesters = parseSemesters(
+                doc.documents[0].get("semesters")
+            ).toMutableMap()
+            val subjects = semesters[semester.toString()]?.toMutableList() ?: mutableListOf()
+            subjects.remove(subject)
+            semesters[semester.toString()] = subjects
+            docRef.update("semesters", semesters).await()
             true
         } catch (e: Exception) {
             false
@@ -70,49 +87,53 @@ class CourseRepository {
             mapOf(
                 "name" to "MCA",
                 "fullName" to "Master of Computer Applications",
+                "totalSemesters" to 4,
                 "sections" to listOf("A", "B", "C", "D"),
-                "subjects" to listOf(
-                    "Database Management Systems",
-                    "Operating Systems",
-                    "Python Programming",
-                    "Computer Networks",
-                    "Software Engineering"
+                "semesters" to mapOf(
+                    "1" to listOf("Mathematics", "Programming in C", "Computer Organization", "Communication Skills", "IT Fundamentals"),
+                    "2" to listOf("Data Structures", "Database Management", "Operating Systems", "Python Programming", "Statistics"),
+                    "3" to listOf("Computer Networks", "Software Engineering", "Java Programming", "Machine Learning", "Web Technologies"),
+                    "4" to listOf("Cloud Computing", "Mobile Development", "Project Work", "Elective", "Research Seminar")
                 )
             ),
             mapOf(
                 "name" to "BCA",
                 "fullName" to "Bachelor of Computer Applications",
+                "totalSemesters" to 6,
                 "sections" to listOf("A", "B", "C", "D"),
-                "subjects" to listOf(
-                    "C Programming",
-                    "Data Structures",
-                    "Web Technologies",
-                    "Database Management",
-                    "Computer Organization"
+                "semesters" to mapOf(
+                    "1" to listOf("Mathematics I", "C Programming", "Computer Fundamentals", "English", "Digital Logic"),
+                    "2" to listOf("Mathematics II", "Data Structures", "OOP with C++", "Database Basics", "PC Software"),
+                    "3" to listOf("Java Programming", "DBMS", "Operating Systems", "Computer Networks", "Web Design"),
+                    "4" to listOf("Python", "Software Engineering", "Linux", "PHP & MySQL", "Computer Graphics"),
+                    "5" to listOf("Android Development", "Cloud Computing", "Cyber Security", "AI Basics", "Project I"),
+                    "6" to listOf("Machine Learning", "Big Data", "IoT", "Project II", "Elective")
                 )
             ),
             mapOf(
                 "name" to "MBA",
                 "fullName" to "Master of Business Administration",
+                "totalSemesters" to 4,
                 "sections" to listOf("A", "B", "C", "D"),
-                "subjects" to listOf(
-                    "Marketing Management",
-                    "Financial Accounting",
-                    "Human Resource Management",
-                    "Business Economics",
-                    "Operations Management"
+                "semesters" to mapOf(
+                    "1" to listOf("Management Principles", "Business Economics", "Financial Accounting", "Marketing Management", "Communication"),
+                    "2" to listOf("Human Resource Management", "Operations Management", "Business Law", "Research Methods", "Organizational Behavior"),
+                    "3" to listOf("Strategic Management", "Financial Management", "Consumer Behavior", "Supply Chain", "Elective I"),
+                    "4" to listOf("Entrepreneurship", "Business Ethics", "Project Management", "Elective II", "Dissertation")
                 )
             ),
             mapOf(
                 "name" to "BBA",
                 "fullName" to "Bachelor of Business Administration",
+                "totalSemesters" to 6,
                 "sections" to listOf("A", "B", "C", "D"),
-                "subjects" to listOf(
-                    "Principles of Management",
-                    "Business Communication",
-                    "Financial Management",
-                    "Marketing Fundamentals",
-                    "Business Law"
+                "semesters" to mapOf(
+                    "1" to listOf("Principles of Management", "Business Economics", "Financial Accounting I", "Business Communication", "IT for Business"),
+                    "2" to listOf("Marketing Fundamentals", "Financial Accounting II", "Business Law", "Statistics", "Organizational Behavior"),
+                    "3" to listOf("Human Resource Management", "Cost Accounting", "Business Environment", "Consumer Behavior", "Elective I"),
+                    "4" to listOf("Financial Management", "Operations Management", "Research Methods", "Entrepreneurship", "Elective II"),
+                    "5" to listOf("Strategic Management", "International Business", "Supply Chain", "Project I", "Elective III"),
+                    "6" to listOf("Business Ethics", "Corporate Governance", "Project II", "Elective IV", "Internship")
                 )
             )
         )

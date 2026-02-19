@@ -7,6 +7,7 @@ data class AttendanceRecord(
     val courseId: String = "",
     val subject: String = "",
     val section: String = "",
+    val semester: Int = 1,
     val date: String = "",
     val status: String = "absent",
     val markedVia: String = "manual",

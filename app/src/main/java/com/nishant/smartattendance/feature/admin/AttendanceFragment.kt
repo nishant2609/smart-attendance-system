@@ -35,6 +35,7 @@ class AttendanceFragment : Fragment() {
     private var selectedCourse: Course? = null
     private var selectedSection: String = "A"
     private var selectedSubject: String = ""
+    private var selectedSemester: Int = 1
     private val attendanceMap = mutableMapOf<String, Boolean>()
 
     override fun onCreateView(
@@ -56,7 +57,6 @@ class AttendanceFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 courses = courseRepository.getAllCourses()
-
                 val courseNames = courses.map { it.name }
                 val adapter = ArrayAdapter(
                     requireContext(),
@@ -73,7 +73,7 @@ class AttendanceFragment : Fragment() {
                         ) {
                             selectedCourse = courses[position]
                             setupSectionSpinner(courses[position].sections)
-                            setupSubjectSpinner(courses[position].subjects)
+                            setupSemesterSpinner(courses[position].totalSemesters)
                         }
                         override fun onNothingSelected(parent: AdapterView<*>) {}
                     }
@@ -81,9 +81,8 @@ class AttendanceFragment : Fragment() {
                 if (courses.isNotEmpty()) {
                     selectedCourse = courses[0]
                     setupSectionSpinner(courses[0].sections)
-                    setupSubjectSpinner(courses[0].subjects)
+                    setupSemesterSpinner(courses[0].totalSemesters)
                 }
-
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -105,11 +104,47 @@ class AttendanceFragment : Fragment() {
             }
     }
 
+    private fun setupSemesterSpinner(totalSemesters: Int) {
+        val semesterList = (1..totalSemesters).map { "Semester $it" }
+        val adapter = ArrayAdapter(
+            requireContext(), android.R.layout.simple_spinner_item, semesterList
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerSemester.adapter = adapter
+        selectedSemester = 1
+
+        binding.spinnerSemester.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>, view: View?, position: Int, id: Long
+                ) {
+                    selectedSemester = position + 1
+                    loadSubjectsForSemester()
+                }
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
+
+        loadSubjectsForSemester()
+    }
+
+    private fun loadSubjectsForSemester() {
+        val course = selectedCourse ?: return
+        lifecycleScope.launch {
+            try {
+                val subjects = courseRepository.getSubjectsForSemester(
+                    course.name, selectedSemester
+                )
+                setupSubjectSpinner(subjects)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     private fun setupSubjectSpinner(subjects: List<String>) {
         if (subjects.isEmpty()) {
             Toast.makeText(requireContext(),
-                "No subjects found. Delete existing courses in Firebase and relaunch app to seed subjects.",
-                Toast.LENGTH_LONG).show()
+                "No subjects for this semester", Toast.LENGTH_SHORT).show()
             return
         }
         selectedSubject = subjects[0]
@@ -137,16 +172,27 @@ class AttendanceFragment : Fragment() {
             try {
                 students = studentRepository.getStudentsByCourseAndSection(
                     course.name, selectedSection
-                )
+                ).filter { student ->
+                    // Only show students in selected semester
+                    val currentSem = studentRepository.calculateCurrentSemester(
+                        student.joinedAt, course.totalSemesters
+                    )
+                    currentSem == selectedSemester
+                }
+
                 if (students.isEmpty()) {
-                    Toast.makeText(requireContext(), "No students found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),
+                        "No students found for Semester $selectedSemester",
+                        Toast.LENGTH_SHORT).show()
                     return@launch
                 }
+
                 attendanceMap.clear()
                 students.forEach { attendanceMap[it.srn] = true }
                 binding.rvAttendance.layoutManager = LinearLayoutManager(requireContext())
                 binding.rvAttendance.adapter = AttendanceAdapter(students, attendanceMap)
                 binding.btnSubmitAttendance.visibility = View.VISIBLE
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -155,10 +201,6 @@ class AttendanceFragment : Fragment() {
 
     private fun submitAttendance() {
         val course = selectedCourse ?: return
-        if (selectedSubject.isEmpty()) {
-            Toast.makeText(requireContext(), "Please select a subject", Toast.LENGTH_SHORT).show()
-            return
-        }
         val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         lifecycleScope.launch {
             try {
@@ -169,6 +211,7 @@ class AttendanceFragment : Fragment() {
                         courseId = course.name,
                         subject = selectedSubject,
                         section = selectedSection,
+                        semester = selectedSemester,
                         date = today,
                         status = if (attendanceMap[student.srn] == true) "present" else "absent",
                         markedVia = "manual"
@@ -176,11 +219,9 @@ class AttendanceFragment : Fragment() {
                 }
                 val success = attendanceRepository.markAttendance(records)
                 if (success) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Attendance submitted for $selectedSubject!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(requireContext(),
+                        "Attendance submitted for $selectedSubject (Sem $selectedSemester)!",
+                        Toast.LENGTH_SHORT).show()
                     binding.btnSubmitAttendance.visibility = View.GONE
                     binding.rvAttendance.adapter = null
                 } else {

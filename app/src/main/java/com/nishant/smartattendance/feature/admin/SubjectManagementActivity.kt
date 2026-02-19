@@ -1,6 +1,8 @@
 package com.nishant.smartattendance.feature.admin
 
 import android.os.Bundle
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -18,6 +20,8 @@ class SubjectManagementActivity : AppCompatActivity() {
 
     private lateinit var courseName: String
     private lateinit var courseFullName: String
+    private var totalSemesters: Int = 4
+    private var selectedSemester: Int = 1
     private lateinit var adapter: SubjectManageAdapter
     private val subjects = mutableListOf<String>()
 
@@ -28,26 +32,58 @@ class SubjectManagementActivity : AppCompatActivity() {
 
         courseName = intent.getStringExtra("COURSE_NAME") ?: ""
         courseFullName = intent.getStringExtra("COURSE_FULL_NAME") ?: ""
-        val initialSubjects = intent.getStringArrayListExtra("SUBJECTS") ?: arrayListOf()
-
-        subjects.addAll(initialSubjects)
+        totalSemesters = intent.getIntExtra("TOTAL_SEMESTERS", 4)
 
         binding.tvCourseName.text = courseName
         binding.tvCourseFullName.text = courseFullName
-        updateSubjectCount()
 
-        adapter = SubjectManageAdapter(subjects,
-            onDeleteClick = { subject, position ->
-                showDeleteConfirmation(subject, position)
-            }
-        )
-        binding.rvSubjects.layoutManager = LinearLayoutManager(this)
-        binding.rvSubjects.adapter = adapter
+        setupSemesterSpinner()
 
         binding.btnBack.setOnClickListener { finish() }
+        binding.fabAddSubject.setOnClickListener { showAddSubjectDialog() }
+    }
 
-        binding.fabAddSubject.setOnClickListener {
-            showAddSubjectDialog()
+    private fun setupSemesterSpinner() {
+        val semesterList = (1..totalSemesters).map { "Semester $it" }
+        val adapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_item, semesterList
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerSemester.adapter = adapter
+
+        binding.spinnerSemester.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long
+                ) {
+                    selectedSemester = position + 1
+                    loadSubjectsForSemester()
+                }
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
+
+        loadSubjectsForSemester()
+    }
+
+    private fun loadSubjectsForSemester() {
+        lifecycleScope.launch {
+            try {
+                val loaded = courseRepository.getSubjectsForSemester(
+                    courseName, selectedSemester
+                )
+                subjects.clear()
+                subjects.addAll(loaded)
+
+                adapter = SubjectManageAdapter(subjects) { subject, position ->
+                    showDeleteConfirmation(subject, position)
+                }
+                binding.rvSubjects.layoutManager = LinearLayoutManager(this@SubjectManagementActivity)
+                binding.rvSubjects.adapter = adapter
+                updateSubjectCount()
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -58,7 +94,7 @@ class SubjectManagementActivity : AppCompatActivity() {
         }
 
         AlertDialog.Builder(this)
-            .setTitle("Add Subject to $courseName")
+            .setTitle("Add Subject to $courseName - Semester $selectedSemester")
             .setView(editText)
             .setPositiveButton("Add") { _, _ ->
                 val newSubject = editText.text.toString().trim()
@@ -70,13 +106,14 @@ class SubjectManagementActivity : AppCompatActivity() {
                     Toast.makeText(this, "Subject already exists", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
-                // Confirm before adding
                 AlertDialog.Builder(this)
                     .setTitle("Confirm")
-                    .setMessage("Add '$newSubject' to $courseName?")
+                    .setMessage("Add '$newSubject' to $courseName Semester $selectedSemester?")
                     .setPositiveButton("Yes") { _, _ ->
                         lifecycleScope.launch {
-                            val success = courseRepository.addSubjectToCourse(courseName, newSubject)
+                            val success = courseRepository.addSubjectToSemester(
+                                courseName, selectedSemester, newSubject
+                            )
                             if (success) {
                                 adapter.addSubject(newSubject)
                                 updateSubjectCount()
@@ -84,7 +121,7 @@ class SubjectManagementActivity : AppCompatActivity() {
                                     "Subject added!", Toast.LENGTH_SHORT).show()
                             } else {
                                 Toast.makeText(this@SubjectManagementActivity,
-                                    "Failed to add subject", Toast.LENGTH_SHORT).show()
+                                    "Failed to add", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -98,10 +135,12 @@ class SubjectManagementActivity : AppCompatActivity() {
     private fun showDeleteConfirmation(subject: String, position: Int) {
         AlertDialog.Builder(this)
             .setTitle("Delete Subject")
-            .setMessage("Are you sure you want to delete '$subject' from $courseName?\n\nThis will not delete existing attendance records.")
+            .setMessage("Delete '$subject' from $courseName Semester $selectedSemester?\n\nExisting attendance records will not be deleted.")
             .setPositiveButton("Delete") { _, _ ->
                 lifecycleScope.launch {
-                    val success = courseRepository.deleteSubjectFromCourse(courseName, subject)
+                    val success = courseRepository.deleteSubjectFromSemester(
+                        courseName, selectedSemester, subject
+                    )
                     if (success) {
                         adapter.removeSubject(position)
                         updateSubjectCount()
@@ -109,7 +148,7 @@ class SubjectManagementActivity : AppCompatActivity() {
                             "Subject deleted!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this@SubjectManagementActivity,
-                            "Failed to delete subject", Toast.LENGTH_SHORT).show()
+                            "Failed to delete", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

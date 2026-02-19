@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.nishant.smartattendance.data.repository.AttendanceRepository
+import com.nishant.smartattendance.data.repository.CourseRepository
 import com.nishant.smartattendance.data.repository.StudentRepository
 import com.nishant.smartattendance.databinding.FragmentStudentAttendanceBinding
 import kotlinx.coroutines.launch
@@ -20,6 +21,7 @@ class StudentAttendanceFragment : Fragment() {
 
     private val studentRepository = StudentRepository()
     private val attendanceRepository = AttendanceRepository()
+    private val courseRepository = CourseRepository()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,11 +41,21 @@ class StudentAttendanceFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 val student = studentRepository.getStudentByEmail(email) ?: return@launch
-                val records = attendanceRepository.getAttendanceBySrn(student.srn)
+
+                val courses = courseRepository.getAllCourses()
+                val course = courses.find { it.name == student.courseId }
+                val currentSemester = if (course != null) {
+                    studentRepository.calculateCurrentSemester(
+                        student.joinedAt, course.totalSemesters
+                    )
+                } else student.currentSemester
+
+                val records = attendanceRepository.getAttendanceBySrnAndSemester(
+                    student.srn, currentSemester
+                ).filter { it.subject.isNotEmpty() }
 
                 // Group by subject
                 val grouped = records.groupBy { it.subject }
-
                 val summaries = grouped.map { (subject, subjectRecords) ->
                     SubjectAttendanceSummary(
                         courseName = subject,

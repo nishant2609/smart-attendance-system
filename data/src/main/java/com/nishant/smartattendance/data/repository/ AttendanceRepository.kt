@@ -16,7 +16,7 @@ class AttendanceRepository {
             val batch = db.batch()
             records.forEach { record ->
                 val docRef = attendanceRef.document(
-                    "${record.srn}_${record.courseId}_${record.subject}_${record.date}"
+                    "${record.srn}_${record.courseId}_sem${record.semester}_${record.subject}_${record.date}"
                 )
                 batch.set(docRef, mapOf(
                     "srn" to record.srn,
@@ -24,6 +24,7 @@ class AttendanceRepository {
                     "courseId" to record.courseId,
                     "subject" to record.subject,
                     "section" to record.section,
+                    "semester" to record.semester,
                     "date" to record.date,
                     "status" to record.status,
                     "markedVia" to record.markedVia,
@@ -50,6 +51,32 @@ class AttendanceRepository {
                     courseId = doc.getString("courseId") ?: "",
                     subject = doc.getString("subject") ?: "",
                     section = doc.getString("section") ?: "",
+                    semester = (doc.getLong("semester") ?: 1).toInt(),
+                    date = doc.getString("date") ?: "",
+                    status = doc.getString("status") ?: "absent",
+                    markedVia = doc.getString("markedVia") ?: "manual",
+                    timestamp = doc.getLong("timestamp") ?: 0L
+                )
+            }.sortedByDescending { it.date }
+    }
+
+    suspend fun getAttendanceBySrnAndSemester(
+        srn: String, semester: Int
+    ): List<AttendanceRecord> {
+        return attendanceRef
+            .whereEqualTo("srn", srn)
+            .whereEqualTo("semester", semester)
+            .get()
+            .await()
+            .documents.map { doc ->
+                AttendanceRecord(
+                    id = doc.id,
+                    srn = doc.getString("srn") ?: "",
+                    studentName = doc.getString("studentName") ?: "",
+                    courseId = doc.getString("courseId") ?: "",
+                    subject = doc.getString("subject") ?: "",
+                    section = doc.getString("section") ?: "",
+                    semester = (doc.getLong("semester") ?: 1).toInt(),
                     date = doc.getString("date") ?: "",
                     status = doc.getString("status") ?: "absent",
                     markedVia = doc.getString("markedVia") ?: "manual",
@@ -65,7 +92,6 @@ class AttendanceRepository {
             .whereEqualTo("status", "present")
             .get()
             .await()
-        // Count unique students, not records
         return records.documents
             .map { it.getString("srn") ?: "" }
             .distinct()

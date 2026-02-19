@@ -13,6 +13,7 @@
         android:background="#FFFFFF"
         android:elevation="4dp">
 
+        <!-- Course and Section Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,6 +37,15 @@
 
         </LinearLayout>
 
+        <!-- Semester Row -->
+        <Spinner
+            android:id="@+id/spinnerSemester"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/spinner_background" />
+
+        <!-- Subject Row -->
         <Spinner
             android:id="@+id/spinnerSubject"
             android:layout_width="match_parent"

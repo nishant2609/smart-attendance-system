@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
         val intent = Intent(requireContext(), SubjectManagementActivity::class.java).apply {
             putExtra("COURSE_NAME", course.name)
             putExtra("COURSE_FULL_NAME", course.fullName)
-            putStringArrayListExtra("SUBJECTS", ArrayList(course.subjects))
+            putExtra("TOTAL_SEMESTERS", course.totalSemesters)
         }
         startActivity(intent)
     }

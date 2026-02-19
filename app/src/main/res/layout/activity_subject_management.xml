@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <!-- Top App Bar -->
     <LinearLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -17,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
 
             <ImageButton
                 android:id="@+id/btnBack"
@@ -60,6 +60,13 @@
                 android:textColor="#CCDDFF" />
 
         </LinearLayout>
+
+        <!-- Semester Spinner inside app bar -->
+        <Spinner
+            android:id="@+id/spinnerSemester"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/spinner_background" />
 
     </LinearLayout>
 
