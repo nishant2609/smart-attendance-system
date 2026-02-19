@@ -3,24 +3,24 @@
 3    package="com.nishant.smartattendance.data.test" >
 4
 5    <uses-sdk
-5-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:5:5-74
+5-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:5:5-74
 6        android:minSdkVersion="24"
-6-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:5:15-41
+6-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:5:15-41
 7        android:targetSdkVersion="24" />
-7-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:5:42-71
+7-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:5:42-71
 8
 9    <instrumentation
-9-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:11:5-15:87
+9-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:11:5-15:87
 10        android:name="android.test.InstrumentationTestRunner"
-10-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:11:22-75
+10-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:11:22-75
 11        android:functionalTest="false"
-11-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:14:22-52
+11-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:14:22-52
 12        android:handleProfiling="false"
-12-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:13:22-53
+12-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:13:22-53
 13        android:label="Tests for com.nishant.smartattendance.data.test"
-13-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:15:22-85
+13-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:15:22-85
 14        android:targetPackage="com.nishant.smartattendance.data.test" />
-14-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:12:22-83
+14-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:12:22-83
 15
 16    <uses-permission android:name="android.permission.INTERNET" />
 16-->[com.google.firebase:firebase-auth:22.3.1] D:\Nishantcreation\GradleCache\.gradle\caches\transforms-4\be9899c4d1856de308ac88dca6aa18a0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:25:5-67
@@ -44,14 +44,14 @@
 24-->[androidx.core:core:1.13.1] D:\Nishantcreation\GradleCache\.gradle\caches\transforms-4\a8b49fdf2a7673e6dda27b586adf8cf5\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 25
 26    <application
-26-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:7:5-9:19
+26-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:7:5-9:19
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 27-->[androidx.core:core:1.13.1] D:\Nishantcreation\GradleCache\.gradle\caches\transforms-4\a8b49fdf2a7673e6dda27b586adf8cf5\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 28        android:debuggable="true"
 29        android:extractNativeLibs="false" >
 30        <uses-library android:name="android.test.runner" />
-30-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:8:9-60
-30-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9437642632693232138.xml:8:23-57
+30-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:8:9-60
+30-->D:\Nishantcreation\SmartAttendance\data\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest5057399957894657644.xml:8:23-57
 31
 32        <service
 32-->[com.google.firebase:firebase-auth-ktx:22.3.1] D:\Nishantcreation\GradleCache\.gradle\caches\transforms-4\c04c8c6d5de7c2288f9547667895fd77\transformed\firebase-auth-ktx-22.3.1\AndroidManifest.xml:8:9-14:19
