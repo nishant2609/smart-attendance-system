@@ -7,9 +7,9 @@
     android:orientation="vertical"
     android:background="#F0F2FF">
 
-    <!-- ═══════════════════════════════════════ -->
-    <!--              GRADIENT HEADER            -->
-    <!-- ═══════════════════════════════════════ -->
+    <!-- ══════════════════════════════════════ -->
+    <!--           GRADIENT HEADER              -->
+    <!-- ══════════════════════════════════════ -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,9 +38,9 @@
 
     </LinearLayout>
 
-    <!-- ═══════════════════════════════════════ -->
-    <!--            FILTER PANEL CARD            -->
-    <!-- ═══════════════════════════════════════ -->
+    <!-- ══════════════════════════════════════ -->
+    <!--           FILTER PANEL CARD            -->
+    <!-- ══════════════════════════════════════ -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Label -->
+            <!-- Section label -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +83,44 @@
 
             </LinearLayout>
 
-            <!-- Course and Section Row -->
+            <!-- ── DATE ROW ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_spinner_polished"
+                android:paddingLeft="14dp"
+                android:paddingRight="8dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:layout_marginBottom="10dp"
+                android:minHeight="48dp">
+
+                <TextView
+                    android:id="@+id/tvSelectedDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:textColor="#1A237E"
+                    android:textStyle="bold"
+                    android:hint="Select date"
+                    android:textColorHint="#9FA8DA" />
+
+                <ImageButton
+                    android:id="@+id/btnPickDate"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_nav_attendance"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#3F51B5"
+                    android:contentDescription="Pick date"
+                    android:padding="8dp" />
+
+            </LinearLayout>
+
+            <!-- Course + Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,7 +144,7 @@
 
             </LinearLayout>
 
-            <!-- Semester Row -->
+            <!-- Semester -->
             <Spinner
                 android:id="@+id/spinnerSemester"
                 android:layout_width="match_parent"
@@ -115,7 +152,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_spinner_polished" />
 
-            <!-- Subject Row -->
+            <!-- Subject -->
             <Spinner
                 android:id="@+id/spinnerSubject"
                 android:layout_width="match_parent"
@@ -132,16 +169,32 @@
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.04"
-                android:background="@drawable/bg_btn_primary_blue" />
+                android:background="@drawable/bg_btn_primary_blue"
+                android:stateListAnimator="@null" />
 
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- ═══════════════════════════════════════ -->
-    <!--            ATTENDANCE LIST              -->
-    <!-- ═══════════════════════════════════════ -->
+    <!-- ══════════════════════════════════════ -->
+    <!--        DATE NOTICE (read-only banner)  -->
+    <!-- ══════════════════════════════════════ -->
+    <TextView
+        android:id="@+id/tvDateNotice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="2dp"
+        android:textSize="12sp"
+        android:textColor="#7986CB"
+        android:visibility="gone"
+        android:text="⚠ Viewing past attendance (read-only)" />
+
+    <!-- ══════════════════════════════════════ -->
+    <!--          ATTENDANCE LIST               -->
+    <!-- ══════════════════════════════════════ -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAttendance"
         android:layout_width="match_parent"
@@ -153,9 +206,9 @@
         android:paddingBottom="8dp"
         android:clipToPadding="false" />
 
-    <!-- ═══════════════════════════════════════ -->
-    <!--           SUBMIT BUTTON                 -->
-    <!-- ═══════════════════════════════════════ -->
+    <!-- ══════════════════════════════════════ -->
+    <!--          SUBMIT BUTTON                 -->
+    <!-- ══════════════════════════════════════ -->
     <Button
         android:id="@+id/btnSubmitAttendance"
         android:layout_width="match_parent"
@@ -170,6 +223,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginTop="8dp"
         android:visibility="gone"
+        android:stateListAnimator="@null"
         android:elevation="4dp" />
 
 </LinearLayout>

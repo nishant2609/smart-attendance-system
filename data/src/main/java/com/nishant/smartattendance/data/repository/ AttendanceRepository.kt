@@ -85,6 +85,42 @@ class AttendanceRepository {
             }.sortedByDescending { it.date }
     }
 
+    suspend fun getAttendanceForDate(
+        courseId: String,
+        section: String,
+        semester: Int,
+        subject: String,
+        date: String
+    ): List<AttendanceRecord> {
+        return try {
+            attendanceRef
+                .whereEqualTo("courseId", courseId)
+                .whereEqualTo("section", section)
+                .whereEqualTo("semester", semester)
+                .whereEqualTo("subject", subject)
+                .whereEqualTo("date", date)
+                .get()
+                .await()
+                .documents.map { doc ->
+                    AttendanceRecord(
+                        id = doc.id,
+                        srn = doc.getString("srn") ?: "",
+                        studentName = doc.getString("studentName") ?: "",
+                        courseId = doc.getString("courseId") ?: "",
+                        subject = doc.getString("subject") ?: "",
+                        section = doc.getString("section") ?: "",
+                        semester = (doc.getLong("semester") ?: 1).toInt(),
+                        date = doc.getString("date") ?: "",
+                        status = doc.getString("status") ?: "absent",
+                        markedVia = doc.getString("markedVia") ?: "manual",
+                        timestamp = doc.getLong("timestamp") ?: 0L
+                    )
+                }
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
     suspend fun getTodayAttendanceCount(): Long {
         val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val records = attendanceRef

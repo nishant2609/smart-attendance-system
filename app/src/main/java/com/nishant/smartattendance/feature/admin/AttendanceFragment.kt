@@ -10,6 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.nishant.smartattendance.data.repository.AttendanceRepository
 import com.nishant.smartattendance.data.repository.CourseRepository
 import com.nishant.smartattendance.data.repository.StudentRepository
@@ -36,7 +39,13 @@ class AttendanceFragment : Fragment() {
     private var selectedSection: String = "A"
     private var selectedSubject: String = ""
     private var selectedSemester: Int = 1
-    private val attendanceMap = mutableMapOf<String, Boolean>()
+
+    // ── Boolean? allows null = "not yet marked" ──
+    private val attendanceMap = mutableMapOf<String, Boolean?>()
+
+    // ── Date tracking ──
+    private var selectedDate: String = getTodayDate()
+    private var isToday: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,10 +57,70 @@ class AttendanceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Show today's date automatically
+        binding.tvSelectedDate.text = getDisplayDate(selectedDate)
+
+        // Date picker — only allows today or past dates
+        binding.btnPickDate.setOnClickListener { showDatePicker() }
+
         loadCourses()
         binding.btnLoadStudents.setOnClickListener { loadStudentsForAttendance() }
         binding.btnSubmitAttendance.setOnClickListener { submitAttendance() }
     }
+
+    // ════════════════════════════════════════
+    // DATE HELPERS
+    // ════════════════════════════════════════
+
+    private fun getTodayDate(): String {
+        return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+    }
+
+    private fun getDisplayDate(dateStr: String): String {
+        return try {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val display = SimpleDateFormat("EEE, dd MMM yyyy", Locale.getDefault())
+            display.format(sdf.parse(dateStr)!!)
+        } catch (e: Exception) {
+            dateStr
+        }
+    }
+
+    private fun showDatePicker() {
+        val constraints = CalendarConstraints.Builder()
+            .setValidator(DateValidatorPointBackward.now())
+            .build()
+
+        val picker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Select Attendance Date")
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .setCalendarConstraints(constraints)
+            .build()
+
+        picker.addOnPositiveButtonClickListener { millis ->
+            selectedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                .format(Date(millis))
+            binding.tvSelectedDate.text = getDisplayDate(selectedDate)
+
+            isToday = (selectedDate == getTodayDate())
+
+            // Show read-only warning for past dates
+            binding.tvDateNotice.visibility = if (isToday) View.GONE else View.VISIBLE
+
+            // Hide submit for past dates
+            binding.btnSubmitAttendance.visibility = View.GONE
+
+            // Clear list until user reloads for new date
+            binding.rvAttendance.adapter = null
+        }
+
+        picker.show(parentFragmentManager, "DATE_PICKER")
+    }
+
+    // ════════════════════════════════════════
+    // COURSE / SPINNER SETUP
+    // ════════════════════════════════════════
 
     private fun loadCourses() {
         lifecycleScope.launch {
@@ -162,18 +231,22 @@ class AttendanceFragment : Fragment() {
             }
     }
 
+    // ════════════════════════════════════════
+    // LOAD STUDENTS
+    // ════════════════════════════════════════
+
     private fun loadStudentsForAttendance() {
         val course = selectedCourse ?: return
         if (selectedSubject.isEmpty()) {
             Toast.makeText(requireContext(), "Please select a subject", Toast.LENGTH_SHORT).show()
             return
         }
+
         lifecycleScope.launch {
             try {
                 students = studentRepository.getStudentsByCourseAndSection(
                     course.name, selectedSection
                 ).filter { student ->
-                    // Only show students in selected semester
                     val currentSem = studentRepository.calculateCurrentSemester(
                         student.joinedAt, course.totalSemesters
                     )
@@ -188,20 +261,66 @@ class AttendanceFragment : Fragment() {
                 }
 
                 attendanceMap.clear()
-                students.forEach { attendanceMap[it.srn] = true }
+
+                // Load existing attendance for selected date (if any)
+                val existingRecords = attendanceRepository.getAttendanceForDate(
+                    courseId = course.name,
+                    section = selectedSection,
+                    semester = selectedSemester,
+                    subject = selectedSubject,
+                    date = selectedDate
+                )
+
+                if (existingRecords.isNotEmpty()) {
+                    // Pre-fill from saved records
+                    existingRecords.forEach { record ->
+                        attendanceMap[record.srn] = (record.status == "present")
+                    }
+                } else {
+                    // Fresh session — start with null (nothing selected)
+                    students.forEach { attendanceMap[it.srn] = null }
+                }
+
                 binding.rvAttendance.layoutManager = LinearLayoutManager(requireContext())
-                binding.rvAttendance.adapter = AttendanceAdapter(students, attendanceMap)
-                binding.btnSubmitAttendance.visibility = View.VISIBLE
+                binding.rvAttendance.adapter = AttendanceAdapter(
+                    students,
+                    attendanceMap,
+                    isEditable = isToday
+                )
+
+                // Only show submit button for today
+                binding.btnSubmitAttendance.visibility =
+                    if (isToday) View.VISIBLE else View.GONE
 
             } catch (e: Exception) {
                 e.printStackTrace()
+                Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    // ════════════════════════════════════════
+    // SUBMIT
+    // ════════════════════════════════════════
+
     private fun submitAttendance() {
+        if (!isToday) {
+            Toast.makeText(requireContext(),
+                "Cannot edit past attendance", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val course = selectedCourse ?: return
-        val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+
+        // Check all students have been marked
+        val unmarked = students.count { attendanceMap[it.srn] == null }
+        if (unmarked > 0) {
+            Toast.makeText(requireContext(),
+                "$unmarked student(s) not marked yet. Please mark P or A for all.",
+                Toast.LENGTH_SHORT).show()
+            return
+        }
+
         lifecycleScope.launch {
             try {
                 val records = students.map { student ->
@@ -212,11 +331,12 @@ class AttendanceFragment : Fragment() {
                         subject = selectedSubject,
                         section = selectedSection,
                         semester = selectedSemester,
-                        date = today,
+                        date = selectedDate,
                         status = if (attendanceMap[student.srn] == true) "present" else "absent",
                         markedVia = "manual"
                     )
                 }
+
                 val success = attendanceRepository.markAttendance(records)
                 if (success) {
                     Toast.makeText(requireContext(),

@@ -18,7 +18,7 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:paddingTop="32dp"
-        android:paddingBottom="24dp">
+        android:paddingBottom="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,6 +35,42 @@
             android:textColor="#9FA8DA"
             android:textSize="13sp"
             android:layout_marginTop="4dp" />
+
+        <!-- ── DATE ROW inside header ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_spinner_on_dark"
+            android:paddingLeft="14dp"
+            android:paddingRight="8dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tvSelectedDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:hint="All time"
+                android:textColorHint="#9FA8DA" />
+
+            <ImageButton
+                android:id="@+id/btnPickDate"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_nav_attendance"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="#FFD54F"
+                android:contentDescription="Pick date"
+                android:padding="10dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
