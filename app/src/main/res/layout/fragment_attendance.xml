@@ -207,23 +207,52 @@
         android:clipToPadding="false" />
 
     <!-- ══════════════════════════════════════ -->
-    <!--          SUBMIT BUTTON                 -->
+    <!--          ACTION BUTTONS ROW            -->
     <!-- ══════════════════════════════════════ -->
-    <Button
-        android:id="@+id/btnSubmitAttendance"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="✓  Submit Attendance"
-        android:textColor="#1A237E"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:background="@drawable/bg_btn_submit_gold"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="8dp"
-        android:visibility="gone"
-        android:stateListAnimator="@null"
-        android:elevation="4dp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp">
+
+        <!-- Start Session — lets students mark themselves -->
+        <TextView
+            android:id="@+id/btnStartSession"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▶  Start Session"
+            android:textColor="#1A237E"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_btn_submit_gold"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="4dp" />
+
+        <!-- Submit manual attendance -->
+        <TextView
+            android:id="@+id/btnSubmitAttendance"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="✓  Submit"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_btn_primary_blue"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="4dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

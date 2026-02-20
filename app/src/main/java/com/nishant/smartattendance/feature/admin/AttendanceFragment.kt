@@ -10,14 +10,18 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.nishant.smartattendance.data.repository.AttendanceRepository
 import com.nishant.smartattendance.data.repository.CourseRepository
+import com.nishant.smartattendance.data.repository.SessionRepository
 import com.nishant.smartattendance.data.repository.StudentRepository
 import com.nishant.smartattendance.databinding.FragmentAttendanceBinding
+import com.nishant.smartattendance.databinding.FragmentSessionCodeDialogBinding
 import com.nishant.smartattendance.domain.model.AttendanceRecord
+import com.nishant.smartattendance.domain.model.AttendanceSession
 import com.nishant.smartattendance.domain.model.Course
 import com.nishant.smartattendance.domain.model.Student
 import kotlinx.coroutines.launch
@@ -32,6 +36,7 @@ class AttendanceFragment : Fragment() {
     private val courseRepository = CourseRepository()
     private val studentRepository = StudentRepository()
     private val attendanceRepository = AttendanceRepository()
+    private val sessionRepository = SessionRepository()
 
     private var courses = listOf<Course>()
     private var students = listOf<Student>()
@@ -40,12 +45,13 @@ class AttendanceFragment : Fragment() {
     private var selectedSubject: String = ""
     private var selectedSemester: Int = 1
 
-    // ── Boolean? allows null = "not yet marked" ──
     private val attendanceMap = mutableMapOf<String, Boolean?>()
 
-    // ── Date tracking ──
     private var selectedDate: String = getTodayDate()
     private var isToday: Boolean = true
+
+    // Active session tracking
+    private var activeSession: AttendanceSession? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,33 +64,103 @@ class AttendanceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Show today's date automatically
         binding.tvSelectedDate.text = getDisplayDate(selectedDate)
-
-        // Date picker — only allows today or past dates
         binding.btnPickDate.setOnClickListener { showDatePicker() }
 
         loadCourses()
         binding.btnLoadStudents.setOnClickListener { loadStudentsForAttendance() }
         binding.btnSubmitAttendance.setOnClickListener { submitAttendance() }
+        binding.btnStartSession.setOnClickListener { startSession() }
+    }
+
+    // ════════════════════════════════════════
+    // SESSION MANAGEMENT
+    // ════════════════════════════════════════
+
+    private fun startSession() {
+        if (selectedSubject.isEmpty()) {
+            Toast.makeText(requireContext(), "Please select a subject first", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (!isToday) {
+            Toast.makeText(requireContext(), "Sessions can only be started for today", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val course = selectedCourse ?: run {
+            Toast.makeText(requireContext(), "Please select a course first", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        lifecycleScope.launch {
+            try {
+                binding.btnStartSession.isEnabled = false
+                val session = sessionRepository.createSession(
+                    courseId = course.name,
+                    section = selectedSection,
+                    semester = selectedSemester,
+                    subject = selectedSubject
+                )
+
+                if (session == null) {
+                    Toast.makeText(requireContext(), "Failed to create session", Toast.LENGTH_SHORT).show()
+                    binding.btnStartSession.isEnabled = true
+                    return@launch
+                }
+
+                activeSession = session
+                showSessionDialog(session)
+
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
+                binding.btnStartSession.isEnabled = true
+            }
+        }
+    }
+
+    private fun showSessionDialog(session: AttendanceSession) {
+        val dialog = BottomSheetDialog(requireContext())
+        val dialogBinding = FragmentSessionCodeDialogBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCancelable(false)
+
+        dialogBinding.tvSessionCode.text = session.code
+        dialogBinding.tvSessionDetails.text =
+            "${session.courseId} · ${session.section} · Sem ${session.semester}\n${session.subject}"
+
+        val expiryTime = SimpleDateFormat("hh:mm a", Locale.getDefault())
+            .format(Date(session.expiresAt))
+        dialogBinding.tvSessionExpiry.text = "Expires at $expiryTime"
+
+        dialogBinding.btnStopSession.setOnClickListener {
+            lifecycleScope.launch {
+                sessionRepository.deactivateSession(session.sessionId)
+                activeSession = null
+                binding.btnStartSession.isEnabled = true
+                dialog.dismiss()
+                Toast.makeText(requireContext(), "Session stopped", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        dialog.setOnDismissListener {
+            binding.btnStartSession.isEnabled = true
+        }
+
+        dialog.show()
     }
 
     // ════════════════════════════════════════
     // DATE HELPERS
     // ════════════════════════════════════════
 
-    private fun getTodayDate(): String {
-        return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-    }
+    private fun getTodayDate(): String =
+        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
 
     private fun getDisplayDate(dateStr: String): String {
         return try {
             val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val display = SimpleDateFormat("EEE, dd MMM yyyy", Locale.getDefault())
             display.format(sdf.parse(dateStr)!!)
-        } catch (e: Exception) {
-            dateStr
-        }
+        } catch (e: Exception) { dateStr }
     }
 
     private fun showDatePicker() {
@@ -99,19 +175,12 @@ class AttendanceFragment : Fragment() {
             .build()
 
         picker.addOnPositiveButtonClickListener { millis ->
-            selectedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                .format(Date(millis))
+            selectedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date(millis))
             binding.tvSelectedDate.text = getDisplayDate(selectedDate)
-
             isToday = (selectedDate == getTodayDate())
-
-            // Show read-only warning for past dates
             binding.tvDateNotice.visibility = if (isToday) View.GONE else View.VISIBLE
-
-            // Hide submit for past dates
             binding.btnSubmitAttendance.visibility = View.GONE
-
-            // Clear list until user reloads for new date
+            binding.btnStartSession.visibility = if (isToday) View.VISIBLE else View.GONE
             binding.rvAttendance.adapter = null
         }
 
@@ -127,19 +196,14 @@ class AttendanceFragment : Fragment() {
             try {
                 courses = courseRepository.getAllCourses()
                 val courseNames = courses.map { it.name }
-                val adapter = ArrayAdapter(
-                    requireContext(),
-                    android.R.layout.simple_spinner_item,
-                    courseNames
-                )
+                val adapter = ArrayAdapter(requireContext(),
+                    android.R.layout.simple_spinner_item, courseNames)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerCourse.adapter = adapter
 
                 binding.spinnerCourse.onItemSelectedListener =
                     object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>, view: View?, position: Int, id: Long
-                        ) {
+                        override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                             selectedCourse = courses[position]
                             setupSectionSpinner(courses[position].sections)
                             setupSemesterSpinner(courses[position].totalSemesters)
@@ -152,47 +216,36 @@ class AttendanceFragment : Fragment() {
                     setupSectionSpinner(courses[0].sections)
                     setupSemesterSpinner(courses[0].totalSemesters)
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            } catch (e: Exception) { e.printStackTrace() }
         }
     }
 
     private fun setupSectionSpinner(sections: List<String>) {
-        val adapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_spinner_item, sections
-        )
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, sections)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerSection.adapter = adapter
-        binding.spinnerSection.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>, view: View?, position: Int, id: Long
-                ) { selectedSection = sections[position] }
-                override fun onNothingSelected(parent: AdapterView<*>) {}
+        binding.spinnerSection.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectedSection = sections[position]
             }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
 
     private fun setupSemesterSpinner(totalSemesters: Int) {
         val semesterList = (1..totalSemesters).map { "Semester $it" }
-        val adapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_spinner_item, semesterList
-        )
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, semesterList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerSemester.adapter = adapter
         selectedSemester = 1
 
-        binding.spinnerSemester.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>, view: View?, position: Int, id: Long
-                ) {
-                    selectedSemester = position + 1
-                    loadSubjectsForSemester()
-                }
-                override fun onNothingSelected(parent: AdapterView<*>) {}
+        binding.spinnerSemester.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectedSemester = position + 1
+                loadSubjectsForSemester()
             }
-
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
         loadSubjectsForSemester()
     }
 
@@ -200,35 +253,27 @@ class AttendanceFragment : Fragment() {
         val course = selectedCourse ?: return
         lifecycleScope.launch {
             try {
-                val subjects = courseRepository.getSubjectsForSemester(
-                    course.name, selectedSemester
-                )
+                val subjects = courseRepository.getSubjectsForSemester(course.name, selectedSemester)
                 setupSubjectSpinner(subjects)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            } catch (e: Exception) { e.printStackTrace() }
         }
     }
 
     private fun setupSubjectSpinner(subjects: List<String>) {
         if (subjects.isEmpty()) {
-            Toast.makeText(requireContext(),
-                "No subjects for this semester", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "No subjects for this semester", Toast.LENGTH_SHORT).show()
             return
         }
         selectedSubject = subjects[0]
-        val adapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_spinner_item, subjects
-        )
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, subjects)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerSubject.adapter = adapter
-        binding.spinnerSubject.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>, view: View?, position: Int, id: Long
-                ) { selectedSubject = subjects[position] }
-                override fun onNothingSelected(parent: AdapterView<*>) {}
+        binding.spinnerSubject.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectedSubject = subjects[position]
             }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
 
     // ════════════════════════════════════════
@@ -244,53 +289,39 @@ class AttendanceFragment : Fragment() {
 
         lifecycleScope.launch {
             try {
-                students = studentRepository.getStudentsByCourseAndSection(
-                    course.name, selectedSection
-                ).filter { student ->
-                    val currentSem = studentRepository.calculateCurrentSemester(
-                        student.joinedAt, course.totalSemesters
-                    )
-                    currentSem == selectedSemester
-                }
+                students = studentRepository.getStudentsByCourseAndSection(course.name, selectedSection)
+                    .filter { student ->
+                        val currentSem = studentRepository.calculateCurrentSemester(
+                            student.joinedAt, course.totalSemesters)
+                        currentSem == selectedSemester
+                    }
 
                 if (students.isEmpty()) {
                     Toast.makeText(requireContext(),
-                        "No students found for Semester $selectedSemester",
-                        Toast.LENGTH_SHORT).show()
+                        "No students found for Semester $selectedSemester", Toast.LENGTH_SHORT).show()
                     return@launch
                 }
 
                 attendanceMap.clear()
-
-                // Load existing attendance for selected date (if any)
                 val existingRecords = attendanceRepository.getAttendanceForDate(
-                    courseId = course.name,
-                    section = selectedSection,
-                    semester = selectedSemester,
-                    subject = selectedSubject,
-                    date = selectedDate
+                    courseId = course.name, section = selectedSection,
+                    semester = selectedSemester, subject = selectedSubject, date = selectedDate
                 )
 
                 if (existingRecords.isNotEmpty()) {
-                    // Pre-fill from saved records
                     existingRecords.forEach { record ->
                         attendanceMap[record.srn] = (record.status == "present")
                     }
+                    // Also fill any students not in records as null
+                    students.forEach { if (!attendanceMap.containsKey(it.srn)) attendanceMap[it.srn] = null }
                 } else {
-                    // Fresh session — start with null (nothing selected)
                     students.forEach { attendanceMap[it.srn] = null }
                 }
 
                 binding.rvAttendance.layoutManager = LinearLayoutManager(requireContext())
-                binding.rvAttendance.adapter = AttendanceAdapter(
-                    students,
-                    attendanceMap,
-                    isEditable = isToday
-                )
-
-                // Only show submit button for today
-                binding.btnSubmitAttendance.visibility =
-                    if (isToday) View.VISIBLE else View.GONE
+                binding.rvAttendance.adapter = AttendanceAdapter(students, attendanceMap, isEditable = isToday)
+                binding.btnSubmitAttendance.visibility = if (isToday) View.VISIBLE else View.GONE
+                binding.btnStartSession.visibility = if (isToday) View.VISIBLE else View.GONE
 
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -305,18 +336,14 @@ class AttendanceFragment : Fragment() {
 
     private fun submitAttendance() {
         if (!isToday) {
-            Toast.makeText(requireContext(),
-                "Cannot edit past attendance", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Cannot edit past attendance", Toast.LENGTH_SHORT).show()
             return
         }
-
         val course = selectedCourse ?: return
-
-        // Check all students have been marked
         val unmarked = students.count { attendanceMap[it.srn] == null }
         if (unmarked > 0) {
             Toast.makeText(requireContext(),
-                "$unmarked student(s) not marked yet. Please mark P or A for all.",
+                "$unmarked student(s) not marked yet. Mark P or A for all.",
                 Toast.LENGTH_SHORT).show()
             return
         }
@@ -336,12 +363,10 @@ class AttendanceFragment : Fragment() {
                         markedVia = "manual"
                     )
                 }
-
                 val success = attendanceRepository.markAttendance(records)
                 if (success) {
                     Toast.makeText(requireContext(),
-                        "Attendance submitted for $selectedSubject (Sem $selectedSemester)!",
-                        Toast.LENGTH_SHORT).show()
+                        "Attendance submitted for $selectedSubject!", Toast.LENGTH_SHORT).show()
                     binding.btnSubmitAttendance.visibility = View.GONE
                     binding.rvAttendance.adapter = null
                 } else {
