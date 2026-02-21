@@ -40,6 +40,11 @@ android {
         viewBinding = true
     }
 
+    // Prevent TFLite model from being compressed
+    aaptOptions {
+        noCompress("tflite")
+    }
+
     packaging {
         resources {
             excludes += setOf(
@@ -94,6 +99,10 @@ dependencies {
 
     // ML Kit Face Detection
     implementation("com.google.mlkit:face-detection:16.1.5")
+
+    // TensorFlow Lite — MobileFaceNet real face embeddings
+    implementation("org.tensorflow:tensorflow-lite:2.14.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
 
     // AndroidX
     implementation(libs.androidx.core.ktx)

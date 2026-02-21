@@ -2,23 +2,24 @@ package com.nishant.smartattendance.data.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import kotlin.math.sqrt
 
 class FaceRepository {
 
     private val db = FirebaseFirestore.getInstance()
     private val faceRef = db.collection("face_embeddings")
 
-    // Save a face embedding (list of floats) for a student
-    suspend fun saveFaceEmbedding(srn: String, embedding: List<Float>): Boolean {
+    suspend fun saveFaceEmbedding(srn: String, embedding: FloatArray): Boolean {
         return try {
+            val embeddingList = ArrayList<Float>(embedding.size)
+            for (v in embedding) embeddingList.add(v)
             faceRef.document(srn).set(
                 mapOf(
                     "srn" to srn,
-                    "embedding" to embedding,
+                    "embedding" to embeddingList,
                     "registeredAt" to System.currentTimeMillis()
                 )
             ).await()
-            // Also mark faceRegistered = true in students collection
             db.collection("students").document(srn)
                 .update("faceRegistered", true).await()
             true
@@ -27,44 +28,56 @@ class FaceRepository {
         }
     }
 
-    // Get stored face embedding for a student
-    suspend fun getFaceEmbedding(srn: String): List<Float>? {
+    suspend fun getFaceEmbedding(srn: String): FloatArray? {
         return try {
             val doc = faceRef.document(srn).get().await()
             if (!doc.exists()) return null
             @Suppress("UNCHECKED_CAST")
             val raw = doc.get("embedding") as? List<*> ?: return null
-            raw.mapNotNull {
-                when (it) {
-                    is Double -> it.toFloat()
-                    is Long -> it.toFloat()
-                    is Float -> it
-                    else -> null
-                }
+            if (raw.size != EMBEDDING_SIZE) return null
+            val result = FloatArray(raw.size)
+            for (i in raw.indices) {
+                val v = raw[i]
+                if (v is Double)     result[i] = v.toFloat()
+                else if (v is Long)  result[i] = v.toFloat()
+                else if (v is Float) result[i] = v
+                else return null
             }
+            result
         } catch (e: Exception) {
             null
         }
     }
 
-    // Cosine similarity between two embeddings — returns value between -1 and 1
-    // Values above 0.75 are considered a match
-    fun cosineSimilarity(a: List<Float>, b: List<Float>): Float {
+    fun cosineSimilarity(a: FloatArray, b: FloatArray): Float {
         if (a.size != b.size || a.isEmpty()) return 0f
         var dot = 0f
-        var normA = 0f
-        var normB = 0f
-        for (i in a.indices) {
-            dot += a[i] * b[i]
-            normA += a[i] * a[i]
-            normB += b[i] * b[i]
+        for (i in a.indices) dot = dot + a[i] * b[i]
+        return dot
+    }
+
+    fun averageEmbeddings(embeddings: List<FloatArray>): FloatArray {
+        if (embeddings.isEmpty()) return FloatArray(EMBEDDING_SIZE)
+        val count = embeddings.size.toFloat()
+        val size = embeddings[0].size
+        val sum = FloatArray(size)
+        for (e in embeddings) {
+            for (i in 0 until size) sum[i] = sum[i] + e[i]
         }
-        val denom = Math.sqrt(normA.toDouble()) * Math.sqrt(normB.toDouble())
-        return if (denom == 0.0) 0f else (dot / denom).toFloat()
+        val avg = FloatArray(size)
+        for (i in 0 until size) avg[i] = sum[i] / count
+        var sqSum = 0f
+        for (i in 0 until size) sqSum = sqSum + avg[i] * avg[i]
+        val norm = sqrt(sqSum)
+        if (norm == 0f) return avg
+        val normalized = FloatArray(size)
+        for (i in 0 until size) normalized[i] = avg[i] / norm
+        return normalized
     }
 
     companion object {
-        // Threshold for face match — 0.75 is a good balance of security vs usability
-        const val MATCH_THRESHOLD = 0.75f
+        const val EMBEDDING_SIZE  = 128   // matches facenet.tflite output
+        const val MATCH_THRESHOLD = 0.60f
+        const val FRAMES_REQUIRED = 5
     }
 }

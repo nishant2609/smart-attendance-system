@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,19 +20,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.mlkit.vision.common.InputImage
-import com.google.mlkit.vision.face.Face
 import com.google.mlkit.vision.face.FaceDetection
+import com.google.mlkit.vision.face.FaceDetector
 import com.google.mlkit.vision.face.FaceDetectorOptions
 import com.nishant.smartattendance.data.repository.FaceRepository
 import com.nishant.smartattendance.data.repository.SessionRepository
 import com.nishant.smartattendance.data.repository.StudentRepository
 import com.nishant.smartattendance.data.repository.CourseRepository
 import com.nishant.smartattendance.databinding.FragmentMarkAttendanceBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlin.math.sqrt
 
 class StudentMarkAttendanceFragment : Fragment() {
 
@@ -44,17 +46,14 @@ class StudentMarkAttendanceFragment : Fragment() {
     private val faceRepository = FaceRepository()
 
     private var cameraExecutor: ExecutorService? = null
-    private var imageAnalyzer: ImageAnalysis? = null
     private var cameraProvider: ProcessCameraProvider? = null
+    private var faceNetHelper: FaceNetHelper? = null
+    private lateinit var faceDetector: FaceDetector
 
-    // State
     private var pendingCode: String = ""
     private var isCapturing = false
     private var scanAnimator: ObjectAnimator? = null
 
-    // ────────────────────────────────────────
-    // Camera permission launcher
-    // ────────────────────────────────────────
     private val cameraPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { granted ->
@@ -77,6 +76,20 @@ class StudentMarkAttendanceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         cameraExecutor = Executors.newSingleThreadExecutor()
+
+        val options = FaceDetectorOptions.Builder()
+            .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
+            .setLandmarkMode(FaceDetectorOptions.LANDMARK_MODE_ALL)
+            .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_ALL)
+            .setMinFaceSize(0.3f)
+            .build()
+        faceDetector = FaceDetection.getClient(options)
+
+        faceNetHelper = FaceNetHelper(requireContext())
+        lifecycleScope.launch(Dispatchers.IO) {
+            faceNetHelper?.initialize()
+        }
+
         binding.cardStatus.visibility = View.GONE
         binding.cardFaceScan.visibility = View.GONE
 
@@ -100,7 +113,7 @@ class StudentMarkAttendanceFragment : Fragment() {
     }
 
     // ════════════════════════════════════════
-    // STEP 1 — Request camera, then scan
+    // STEP 1 — Request camera
     // ════════════════════════════════════════
 
     private fun requestCameraAndScan() {
@@ -112,7 +125,7 @@ class StudentMarkAttendanceFragment : Fragment() {
     }
 
     // ════════════════════════════════════════
-    // STEP 2 — Show camera + start face detection
+    // STEP 2 — Open camera for verification
     // ════════════════════════════════════════
 
     private fun startFaceScan() {
@@ -121,106 +134,119 @@ class StudentMarkAttendanceFragment : Fragment() {
         binding.btnMarkAttendance.isEnabled = false
         binding.btnMarkAttendance.alpha = 0.6f
         isCapturing = false
-        updateFaceStatus("🔍 Looking for your face...", "#5C6BC0")
+        updateFaceStatus("🔍 Position your face in the circle", "#5C6BC0")
         startScanAnimation()
-        startCamera()
-    }
 
-    private fun startCamera() {
         val mainExecutor = ContextCompat.getMainExecutor(requireContext())
         ProcessCameraProvider.getInstance(requireContext()).also { future ->
             future.addListener(Runnable {
                 try {
                     cameraProvider = future.get()
-                    bindCamera()
+                    val preview = Preview.Builder().build().also {
+                        it.setSurfaceProvider(binding.cameraPreview.surfaceProvider)
+                    }
+                    val analyzer = ImageAnalysis.Builder()
+                        .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                        .build().also { analysis ->
+                            analysis.setAnalyzer(cameraExecutor!!) { imageProxy ->
+                                if (!isCapturing) processVerificationFrame(imageProxy)
+                                else imageProxy.close()
+                            }
+                        }
+                    cameraProvider?.unbindAll()
+                    cameraProvider?.bindToLifecycle(
+                        viewLifecycleOwner,
+                        CameraSelector.DEFAULT_FRONT_CAMERA,
+                        preview,
+                        analyzer
+                    )
                 } catch (e: Exception) {
-                    showStatusAndHideScan(false, "❌", "Camera Error", e.message ?: "Could not start camera")
+                    showStatusAndHideScan(false, "❌", "Camera Error",
+                        e.message ?: "Could not start camera")
                 }
             }, mainExecutor)
         }
     }
 
-    private fun bindCamera() {
-        val preview = Preview.Builder().build().also {
-            it.setSurfaceProvider(binding.cameraPreview.surfaceProvider)
-        }
-
-        val options = FaceDetectorOptions.Builder()
-            .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
-            .setLandmarkMode(FaceDetectorOptions.LANDMARK_MODE_ALL)
-            .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_ALL)
-            .setMinFaceSize(0.25f)
-            .build()
-        val detector = FaceDetection.getClient(options)
-
-        imageAnalyzer = ImageAnalysis.Builder()
-            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-            .build().also { analysis ->
-                analysis.setAnalyzer(cameraExecutor!!) { imageProxy ->
-                    if (!isCapturing) {
-                        processFrame(imageProxy, detector)
-                    } else {
-                        imageProxy.close()
-                    }
-                }
-            }
-
-        try {
-            cameraProvider?.unbindAll()
-            cameraProvider?.bindToLifecycle(
-                viewLifecycleOwner,
-                CameraSelector.DEFAULT_FRONT_CAMERA,
-                preview,
-                imageAnalyzer
-            )
-        } catch (e: Exception) {
-            showStatusAndHideScan(false, "❌", "Camera Error", e.message ?: "Could not bind camera")
-        }
-    }
-
     // ════════════════════════════════════════
-    // STEP 3 — Process each camera frame
+    // STEP 3 — Process frame for verification
     // ════════════════════════════════════════
 
     @androidx.annotation.OptIn(ExperimentalGetImage::class)
-    private fun processFrame(imageProxy: ImageProxy, detector: com.google.mlkit.vision.face.FaceDetector) {
+    private fun processVerificationFrame(imageProxy: ImageProxy) {
         val mediaImage = imageProxy.image ?: run { imageProxy.close(); return }
-        val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
+        val inputImage = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
+        val bitmap = imageProxyToBitmap(imageProxy)
 
-        detector.process(image)
+        faceDetector.process(inputImage)
             .addOnSuccessListener { faces ->
-                if (faces.isEmpty()) {
-                    updateFaceStatus("🔍 No face detected — look at the camera", "#5C6BC0")
-                } else if (faces.size > 1) {
-                    updateFaceStatus("👥 Multiple faces detected — please be alone", "#E65100")
-                } else {
-                    // Exactly one face found — good
-                    val face = faces[0]
-                    if (!isCapturing && isFaceWellPositioned(face)) {
-                        isCapturing = true
-                        updateFaceStatus("✅ Face detected — verifying...", "#2E7D32")
-                        val embedding = extractEmbedding(face)
-                        lifecycleScope.launch {
-                            handleFaceCapture(embedding)
+                when {
+                    faces.isEmpty() ->
+                        updateFaceStatus("🔍 No face detected — look at the camera", "#5C6BC0")
+                    faces.size > 1 ->
+                        updateFaceStatus("👥 Multiple faces — please be alone", "#E65100")
+                    else -> {
+                        val face = faces[0]
+                        val yaw   = Math.abs(face.headEulerAngleY)
+                        val pitch = Math.abs(face.headEulerAngleX)
+                        val roll  = Math.abs(face.headEulerAngleZ)
+                        val leftEyeOpen  = face.leftEyeOpenProbability ?: 0f
+                        val rightEyeOpen = face.rightEyeOpenProbability ?: 0f
+                        val box = face.boundingBox
+
+                        val leftEyeLm  = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.LEFT_EYE)
+                        val rightEyeLm = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.RIGHT_EYE)
+                        val noseLm     = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.NOSE_BASE)
+                        val mouthLLm   = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.MOUTH_LEFT)
+                        val mouthRLm   = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.MOUTH_RIGHT)
+
+                        when {
+                            leftEyeLm == null || rightEyeLm == null || noseLm == null
+                                    || mouthLLm == null || mouthRLm == null ->
+                                updateFaceStatus("👁 Full face not visible — better lighting needed", "#E65100")
+                            yaw > 10f || pitch > 10f || roll > 10f ->
+                                updateFaceStatus("📐 Look straight at the camera", "#5C6BC0")
+                            leftEyeOpen < 0.75f || rightEyeOpen < 0.75f ->
+                                updateFaceStatus("👁 Keep both eyes fully open", "#5C6BC0")
+                            box.width() < 130 ->
+                                updateFaceStatus("🔎 Move closer to the camera", "#5C6BC0")
+                            bitmap != null && !isCapturing -> {
+                                val faceCrop = faceNetHelper?.cropFace(
+                                    bitmap, box.left, box.top, box.width(), box.height()
+                                )
+                                if (faceCrop != null) {
+                                    val brightness = getAverageBrightness(faceCrop)
+                                    when {
+                                        brightness < 70f ->
+                                            updateFaceStatus("💡 Too dark — move to better lighting", "#E65100")
+                                        brightness > 235f ->
+                                            updateFaceStatus("☀️ Too bright — reduce light behind you", "#E65100")
+                                        else -> {
+                                            isCapturing = true
+                                            updateFaceStatus("✅ Face detected — verifying...", "#2E7D32")
+                                            val embedding = faceNetHelper?.getEmbedding(faceCrop)
+                                            if (embedding != null) {
+                                                lifecycleScope.launch { handleVerification(embedding) }
+                                            } else {
+                                                isCapturing = false
+                                                updateFaceStatus("⚠️ Could not read face — try again", "#E65100")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                    } else if (!isCapturing) {
-                        updateFaceStatus("📐 Center your face in the circle", "#5C6BC0")
                     }
                 }
             }
-            .addOnFailureListener {
-                updateFaceStatus("⚠️ Detection error — try again", "#E65100")
-            }
-            .addOnCompleteListener {
-                imageProxy.close()
-            }
+            .addOnCompleteListener { imageProxy.close() }
     }
 
     // ════════════════════════════════════════
-    // STEP 4 — Handle captured face embedding
+    // STEP 4 — Verify face against stored
     // ════════════════════════════════════════
 
-    private suspend fun handleFaceCapture(embedding: List<Float>) {
+    private suspend fun handleVerification(embedding: FloatArray) {
         val email = FirebaseAuth.getInstance().currentUser?.email ?: return
 
         try {
@@ -228,50 +254,39 @@ class StudentMarkAttendanceFragment : Fragment() {
             if (student == null) {
                 showStatusAndHideScan(false, "❌", "Profile Not Found",
                     "Your student profile is not set up. Contact admin.")
-                resetButton()
-                return
+                resetButton(); return
             }
 
             stopCamera()
 
+            // Block if face not registered
             if (!student.faceRegistered) {
-                // ── First time: register face ──
-                updateFaceStatus("📸 Registering your face...", "#1565C0")
-                delay(500)
-                val saved = faceRepository.saveFaceEmbedding(student.srn, embedding)
-                if (!saved) {
-                    showStatusAndHideScan(false, "❌", "Registration Failed",
-                        "Could not save face data. Please try again.")
-                    resetButton()
-                    return
-                }
-                updateFaceStatus("✅ Face registered!", "#2E7D32")
-                delay(800)
-                // Now proceed to mark attendance
-                proceedToMarkAttendance(student, email)
+                showStatusAndHideScan(false, "📋", "Face Not Registered",
+                    "Go to your Profile tab and register your face first.")
+                resetButton(); return
+            }
 
+            updateFaceStatus("🔐 Verifying your identity...", "#1565C0")
+            delay(400)
+
+            val stored = faceRepository.getFaceEmbedding(student.srn)
+            if (stored == null) {
+                showStatusAndHideScan(false, "❌", "Face Data Missing",
+                    "Please re-register your face in the Profile tab.")
+                resetButton(); return
+            }
+
+            val similarity = faceRepository.cosineSimilarity(embedding, stored)
+            android.util.Log.d("FaceVerify", "Similarity: $similarity (threshold: ${FaceRepository.MATCH_THRESHOLD})")
+
+            if (similarity >= FaceRepository.MATCH_THRESHOLD) {
+                updateFaceStatus("✅ Identity verified!", "#2E7D32")
+                delay(600)
+                proceedToMarkAttendance(student)
             } else {
-                // ── Returning student: verify face ──
-                updateFaceStatus("🔐 Verifying identity...", "#1565C0")
-                delay(500)
-                val stored = faceRepository.getFaceEmbedding(student.srn)
-                if (stored == null) {
-                    // Stored embedding missing — re-register
-                    faceRepository.saveFaceEmbedding(student.srn, embedding)
-                    proceedToMarkAttendance(student, email)
-                    return
-                }
-
-                val similarity = faceRepository.cosineSimilarity(embedding, stored)
-                if (similarity >= FaceRepository.MATCH_THRESHOLD) {
-                    updateFaceStatus("✅ Face matched!", "#2E7D32")
-                    delay(600)
-                    proceedToMarkAttendance(student, email)
-                } else {
-                    showStatusAndHideScan(false, "🚫", "Face Not Recognised",
-                        "Your face could not be verified. Make sure you're in good lighting and try again.")
-                    resetButton()
-                }
+                showStatusAndHideScan(false, "🚫", "Face Not Recognised",
+                    "Your face did not match. Try in better lighting or re-register in Profile.")
+                resetButton()
             }
 
         } catch (e: Exception) {
@@ -281,20 +296,19 @@ class StudentMarkAttendanceFragment : Fragment() {
     }
 
     // ════════════════════════════════════════
-    // STEP 5 — Mark attendance after face pass
+    // STEP 5 — Mark attendance
     // ════════════════════════════════════════
 
     private suspend fun proceedToMarkAttendance(
-        student: com.nishant.smartattendance.domain.model.Student,
-        email: String
+        student: com.nishant.smartattendance.domain.model.Student
     ) {
         hideFaceScan()
 
         val courses = courseRepository.getAllCourses()
         val course = courses.find { it.name == student.courseId }
-        val currentSemester = if (course != null) {
+        val currentSemester = if (course != null)
             studentRepository.calculateCurrentSemester(student.joinedAt, course.totalSemesters)
-        } else student.currentSemester
+        else student.currentSemester
 
         val result = sessionRepository.markAttendanceWithCode(
             enteredCode = pendingCode,
@@ -311,13 +325,13 @@ class StudentMarkAttendanceFragment : Fragment() {
                     "Your attendance has been recorded successfully")
             is SessionRepository.MarkResult.InvalidCode ->
                 showStatus(false, "❌", "Invalid Code",
-                    "No active session found for this code. Check the code and try again.")
+                    "No active session found. Check the code and try again.")
             is SessionRepository.MarkResult.Expired ->
                 showStatus(false, "⏰", "Code Expired",
-                    "This session code has expired. Ask your teacher for a new one.")
+                    "This session has expired. Ask your teacher for a new code.")
             is SessionRepository.MarkResult.AlreadyMarked ->
                 showStatus(false, "ℹ️", "Already Marked",
-                    "Your attendance is already recorded for this class today.")
+                    "Your attendance is already recorded for this class.")
             is SessionRepository.MarkResult.WrongCourse ->
                 showStatus(false, "🚫", "Wrong Class",
                     "This session is for a different course, section, or semester.")
@@ -329,94 +343,70 @@ class StudentMarkAttendanceFragment : Fragment() {
         if (result is SessionRepository.MarkResult.Success) {
             binding.etClassCode.text?.clear()
         }
-
         resetButton()
     }
 
     // ════════════════════════════════════════
-    // FACE HELPERS
+    // BITMAP HELPERS
     // ════════════════════════════════════════
 
-    // Extract a pseudo-embedding from face landmarks
-    // Uses relative positions of facial landmarks as a feature vector
-    private fun extractEmbedding(face: Face): List<Float> {
-        val features = mutableListOf<Float>()
-        val box = face.boundingBox
-        val w = box.width().toFloat()
-        val h = box.height().toFloat()
-
-        // Normalize bounding box aspect ratio
-        features.add(w / (h + 1f))
-
-        // Head rotation angles (reliable biometric features)
-        features.add(face.headEulerAngleX / 90f)  // pitch
-        features.add(face.headEulerAngleY / 90f)  // yaw
-        features.add(face.headEulerAngleZ / 90f)  // roll
-
-        // Eye open probabilities
-        features.add(face.leftEyeOpenProbability ?: 0.5f)
-        features.add(face.rightEyeOpenProbability ?: 0.5f)
-
-        // Smiling probability
-        features.add(face.smilingProbability ?: 0.0f)
-
-        // Landmark positions normalized to face bounding box
-        val landmarks = listOf(
-            com.google.mlkit.vision.face.FaceLandmark.LEFT_EYE,
-            com.google.mlkit.vision.face.FaceLandmark.RIGHT_EYE,
-            com.google.mlkit.vision.face.FaceLandmark.NOSE_BASE,
-            com.google.mlkit.vision.face.FaceLandmark.MOUTH_LEFT,
-            com.google.mlkit.vision.face.FaceLandmark.MOUTH_RIGHT,
-            com.google.mlkit.vision.face.FaceLandmark.LEFT_EAR,
-            com.google.mlkit.vision.face.FaceLandmark.RIGHT_EAR,
-            com.google.mlkit.vision.face.FaceLandmark.LEFT_CHEEK,
-            com.google.mlkit.vision.face.FaceLandmark.RIGHT_CHEEK
-        )
-
-        for (landmarkType in landmarks) {
-            val lm = face.getLandmark(landmarkType)
-            if (lm != null) {
-                features.add((lm.position.x - box.left) / (w + 1f))
-                features.add((lm.position.y - box.top) / (h + 1f))
-            } else {
-                features.add(0f)
-                features.add(0f)
+    // Returns average luminance 0–255. Below 70 = too dark, above 235 = too bright.
+    private fun getAverageBrightness(bitmap: Bitmap): Float {
+        val w = bitmap.width
+        val h = bitmap.height
+        var total = 0L
+        var count = 0
+        val step = 4
+        var y = 0
+        while (y < h) {
+            var x = 0
+            while (x < w) {
+                val pixel = bitmap.getPixel(x, y)
+                val r = (pixel shr 16) and 0xFF
+                val g = (pixel shr 8)  and 0xFF
+                val b =  pixel         and 0xFF
+                total = total + ((0.299f * r + 0.587f * g + 0.114f * b).toLong())
+                count++
+                x += step
             }
+            y += step
         }
-
-        // Inter-landmark distances (eye distance, eye-nose distance etc.)
-        val leftEye = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.LEFT_EYE)
-        val rightEye = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.RIGHT_EYE)
-        val nose = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.NOSE_BASE)
-        val mouthL = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.MOUTH_LEFT)
-        val mouthR = face.getLandmark(com.google.mlkit.vision.face.FaceLandmark.MOUTH_RIGHT)
-
-        fun dist(
-            a: com.google.mlkit.vision.face.FaceLandmark?,
-            b: com.google.mlkit.vision.face.FaceLandmark?
-        ): Float {
-            if (a == null || b == null) return 0f
-            val dx = a.position.x - b.position.x
-            val dy = a.position.y - b.position.y
-            return sqrt(dx * dx + dy * dy) / (w + 1f)
-        }
-
-        features.add(dist(leftEye, rightEye))   // eye distance
-        features.add(dist(leftEye, nose))        // left eye to nose
-        features.add(dist(rightEye, nose))       // right eye to nose
-        features.add(dist(nose, mouthL))         // nose to mouth left
-        features.add(dist(nose, mouthR))         // nose to mouth right
-        features.add(dist(mouthL, mouthR))       // mouth width
-
-        return features
+        return if (count == 0) 128f else total.toFloat() / count
     }
 
-    // Face must be reasonably centered and not too tilted
-    private fun isFaceWellPositioned(face: Face): Boolean {
-        val yaw = Math.abs(face.headEulerAngleY)
-        val pitch = Math.abs(face.headEulerAngleX)
-        val roll = Math.abs(face.headEulerAngleZ)
-        return yaw < 20f && pitch < 20f && roll < 20f
+    private fun imageProxyToBitmap(imageProxy: ImageProxy): Bitmap? {
+        return try {
+            val yBuffer = imageProxy.planes[0].buffer
+            val uBuffer = imageProxy.planes[1].buffer
+            val vBuffer = imageProxy.planes[2].buffer
+            val ySize = yBuffer.remaining()
+            val uSize = uBuffer.remaining()
+            val vSize = vBuffer.remaining()
+            val nv21 = ByteArray(ySize + uSize + vSize)
+            yBuffer.get(nv21, 0, ySize)
+            vBuffer.get(nv21, ySize, vSize)
+            uBuffer.get(nv21, ySize + vSize, uSize)
+            val yuvImage = android.graphics.YuvImage(
+                nv21,
+                android.graphics.ImageFormat.NV21,
+                imageProxy.width,
+                imageProxy.height,
+                null
+            )
+            val out = java.io.ByteArrayOutputStream()
+            yuvImage.compressToJpeg(
+                android.graphics.Rect(0, 0, imageProxy.width, imageProxy.height),
+                90,
+                out
+            )
+            val bytes = out.toByteArray()
+            val bmp = android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                ?: return null
+            val matrix = android.graphics.Matrix()
+            matrix.postRotate(imageProxy.imageInfo.rotationDegrees.toFloat())
+            matrix.postScale(-1f, 1f, bmp.width / 2f, bmp.height / 2f)
+            Bitmap.createBitmap(bmp, 0, 0, bmp.width, bmp.height, matrix, true)
+        } catch (e: Exception) { null }
     }
 
     // ════════════════════════════════════════
@@ -462,9 +452,7 @@ class StudentMarkAttendanceFragment : Fragment() {
 
     private fun startScanAnimation() {
         binding.scanLine.visibility = View.VISIBLE
-        scanAnimator = ObjectAnimator.ofFloat(
-            binding.scanLine, "translationY", -100f, 100f
-        ).apply {
+        scanAnimator = ObjectAnimator.ofFloat(binding.scanLine, "translationY", -100f, 100f).apply {
             duration = 1500
             repeatMode = ValueAnimator.REVERSE
             repeatCount = ValueAnimator.INFINITE
@@ -493,8 +481,7 @@ class StudentMarkAttendanceFragment : Fragment() {
     }
 
     private fun hideKeyboard() {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE)
-                as InputMethodManager
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.etClassCode.windowToken, 0)
     }
 
@@ -503,6 +490,7 @@ class StudentMarkAttendanceFragment : Fragment() {
         stopCamera()
         cameraExecutor?.shutdown()
         cameraExecutor = null
+        faceNetHelper?.close()
         _binding = null
     }
 }
