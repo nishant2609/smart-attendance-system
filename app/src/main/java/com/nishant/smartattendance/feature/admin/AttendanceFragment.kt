@@ -138,6 +138,8 @@ class AttendanceFragment : Fragment() {
                 binding.btnStartSession.isEnabled = true
                 dialog.dismiss()
                 Toast.makeText(requireContext(), "Session stopped", Toast.LENGTH_SHORT).show()
+                // Auto-reload to show who marked attendance during session
+                loadStudentsForAttendance()
             }
         }
 
