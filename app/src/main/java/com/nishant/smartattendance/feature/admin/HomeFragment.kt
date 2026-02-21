@@ -15,6 +15,7 @@ import com.nishant.smartattendance.data.repository.StudentRepository
 import com.nishant.smartattendance.databinding.FragmentHomeBinding
 import com.nishant.smartattendance.domain.model.Course
 import com.nishant.smartattendance.feature.auth.LoginActivity
+import com.facebook.shimmer.ShimmerFrameLayout
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,8 +49,31 @@ class HomeFragment : Fragment() {
             requireActivity().finishAffinity()
         }
 
+        showShimmer()
         loadData()
     }
+
+    // ════════════════════════════════════════
+    // SHIMMER
+    // ════════════════════════════════════════
+
+    private fun showShimmer() {
+        val shimmer = binding.shimmerAdminHome.root as ShimmerFrameLayout
+        shimmer.visibility = View.VISIBLE
+        shimmer.startShimmer()
+        binding.layoutContent.visibility = View.GONE
+    }
+
+    private fun hideShimmer() {
+        val shimmer = binding.shimmerAdminHome.root as ShimmerFrameLayout
+        shimmer.stopShimmer()
+        shimmer.visibility = View.GONE
+        binding.layoutContent.visibility = View.VISIBLE
+    }
+
+    // ════════════════════════════════════════
+    // LOAD DATA
+    // ════════════════════════════════════════
 
     private fun loadData() {
         lifecycleScope.launch {
@@ -60,16 +84,26 @@ class HomeFragment : Fragment() {
                 val todayPresent = attendanceRepository.getTodayAttendanceCount()
                 val courses = courseRepository.getAllCourses()
 
+                hideShimmer()
+
                 binding.tvTotalStudents.text = totalStudents.toString()
                 binding.tvTodayPresent.text = todayPresent.toString()
 
-                binding.rvCourses.layoutManager = LinearLayoutManager(requireContext())
-                binding.rvCourses.adapter = CourseAdapter(courses) { course ->
-                    openSubjectManagement(course)
+                if (courses.isEmpty()) {
+                    binding.rvCourses.visibility = View.GONE
+                    binding.emptyCourses.root.visibility = View.VISIBLE
+                } else {
+                    binding.rvCourses.visibility = View.VISIBLE
+                    binding.emptyCourses.root.visibility = View.GONE
+                    binding.rvCourses.layoutManager = LinearLayoutManager(requireContext())
+                    binding.rvCourses.adapter = CourseAdapter(courses) { course ->
+                        openSubjectManagement(course)
+                    }
                 }
 
             } catch (e: Exception) {
                 e.printStackTrace()
+                hideShimmer()
             }
         }
     }

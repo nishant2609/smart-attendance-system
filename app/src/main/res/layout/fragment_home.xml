@@ -24,7 +24,6 @@
             android:paddingTop="40dp"
             android:paddingBottom="32dp">
 
-            <!-- Decorative circle top-right -->
             <View
                 android:layout_width="160dp"
                 android:layout_height="160dp"
@@ -34,7 +33,6 @@
                 android:layout_marginEnd="-50dp"
                 android:layout_marginTop="-50dp" />
 
-            <!-- Small decorative circle bottom-left -->
             <View
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -44,7 +42,6 @@
                 android:layout_marginStart="-30dp"
                 android:layout_marginBottom="-30dp" />
 
-            <!-- Greeting block -->
             <LinearLayout
                 android:id="@+id/llGreeting"
                 android:layout_width="wrap_content"
@@ -80,7 +77,6 @@
 
             </LinearLayout>
 
-            <!-- Logout chip — using TextView to avoid Material Button background conflict -->
             <LinearLayout
                 android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
@@ -118,164 +114,179 @@
         </RelativeLayout>
 
         <!-- ══════════════════════════════════════ -->
-        <!--              STATS CARDS               -->
+        <!--       SHIMMER (shown while loading)    -->
+        <!-- ══════════════════════════════════════ -->
+        <include
+            android:id="@+id/shimmerAdminHome"
+            layout="@layout/shimmer_admin_home"
+            android:visibility="visible" />
+
+        <!-- ══════════════════════════════════════ -->
+        <!--       CONTENT (hidden while loading)   -->
         <!-- ══════════════════════════════════════ -->
         <LinearLayout
+            android:id="@+id/layoutContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="4dp">
+            android:orientation="vertical"
+            android:visibility="gone">
 
-            <!-- Total Students Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
+            <!-- Stats cards -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:strokeWidth="0dp">
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="4dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:strokeWidth="0dp">
 
-                    <FrameLayout
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
-                        android:background="@drawable/bg_stat_icon_blue">
-
-                        <ImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_people"
-                            app:tint="#3F51B5" />
-
-                    </FrameLayout>
-
-                    <TextView
-                        android:id="@+id/tvTotalStudents"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="#1A237E"
-                        android:textSize="34sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="12dp" />
+                        android:orientation="vertical"
+                        android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <FrameLayout
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:background="@drawable/bg_stat_icon_blue">
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_people"
+                                app:tint="#3F51B5" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tvTotalStudents"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#1A237E"
+                            android:textSize="34sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Students"
+                            android:textColor="#7986CB"
+                            android:textSize="12sp"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Total Students"
-                        android:textColor="#7986CB"
-                        android:textSize="12sp"
-                        android:layout_marginTop="2dp" />
+                        android:orientation="vertical"
+                        android:padding="20dp">
 
-                </LinearLayout>
+                        <FrameLayout
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:background="@drawable/bg_stat_icon_green">
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_check_circle"
+                                app:tint="#2E7D32" />
+                        </FrameLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/tvTodayPresent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#2E7D32"
+                            android:textSize="34sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp" />
 
-            <!-- Present Today Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Present Today"
+                            android:textColor="#66BB6A"
+                            android:textSize="12sp"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- Courses label -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:strokeWidth="0dp">
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="12dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/bg_section_accent"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_weight="1"
+                    android:text="Courses"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A237E" />
 
-                    <FrameLayout
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
-                        android:background="@drawable/bg_stat_icon_green">
+            </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#2E7D32" />
+            <!-- Courses RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCourses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false" />
 
-                    </FrameLayout>
-
-                    <TextView
-                        android:id="@+id/tvTodayPresent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textColor="#2E7D32"
-                        android:textSize="34sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="12dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Present Today"
-                        android:textColor="#66BB6A"
-                        android:textSize="12sp"
-                        android:layout_marginTop="2dp" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+            <!-- Empty state for courses -->
+            <include
+                android:id="@+id/emptyCourses"
+                layout="@layout/layout_empty_courses"
+                android:visibility="gone" />
 
         </LinearLayout>
-
-        <!-- ══════════════════════════════════════ -->
-        <!--             COURSES SECTION            -->
-        <!-- ══════════════════════════════════════ -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="24dp"
-            android:paddingBottom="12dp">
-
-            <View
-                android:layout_width="4dp"
-                android:layout_height="20dp"
-                android:background="@drawable/bg_section_accent"
-                android:layout_marginEnd="10dp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Courses"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#1A237E" />
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCourses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="24dp"
-            android:clipToPadding="false"
-            android:nestedScrollingEnabled="false" />
 
     </LinearLayout>
 

@@ -9,11 +9,13 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.nishant.smartattendance.R
 import com.nishant.smartattendance.data.repository.AttendanceRepository
 import com.nishant.smartattendance.data.repository.CourseRepository
 import com.nishant.smartattendance.data.repository.SessionRepository
@@ -24,6 +26,7 @@ import com.nishant.smartattendance.domain.model.AttendanceRecord
 import com.nishant.smartattendance.domain.model.AttendanceSession
 import com.nishant.smartattendance.domain.model.Course
 import com.nishant.smartattendance.domain.model.Student
+import com.nishant.smartattendance.feature.notifications.NotificationRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -50,7 +53,6 @@ class AttendanceFragment : Fragment() {
     private var selectedDate: String = getTodayDate()
     private var isToday: Boolean = true
 
-    // Active session tracking
     private var activeSession: AttendanceSession? = null
 
     override fun onCreateView(
@@ -66,11 +68,14 @@ class AttendanceFragment : Fragment() {
 
         binding.tvSelectedDate.text = getDisplayDate(selectedDate)
         binding.btnPickDate.setOnClickListener { showDatePicker() }
-
-        loadCourses()
         binding.btnLoadStudents.setOnClickListener { loadStudentsForAttendance() }
         binding.btnSubmitAttendance.setOnClickListener { submitAttendance() }
         binding.btnStartSession.setOnClickListener { startSession() }
+        binding.btnExportAttendance.setOnClickListener {
+            findNavController().navigate(R.id.nav_export_attendance)
+        }
+
+        loadCourses()
     }
 
     // ════════════════════════════════════════
@@ -108,6 +113,17 @@ class AttendanceFragment : Fragment() {
                 }
 
                 activeSession = session
+
+                // Notify students via FCM queue
+                NotificationRepository.notifySessionStarted(
+                    courseId = course.name,
+                    section = selectedSection,
+                    semester = selectedSemester,
+                    subject = selectedSubject,
+                    code = session.code,
+                    expiresAt = session.expiresAt
+                )
+
                 showSessionDialog(session)
 
             } catch (e: Exception) {
@@ -138,7 +154,6 @@ class AttendanceFragment : Fragment() {
                 binding.btnStartSession.isEnabled = true
                 dialog.dismiss()
                 Toast.makeText(requireContext(), "Session stopped", Toast.LENGTH_SHORT).show()
-                // Auto-reload to show who marked attendance during session
                 loadStudentsForAttendance()
             }
         }
@@ -262,10 +277,7 @@ class AttendanceFragment : Fragment() {
     }
 
     private fun setupSubjectSpinner(subjects: List<String>) {
-        if (subjects.isEmpty()) {
-            Toast.makeText(requireContext(), "No subjects for this semester", Toast.LENGTH_SHORT).show()
-            return
-        }
+        if (subjects.isEmpty()) return
         selectedSubject = subjects[0]
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, subjects)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -314,7 +326,6 @@ class AttendanceFragment : Fragment() {
                     existingRecords.forEach { record ->
                         attendanceMap[record.srn] = (record.status == "present")
                     }
-                    // Also fill any students not in records as null
                     students.forEach { if (!attendanceMap.containsKey(it.srn)) attendanceMap[it.srn] = null }
                 } else {
                     students.forEach { attendanceMap[it.srn] = null }

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
 
     <application
         android:name=".SmartAttendanceApp"
@@ -27,6 +31,31 @@
         <activity android:name=".feature.admin.StudentDetailActivity"/>
         <activity android:name=".feature.admin.SubjectManagementActivity"/>
         <activity android:name=".feature.student.StudentDashboardActivity"/>
+
+        <!-- FCM: receives push notifications -->
+        <service
+            android:name=".feature.notifications.SmartAttendanceMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <!-- FCM: default notification channel -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="smart_attendance_channel"/>
+
+        <!-- FileProvider: required to share exported PDF/Excel files -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths"/>
+        </provider>
 
     </application>
 </manifest>

@@ -16,6 +16,7 @@ import com.nishant.smartattendance.data.repository.AttendanceRepository
 import com.nishant.smartattendance.data.repository.CourseRepository
 import com.nishant.smartattendance.data.repository.StudentRepository
 import com.nishant.smartattendance.databinding.FragmentStudentAttendanceBinding
+import com.facebook.shimmer.ShimmerFrameLayout
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,7 +30,7 @@ class StudentAttendanceFragment : Fragment() {
     private val attendanceRepository = AttendanceRepository()
     private val courseRepository = CourseRepository()
 
-    private var selectedDate: String? = null  // null = all-time summary
+    private var selectedDate: String? = null
     private var currentSrn: String = ""
     private var currentSemester: Int = 1
 
@@ -44,16 +45,31 @@ class StudentAttendanceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Default hint — no date selected
         binding.tvSelectedDate.text = ""
         binding.tvSelectedDate.hint = "All subjects · All time"
 
-        // Date picker
-        binding.btnPickDate.setOnClickListener {
-            showDatePicker()
-        }
+        binding.btnPickDate.setOnClickListener { showDatePicker() }
 
+        showShimmer()
         loadSubjectWiseAttendance()
+    }
+
+    // ════════════════════════════════════════
+    // SHIMMER
+    // ════════════════════════════════════════
+
+    private fun showShimmer() {
+        val shimmer = binding.shimmerSubjectAttendance.root as ShimmerFrameLayout
+        shimmer.visibility = View.VISIBLE
+        shimmer.startShimmer()
+        binding.rvSubjectAttendance.visibility = View.GONE
+        binding.emptySubjects.root.visibility = View.GONE
+    }
+
+    private fun hideShimmer() {
+        val shimmer = binding.shimmerSubjectAttendance.root as ShimmerFrameLayout
+        shimmer.stopShimmer()
+        shimmer.visibility = View.GONE
     }
 
     // ════════════════════════════════════════
@@ -74,17 +90,14 @@ class StudentAttendanceFragment : Fragment() {
         picker.addOnPositiveButtonClickListener { millis ->
             val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             selectedDate = sdf.format(Date(millis))
-
             val display = SimpleDateFormat("EEE, dd MMM yyyy", Locale.getDefault())
             binding.tvSelectedDate.text = display.format(Date(millis))
             binding.tvSelectedDate.hint = ""
-
-            // Reload filtered by date
+            showShimmer()
             loadSubjectWiseAttendance()
         }
 
         picker.addOnNegativeButtonClickListener {
-            // Clear filter — back to all-time
             clearDateFilter()
         }
 
@@ -95,6 +108,7 @@ class StudentAttendanceFragment : Fragment() {
         selectedDate = null
         binding.tvSelectedDate.text = ""
         binding.tvSelectedDate.hint = "All subjects · All time"
+        showShimmer()
         loadSubjectWiseAttendance()
     }
 
@@ -106,7 +120,10 @@ class StudentAttendanceFragment : Fragment() {
         val email = FirebaseAuth.getInstance().currentUser?.email ?: return
         lifecycleScope.launch {
             try {
-                val student = studentRepository.getStudentByEmail(email) ?: return@launch
+                val student = studentRepository.getStudentByEmail(email) ?: run {
+                    hideShimmer()
+                    return@launch
+                }
                 currentSrn = student.srn
 
                 val courses = courseRepository.getAllCourses()
@@ -117,24 +134,27 @@ class StudentAttendanceFragment : Fragment() {
                     )
                 } else student.currentSemester
 
-                // Fetch records — filter by date if one is selected
                 val records = attendanceRepository.getAttendanceBySrnAndSemester(
                     student.srn, currentSemester
                 ).filter { it.subject.isNotEmpty() }.let { all ->
-                    if (selectedDate != null) all.filter { it.date == selectedDate }
-                    else all
+                    if (selectedDate != null) all.filter { it.date == selectedDate } else all
                 }
 
-                if (records.isEmpty() && selectedDate != null) {
-                    Toast.makeText(
-                        requireContext(),
-                        "No attendance records for this date",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                hideShimmer()
+
+                if (records.isEmpty()) {
+                    binding.rvSubjectAttendance.visibility = View.GONE
+                    binding.emptySubjects.root.visibility = View.VISIBLE
+                    if (selectedDate != null) {
+                        Toast.makeText(requireContext(),
+                            "No records for this date", Toast.LENGTH_SHORT).show()
+                    }
                     return@launch
                 }
 
-                // Group by subject
+                binding.emptySubjects.root.visibility = View.GONE
+                binding.rvSubjectAttendance.visibility = View.VISIBLE
+
                 val grouped = records.groupBy { it.subject }
                 val summaries = grouped.map { (subject, subjectRecords) ->
                     SubjectAttendanceSummary(
@@ -149,6 +169,7 @@ class StudentAttendanceFragment : Fragment() {
 
             } catch (e: Exception) {
                 e.printStackTrace()
+                hideShimmer()
             }
         }
     }

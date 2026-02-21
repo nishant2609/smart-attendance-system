@@ -36,7 +36,7 @@
             android:textSize="13sp"
             android:layout_marginTop="4dp" />
 
-        <!-- ── DATE ROW inside header ── -->
+        <!-- Date row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -55,7 +55,7 @@
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:hint="All time"
+                android:hint="All subjects · All time"
                 android:textColorHint="#9FA8DA" />
 
             <ImageButton
@@ -75,7 +75,15 @@
     </LinearLayout>
 
     <!-- ══════════════════════════════════════ -->
-    <!--         SUBJECT ATTENDANCE LIST        -->
+    <!--     SHIMMER (shown while loading)      -->
+    <!-- ══════════════════════════════════════ -->
+    <include
+        android:id="@+id/shimmerSubjectAttendance"
+        layout="@layout/shimmer_subject_attendance"
+        android:visibility="visible" />
+
+    <!-- ══════════════════════════════════════ -->
+    <!--     SUBJECT LIST + EMPTY STATE         -->
     <!-- ══════════════════════════════════════ -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSubjectAttendance"
@@ -86,6 +94,14 @@
         android:paddingRight="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="80dp"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/emptySubjects"
+        layout="@layout/layout_empty_subjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
 </LinearLayout>
