@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:shimmer_colored="true"
+    app:shimmer_base_color="#E8EAF6"
+    app:shimmer_highlight_color="#FFFFFF"
+    app:shimmer_duration="1000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+
+        <!-- Warning card placeholder -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_shimmer_rect_16" />
+
+        <!-- Mark shortcut placeholder -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_shimmer_rect_16" />
+
+        <!-- Section label -->
+        <View
+            android:layout_width="160dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_shimmer_rect_8" />
+
+        <!-- Record item 1 -->
+        <View android:layout_width="match_parent" android:layout_height="72dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_shimmer_rect_16" />
+
+        <!-- Record item 2 -->
+        <View android:layout_width="match_parent" android:layout_height="72dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_shimmer_rect_16" />
+
+        <!-- Record item 3 -->
+        <View android:layout_width="match_parent" android:layout_height="72dp"
+            android:background="@drawable/bg_shimmer_rect_16" />
+
+    </LinearLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

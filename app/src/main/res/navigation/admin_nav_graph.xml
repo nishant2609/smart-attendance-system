@@ -10,13 +10,18 @@
         android:label="Home" />
 
     <fragment
+        android:id="@+id/nav_attendance"
+        android:name="com.nishant.smartattendance.feature.admin.AttendanceFragment"
+        android:label="Attendance" />
+
+    <fragment
         android:id="@+id/nav_students"
         android:name="com.nishant.smartattendance.feature.admin.StudentsFragment"
         android:label="Students" />
 
     <fragment
-        android:id="@+id/nav_attendance"
-        android:name="com.nishant.smartattendance.feature.admin.AttendanceFragment"
-        android:label="Attendance" />
+        android:id="@+id/nav_export_attendance"
+        android:name="com.nishant.smartattendance.feature.admin.ExportAttendanceFragment"
+        android:label="Export" />
 
 </navigation>

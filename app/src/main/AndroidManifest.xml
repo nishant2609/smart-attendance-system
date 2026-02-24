@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
 
     <application
         android:name=".SmartAttendanceApp"
@@ -15,20 +18,44 @@
 
         <activity
             android:name=".feature.splash.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.SmartAttendance.Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".feature.admin.SubjectManagementActivity" />
-        <activity android:name=".feature.auth.LoginActivity" />
-        <activity android:name=".feature.auth.RegisterActivity" />
-        <activity android:name=".feature.admin.AdminDashboardActivity" />
-        <activity android:name=".feature.student.StudentDashboardActivity" />
-        <activity android:name=".feature.admin.StudentDetailActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".feature.auth.LoginActivity"/>
+        <activity android:name=".feature.auth.RegisterActivity"/>
+        <activity android:name=".feature.admin.AdminDashboardActivity"/>
+        <activity android:name=".feature.admin.StudentDetailActivity"/>
+        <activity android:name=".feature.admin.SubjectManagementActivity"/>
+        <activity android:name=".feature.student.StudentDashboardActivity"/>
+
+        <!-- FCM: receives push notifications -->
+        <service
+            android:name=".feature.notifications.SmartAttendanceMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <!-- FCM: default notification channel -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="smart_attendance_channel"/>
+
+        <!-- FileProvider: required to share exported PDF/Excel files -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths"/>
+        </provider>
 
     </application>
-
 </manifest>

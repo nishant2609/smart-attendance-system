@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Brand Gradient -->
+    <color name="deep_blue_start">#0D1B6E</color>
+    <color name="deep_blue_mid">#1A237E</color>
+    <color name="deep_blue_end">#283593</color>
+
+    <!-- Surface -->
+    <color name="surface_white">#FFFFFF</color>
+    <color name="surface_card">#F5F7FF</color>
+    <color name="surface_overlay">#1AFFFFFF</color>  <!-- 10% white -->
+    <color name="surface_overlay_med">#33FFFFFF</color> <!-- 20% white -->
+
+    <!-- Accent -->
+    <color name="accent_gold">#FFD54F</color>
+    <color name="accent_gold_dark">#FFA000</color>
+    <color name="accent_green">#4CAF50</color>
+    <color name="accent_red">#EF5350</color>
+    <color name="accent_orange">#FF7043</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1A237E</color>
+    <color name="text_secondary">#5C6BC0</color>
+    <color name="text_on_dark">#FFFFFF</color>
+    <color name="text_on_dark_secondary">#B3C5FF</color>
+    <color name="text_hint">#9FA8DA</color>
+
+    <!-- Divider / Border -->
+    <color name="divider">#E8EAF6</color>
+    <color name="border_light">#C5CAE9</color>
+
+    <!-- Status Bar -->
+    <color name="status_bar">#0D1B6E</color>
+
+    <!-- Attendance badge colors -->
+    <color name="badge_present_bg">#E8F5E9</color>
+    <color name="badge_present_text">#2E7D32</color>
+    <color name="badge_absent_bg">#FFEBEE</color>
+    <color name="badge_absent_text">#C62828</color>
+    <color name="badge_low_bg">#FFF3E0</color>
+    <color name="badge_low_text">#E65100</color>
 </resources>

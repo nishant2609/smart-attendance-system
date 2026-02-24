@@ -3,7 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="@drawable/bg_bottom_sheet">
+
+    <!-- Handle bar -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bg_sheet_handle" />
 
     <!-- Header -->
     <LinearLayout
@@ -11,7 +20,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="20dp">
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -25,14 +37,15 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#1A1A1A" />
+                android:textColor="#1A237E" />
 
             <TextView
                 android:id="@+id/tvSheetCourseFullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
-                android:textColor="#888888" />
+                android:textColor="#7986CB"
+                android:layout_marginTop="2dp" />
 
         </LinearLayout>
 
@@ -40,15 +53,21 @@
             android:id="@+id/tvSubjectCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
-            android:textColor="#3F51B5" />
+            android:textSize="12sp"
+            android:textColor="#3F51B5"
+            android:background="@drawable/bg_stat_chip_light"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp" />
 
     </LinearLayout>
 
+    <!-- Divider -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#EEEEEE" />
+        android:background="#E8EAF6" />
 
     <!-- Subject List -->
     <androidx.recyclerview.widget.RecyclerView
@@ -56,26 +75,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxHeight="300dp"
-        android:padding="8dp" />
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false" />
 
+    <!-- Divider -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#EEEEEE" />
+        android:background="#E8EAF6" />
 
-    <!-- Add Subject -->
+    <!-- Add Subject Row -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="16dp"
         android:gravity="center_vertical">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="10dp"
             android:hint="New subject name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -91,10 +118,13 @@
         <Button
             android:id="@+id/btnAddSubject"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:text="Add"
-            android:backgroundTint="#3F51B5"
-            android:textColor="#FFFFFF" />
+            android:textColor="#1A237E"
+            android:textStyle="bold"
+            android:background="@drawable/bg_button_primary"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
 
     </LinearLayout>
 

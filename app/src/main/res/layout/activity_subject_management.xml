@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:orientation="vertical"
+    android:background="#F0F2FF">
 
+    <!-- ══════════════════════════════════════ -->
+    <!--           GRADIENT HEADER              -->
+    <!-- ══════════════════════════════════════ -->
     <LinearLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_admin_header"
         android:orientation="vertical"
-        android:background="#3F51B5"
-        android:padding="16dp">
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="20dp">
 
+        <!-- Back + course title row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="14dp">
 
             <ImageButton
                 android:id="@+id/btnBack"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@android:drawable/ic_media_previous"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_arrow_back"
+                android:background="@drawable/bg_header_circle"
                 android:tint="#FFFFFF"
+                android:padding="8dp"
                 android:layout_marginEnd="12dp"
                 android:contentDescription="Back" />
 
@@ -48,7 +58,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
-                    android:textColor="#CCDDFF" />
+                    android:textColor="#9FA8DA"
+                    android:layout_marginTop="2dp" />
 
             </LinearLayout>
 
@@ -56,50 +67,84 @@
                 android:id="@+id/tvSubjectCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textColor="#CCDDFF" />
+                android:textSize="12sp"
+                android:textColor="#FFD54F"
+                android:background="@drawable/bg_stat_chip"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp" />
 
         </LinearLayout>
 
-        <!-- Semester Spinner inside app bar -->
+        <!-- Semester spinner -->
         <Spinner
             android:id="@+id/spinnerSemester"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="@drawable/spinner_background" />
+            android:layout_height="48dp"
+            android:background="@drawable/bg_spinner_on_dark" />
 
     </LinearLayout>
 
-    <TextView
+    <!-- ══════════════════════════════════════ -->
+    <!--          SUBJECTS SECTION LABEL        -->
+    <!-- ══════════════════════════════════════ -->
+    <LinearLayout
         android:id="@+id/tvSubjectsLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Subjects"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#555555"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"
-        android:layout_below="@id/appBar" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="12dp">
 
+        <View
+            android:layout_width="4dp"
+            android:layout_height="20dp"
+            android:background="@drawable/bg_section_accent"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subjects"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E" />
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--            SUBJECTS LIST               -->
+    <!-- ══════════════════════════════════════ -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSubjects"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tvSubjectsLabel"
-        android:layout_above="@+id/fabAddSubject"
-        android:padding="8dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="88dp"
+        android:clipToPadding="false" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <!-- ══════════════════════════════════════ -->
+    <!--                FAB                     -->
+    <!-- ══════════════════════════════════════ -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabAddSubject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:text="Add Subject"
+        android:textColor="#1A237E"
+        android:textSize="14sp"
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="#1A237E"
+        app:backgroundTint="#FFD54F"
+        app:elevation="8dp"
         android:contentDescription="Add Subject" />
 
-</RelativeLayout>
+</LinearLayout>

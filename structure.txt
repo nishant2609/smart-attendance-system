@@ -1,0 +1,2253 @@
+Folder PATH listing for volume New Volume
+Volume serial number is 52E6-FB9D
+D:.
++---.gradle
+¦   +---8.10.2
+¦   ¦   +---checksums
+¦   ¦   +---dependencies-accessors
+¦   ¦   ¦   +---653825400482ee63928b2750563e94a5ec2d47e4
+¦   ¦   ¦   ¦   +---classes
+¦   ¦   ¦   ¦   ¦   +---org
+¦   ¦   ¦   ¦   ¦       +---gradle
+¦   ¦   ¦   ¦   ¦           +---accessors
+¦   ¦   ¦   ¦   ¦               +---dm
+¦   ¦   ¦   ¦   +---sources
+¦   ¦   ¦   ¦       +---org
+¦   ¦   ¦   ¦           +---gradle
+¦   ¦   ¦   ¦               +---accessors
+¦   ¦   ¦   ¦                   +---dm
+¦   ¦   ¦   +---b715bd928222815e849f3c3ce9eb7d8acc9f5a83
+¦   ¦   ¦   ¦   +---classes
+¦   ¦   ¦   ¦   ¦   +---org
+¦   ¦   ¦   ¦   ¦       +---gradle
+¦   ¦   ¦   ¦   ¦           +---accessors
+¦   ¦   ¦   ¦   ¦               +---dm
+¦   ¦   ¦   ¦   +---sources
+¦   ¦   ¦   ¦       +---org
+¦   ¦   ¦   ¦           +---gradle
+¦   ¦   ¦   ¦               +---accessors
+¦   ¦   ¦   ¦                   +---dm
+¦   ¦   ¦   +---bf65dca686444bc028949c3093c2887176a33d0b
+¦   ¦   ¦       +---classes
+¦   ¦   ¦       ¦   +---org
+¦   ¦   ¦       ¦       +---gradle
+¦   ¦   ¦       ¦           +---accessors
+¦   ¦   ¦       ¦               +---dm
+¦   ¦   ¦       +---sources
+¦   ¦   ¦           +---org
+¦   ¦   ¦               +---gradle
+¦   ¦   ¦                   +---accessors
+¦   ¦   ¦                       +---dm
+¦   ¦   +---executionHistory
+¦   ¦   +---expanded
+¦   ¦   +---fileChanges
+¦   ¦   +---fileHashes
+¦   ¦   +---vcsMetadata
+¦   +---8.11.1
+¦   ¦   +---checksums
+¦   ¦   +---executionHistory
+¦   ¦   +---expanded
+¦   ¦   +---fileChanges
+¦   ¦   +---fileHashes
+¦   ¦   +---vcsMetadata
+¦   +---8.7
+¦   ¦   +---checksums
+¦   ¦   +---dependencies-accessors
+¦   ¦   ¦   +---b715bd928222815e849f3c3ce9eb7d8acc9f5a83
+¦   ¦   ¦   ¦   +---classes
+¦   ¦   ¦   ¦   ¦   +---org
+¦   ¦   ¦   ¦   ¦       +---gradle
+¦   ¦   ¦   ¦   ¦           +---accessors
+¦   ¦   ¦   ¦   ¦               +---dm
+¦   ¦   ¦   ¦   +---sources
+¦   ¦   ¦   ¦       +---org
+¦   ¦   ¦   ¦           +---gradle
+¦   ¦   ¦   ¦               +---accessors
+¦   ¦   ¦   ¦                   +---dm
+¦   ¦   ¦   +---bf65dca686444bc028949c3093c2887176a33d0b
+¦   ¦   ¦       +---classes
+¦   ¦   ¦       ¦   +---org
+¦   ¦   ¦       ¦       +---gradle
+¦   ¦   ¦       ¦           +---accessors
+¦   ¦   ¦       ¦               +---dm
+¦   ¦   ¦       +---sources
+¦   ¦   ¦           +---org
+¦   ¦   ¦               +---gradle
+¦   ¦   ¦                   +---accessors
+¦   ¦   ¦                       +---dm
+¦   ¦   +---executionHistory
+¦   ¦   +---expanded
+¦   ¦   +---fileChanges
+¦   ¦   +---fileHashes
+¦   ¦   +---vcsMetadata
+¦   +---buildOutputCleanup
+¦   +---kotlin
+¦   ¦   +---errors
+¦   ¦   +---sessions
+¦   +---vcs-1
++---.idea
+¦   +---caches
++---app
+¦   +---build
+¦   ¦   +---generated
+¦   ¦   ¦   +---ap_generated_sources
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   +---data_binding_base_class_source_out
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---out
+¦   ¦   ¦   ¦   ¦       +---com
+¦   ¦   ¦   ¦   ¦           +---nishant
+¦   ¦   ¦   ¦   ¦               +---smartattendance
+¦   ¦   ¦   ¦   ¦                   +---databinding
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   +---res
+¦   ¦   ¦       +---pngs
+¦   ¦   ¦       ¦   +---debug
+¦   ¦   ¦       +---processDebugGoogleServices
+¦   ¦   ¦       ¦   +---values
+¦   ¦   ¦       +---resValues
+¦   ¦   ¦           +---androidTest
+¦   ¦   ¦           ¦   +---debug
+¦   ¦   ¦           +---debug
+¦   ¦   +---gmpAppId
+¦   ¦   +---intermediates
+¦   ¦   ¦   +---aar_metadata_check
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---checkDebugAarMetadata
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---checkDebugAndroidTestAarMetadata
+¦   ¦   ¦   +---annotation_processor_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---javaPreCompileDebug
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---javaPreCompileDebugAndroidTest
+¦   ¦   ¦   ¦   +---debugUnitTest
+¦   ¦   ¦   ¦       +---javaPreCompileDebugUnitTest
+¦   ¦   ¦   +---apk_ide_redirect_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---createDebugApkListingFileRedirect
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---createDebugAndroidTestApkListingFileRedirect
+¦   ¦   ¦   +---app_metadata
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---writeDebugAppMetadata
+¦   ¦   ¦   +---assets
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugAssets
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestAssets
+¦   ¦   ¦   +---compatible_screen_manifest
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---createDebugCompatibleScreenManifests
+¦   ¦   ¦   +---compile_and_runtime_not_namespaced_r_class_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---compile_app_classes_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---bundleDebugClassesToCompileJar
+¦   ¦   ¦   +---compressed_assets
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---compressDebugAssets
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---compressDebugAndroidTestAssets
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_base_class_log_artifact
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dataBindingGenBaseClassesDebug
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dataBindingGenBaseClassesDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_dependency_artifacts
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dataBindingMergeDependencyArtifactsDebug
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dataBindingMergeDependencyArtifactsDebugAndroidTest
+¦   ¦   ¦   +---data_binding_layout_info_type_merge
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugResources
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_layout_info_type_package
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---desugar_graph
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dexBuilderDebug
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   ¦           +---currentProject
+¦   ¦   ¦   ¦   ¦           ¦   +---dirs_bucket_0
+¦   ¦   ¦   ¦   ¦           ¦   +---dirs_bucket_1
+¦   ¦   ¦   ¦   ¦           ¦   +---dirs_bucket_2
+¦   ¦   ¦   ¦   ¦           ¦   +---dirs_bucket_3
+¦   ¦   ¦   ¦   ¦           ¦   +---dirs_bucket_4
+¦   ¦   ¦   ¦   ¦           ¦   +---dirs_bucket_5
+¦   ¦   ¦   ¦   ¦           ¦   +---dirs_bucket_6
+¦   ¦   ¦   ¦   ¦           ¦   +---dirs_bucket_7
+¦   ¦   ¦   ¦   ¦           ¦   +---jar_6d825e0d9aae8f0216ef85f181f25150af569798a0d14f79f10ca926df758637_bucket_0
+¦   ¦   ¦   ¦   ¦           ¦   +---jar_6d825e0d9aae8f0216ef85f181f25150af569798a0d14f79f10ca926df758637_bucket_1
+¦   ¦   ¦   ¦   ¦           ¦   +---jar_6d825e0d9aae8f0216ef85f181f25150af569798a0d14f79f10ca926df758637_bucket_2
+¦   ¦   ¦   ¦   ¦           ¦   +---jar_6d825e0d9aae8f0216ef85f181f25150af569798a0d14f79f10ca926df758637_bucket_3
+¦   ¦   ¦   ¦   ¦           ¦   +---jar_6d825e0d9aae8f0216ef85f181f25150af569798a0d14f79f10ca926df758637_bucket_4
+¦   ¦   ¦   ¦   ¦           ¦   +---jar_6d825e0d9aae8f0216ef85f181f25150af569798a0d14f79f10ca926df758637_bucket_5
+¦   ¦   ¦   ¦   ¦           ¦   +---jar_6d825e0d9aae8f0216ef85f181f25150af569798a0d14f79f10ca926df758637_bucket_6
+¦   ¦   ¦   ¦   ¦           ¦   +---jar_6d825e0d9aae8f0216ef85f181f25150af569798a0d14f79f10ca926df758637_bucket_7
+¦   ¦   ¦   ¦   ¦           +---externalLibs
+¦   ¦   ¦   ¦   ¦           +---mixedScopes
+¦   ¦   ¦   ¦   ¦           +---otherProjects
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---currentProject
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_0
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_1
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_2
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_3
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_4
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_5
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_6
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_7
+¦   ¦   ¦   ¦               ¦   +---jar_86a64ca89dc40d61f863f00d9efbd71951383607488426f3bd38fdac300d43ac_bucket_0
+¦   ¦   ¦   ¦               ¦   +---jar_86a64ca89dc40d61f863f00d9efbd71951383607488426f3bd38fdac300d43ac_bucket_1
+¦   ¦   ¦   ¦               ¦   +---jar_86a64ca89dc40d61f863f00d9efbd71951383607488426f3bd38fdac300d43ac_bucket_2
+¦   ¦   ¦   ¦               ¦   +---jar_86a64ca89dc40d61f863f00d9efbd71951383607488426f3bd38fdac300d43ac_bucket_3
+¦   ¦   ¦   ¦               ¦   +---jar_86a64ca89dc40d61f863f00d9efbd71951383607488426f3bd38fdac300d43ac_bucket_4
+¦   ¦   ¦   ¦               ¦   +---jar_86a64ca89dc40d61f863f00d9efbd71951383607488426f3bd38fdac300d43ac_bucket_5
+¦   ¦   ¦   ¦               ¦   +---jar_86a64ca89dc40d61f863f00d9efbd71951383607488426f3bd38fdac300d43ac_bucket_6
+¦   ¦   ¦   ¦               ¦   +---jar_86a64ca89dc40d61f863f00d9efbd71951383607488426f3bd38fdac300d43ac_bucket_7
+¦   ¦   ¦   ¦               +---externalLibs
+¦   ¦   ¦   ¦               +---mixedScopes
+¦   ¦   ¦   ¦               +---otherProjects
+¦   ¦   ¦   +---dex
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeExtDexDebug
+¦   ¦   ¦   ¦   ¦   +---mergeLibDexDebug
+¦   ¦   ¦   ¦   ¦   ¦   +---0
+¦   ¦   ¦   ¦   ¦   ¦   +---1
+¦   ¦   ¦   ¦   ¦   ¦   +---10
+¦   ¦   ¦   ¦   ¦   ¦   +---11
+¦   ¦   ¦   ¦   ¦   ¦   +---12
+¦   ¦   ¦   ¦   ¦   ¦   +---13
+¦   ¦   ¦   ¦   ¦   ¦   +---14
+¦   ¦   ¦   ¦   ¦   ¦   +---15
+¦   ¦   ¦   ¦   ¦   ¦   +---2
+¦   ¦   ¦   ¦   ¦   ¦   +---3
+¦   ¦   ¦   ¦   ¦   ¦   +---4
+¦   ¦   ¦   ¦   ¦   ¦   +---5
+¦   ¦   ¦   ¦   ¦   ¦   +---6
+¦   ¦   ¦   ¦   ¦   ¦   +---7
+¦   ¦   ¦   ¦   ¦   ¦   +---8
+¦   ¦   ¦   ¦   ¦   ¦   +---9
+¦   ¦   ¦   ¦   ¦   +---mergeProjectDexDebug
+¦   ¦   ¦   ¦   ¦       +---0
+¦   ¦   ¦   ¦   ¦       +---1
+¦   ¦   ¦   ¦   ¦       +---10
+¦   ¦   ¦   ¦   ¦       +---11
+¦   ¦   ¦   ¦   ¦       +---12
+¦   ¦   ¦   ¦   ¦       +---13
+¦   ¦   ¦   ¦   ¦       +---14
+¦   ¦   ¦   ¦   ¦       +---15
+¦   ¦   ¦   ¦   ¦       +---2
+¦   ¦   ¦   ¦   ¦       +---3
+¦   ¦   ¦   ¦   ¦       +---4
+¦   ¦   ¦   ¦   ¦       +---5
+¦   ¦   ¦   ¦   ¦       +---6
+¦   ¦   ¦   ¦   ¦       +---7
+¦   ¦   ¦   ¦   ¦       +---8
+¦   ¦   ¦   ¦   ¦       +---9
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeExtDexDebugAndroidTest
+¦   ¦   ¦   ¦       +---mergeLibDexDebugAndroidTest
+¦   ¦   ¦   ¦       ¦   +---0
+¦   ¦   ¦   ¦       ¦   +---1
+¦   ¦   ¦   ¦       ¦   +---10
+¦   ¦   ¦   ¦       ¦   +---11
+¦   ¦   ¦   ¦       ¦   +---12
+¦   ¦   ¦   ¦       ¦   +---13
+¦   ¦   ¦   ¦       ¦   +---14
+¦   ¦   ¦   ¦       ¦   +---15
+¦   ¦   ¦   ¦       ¦   +---2
+¦   ¦   ¦   ¦       ¦   +---3
+¦   ¦   ¦   ¦       ¦   +---4
+¦   ¦   ¦   ¦       ¦   +---5
+¦   ¦   ¦   ¦       ¦   +---6
+¦   ¦   ¦   ¦       ¦   +---7
+¦   ¦   ¦   ¦       ¦   +---8
+¦   ¦   ¦   ¦       ¦   +---9
+¦   ¦   ¦   ¦       +---mergeProjectDexDebugAndroidTest
+¦   ¦   ¦   ¦           +---0
+¦   ¦   ¦   ¦           +---1
+¦   ¦   ¦   ¦           +---10
+¦   ¦   ¦   ¦           +---11
+¦   ¦   ¦   ¦           +---12
+¦   ¦   ¦   ¦           +---13
+¦   ¦   ¦   ¦           +---14
+¦   ¦   ¦   ¦           +---15
+¦   ¦   ¦   ¦           +---2
+¦   ¦   ¦   ¦           +---3
+¦   ¦   ¦   ¦           +---4
+¦   ¦   ¦   ¦           +---5
+¦   ¦   ¦   ¦           +---6
+¦   ¦   ¦   ¦           +---7
+¦   ¦   ¦   ¦           +---8
+¦   ¦   ¦   ¦           +---9
+¦   ¦   ¦   +---dex_archive_input_jar_hashes
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dexBuilderDebug
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   +---dex_number_of_buckets_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dexBuilderDebug
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   +---duplicate_classes_check
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---checkDebugDuplicateClasses
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---checkDebugAndroidTestDuplicateClasses
+¦   ¦   ¦   +---external_file_lib_dex_archives
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---desugarDebugFileDependencies
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---desugarDebugAndroidTestFileDependencies
+¦   ¦   ¦   +---external_libs_dex_archive
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dexBuilderDebug
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---external_libs_dex_archive_with_artifact_transforms
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dexBuilderDebug
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---incremental
+¦   ¦   ¦   ¦   +---dataBindingGenBaseClassesDebug
+¦   ¦   ¦   ¦   +---dataBindingGenBaseClassesDebugAndroidTest
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugResources
+¦   ¦   ¦   ¦   ¦   ¦   +---merged.dir
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-af
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-am
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ar
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-as
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-az
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-b+es+419
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-b+sr+Latn
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-be
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-bg
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-bn
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-bs
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ca
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-cs
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-da
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-de
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-el
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-en-rAU
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-en-rCA
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-en-rGB
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-en-rIN
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-en-rXC
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-es
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-es-rUS
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-et
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-eu
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-fa
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-fi
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-fr
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-fr-rCA
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-gl
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-gu
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-h320dp-port-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-h360dp-land-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-h480dp-land-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-h550dp-port-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-h720dp-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-hdpi-v4
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-hi
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-hr
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-hu
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-hy
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-in
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-is
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-it
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-iw
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ja
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ka
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-kk
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-km
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-kn
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ko
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ky
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-land
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-large-v4
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ldltr-v21
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ldrtl-v17
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-lo
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-lt
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-lv
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-mk
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ml
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-mn
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-mr
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ms
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-my
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-nb
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ne
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-night-v8
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-nl
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-or
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-pa
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-pl
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-port
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-pt
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-pt-rBR
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-pt-rPT
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ro
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ru
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-si
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-sk
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-sl
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-small-v4
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-sq
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-sr
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-sv
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-sw
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-sw600dp-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ta
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-te
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-th
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-tl
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-tr
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-uk
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-ur
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-uz
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v16
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v17
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v18
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v21
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v22
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v23
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v24
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v25
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v26
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v28
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v31
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-v34
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-vi
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-w320dp-land-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-w360dp-port-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-w400dp-port-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-w600dp-land-v13
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-watch-v20
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-watch-v21
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-xlarge-v4
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-zh-rCN
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-zh-rHK
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-zh-rTW
+¦   ¦   ¦   ¦   ¦   ¦   ¦   +---values-zu
+¦   ¦   ¦   ¦   ¦   ¦   +---stripped.dir
+¦   ¦   ¦   ¦   ¦   ¦       +---layout
+¦   ¦   ¦   ¦   ¦   +---packageDebugResources
+¦   ¦   ¦   ¦   ¦       +---merged.dir
+¦   ¦   ¦   ¦   ¦       ¦   +---values
+¦   ¦   ¦   ¦   ¦       +---stripped.dir
+¦   ¦   ¦   ¦   ¦           +---layout
+¦   ¦   ¦   ¦   +---debug-mergeJavaRes
+¦   ¦   ¦   ¦   ¦   +---zip-cache
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦   ¦       +---merged.dir
+¦   ¦   ¦   ¦   ¦       ¦   +---values
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v18
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v28
+¦   ¦   ¦   ¦   ¦       +---stripped.dir
+¦   ¦   ¦   ¦   +---debugAndroidTest-mergeJavaRes
+¦   ¦   ¦   ¦   ¦   +---zip-cache
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestAssets
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestJniLibFolders
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestShaders
+¦   ¦   ¦   ¦   +---mergeDebugAssets
+¦   ¦   ¦   ¦   +---mergeDebugJniLibFolders
+¦   ¦   ¦   ¦   +---mergeDebugShaders
+¦   ¦   ¦   ¦   +---packageDebug
+¦   ¦   ¦   ¦   ¦   +---tmp
+¦   ¦   ¦   ¦   ¦       +---debug
+¦   ¦   ¦   ¦   ¦           +---zip-cache
+¦   ¦   ¦   ¦   +---packageDebugAndroidTest
+¦   ¦   ¦   ¦       +---tmp
+¦   ¦   ¦   ¦           +---debugAndroidTest
+¦   ¦   ¦   ¦               +---zip-cache
+¦   ¦   ¦   +---javac
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---compileDebugJavaWithJavac
+¦   ¦   ¦   ¦           +---classes
+¦   ¦   ¦   ¦               +---com
+¦   ¦   ¦   ¦                   +---nishant
+¦   ¦   ¦   ¦                       +---smartattendance
+¦   ¦   ¦   ¦                           +---databinding
+¦   ¦   ¦   +---java_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugJavaRes
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   ¦           +---com
+¦   ¦   ¦   ¦   ¦           ¦   +---nishant
+¦   ¦   ¦   ¦   ¦           ¦       +---smartattendance
+¦   ¦   ¦   ¦   ¦           ¦           +---base
+¦   ¦   ¦   ¦   ¦           ¦           +---di
+¦   ¦   ¦   ¦   ¦           ¦           +---feature
+¦   ¦   ¦   ¦   ¦           ¦               +---admin
+¦   ¦   ¦   ¦   ¦           ¦               +---auth
+¦   ¦   ¦   ¦   ¦           ¦               +---splash
+¦   ¦   ¦   ¦   ¦           ¦               +---student
+¦   ¦   ¦   ¦   ¦           +---META-INF
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestJavaRes
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---com
+¦   ¦   ¦   ¦               ¦   +---nishant
+¦   ¦   ¦   ¦               ¦       +---smartattendance
+¦   ¦   ¦   ¦               +---META-INF
+¦   ¦   ¦   +---local_only_symbol_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---parseDebugLocalResources
+¦   ¦   ¦   +---manifest_merge_blame_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugMainManifest
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestManifest
+¦   ¦   ¦   +---merged_java_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugJavaResource
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestJavaResource
+¦   ¦   ¦   +---merged_jni_libs
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugJniLibFolders
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestJniLibFolders
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---merged_manifest
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugMainManifest
+¦   ¦   ¦   +---merged_manifests
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugManifest
+¦   ¦   ¦   +---merged_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   +---merged_res_blame_folder
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugResources
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   ¦           +---multi-v2
+¦   ¦   ¦   ¦   ¦           +---single
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---multi-v2
+¦   ¦   ¦   +---merged_shaders
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugShaders
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestShaders
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---mixed_scope_dex_archive
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dexBuilderDebug
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---navigation_json
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDeepLinksDebug
+¦   ¦   ¦   +---nested_resources_validation_report
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---generateDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---generateDebugAndroidTestResources
+¦   ¦   ¦   +---packaged_manifests
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugManifestForPackage
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestManifest
+¦   ¦   ¦   +---packaged_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   ¦           +---drawable
+¦   ¦   ¦   ¦           +---layout
+¦   ¦   ¦   ¦           +---menu
+¦   ¦   ¦   ¦           +---mipmap-anydpi-v26
+¦   ¦   ¦   ¦           +---mipmap-hdpi-v4
+¦   ¦   ¦   ¦           +---mipmap-mdpi-v4
+¦   ¦   ¦   ¦           +---mipmap-xhdpi-v4
+¦   ¦   ¦   ¦           +---mipmap-xxhdpi-v4
+¦   ¦   ¦   ¦           +---mipmap-xxxhdpi-v4
+¦   ¦   ¦   ¦           +---navigation
+¦   ¦   ¦   ¦           +---values
+¦   ¦   ¦   ¦           +---xml
+¦   ¦   ¦   +---processed_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugResources
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---project_dex_archive
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dexBuilderDebug
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   ¦           +---com
+¦   ¦   ¦   ¦   ¦               +---nishant
+¦   ¦   ¦   ¦   ¦                   +---smartattendance
+¦   ¦   ¦   ¦   ¦                       +---base
+¦   ¦   ¦   ¦   ¦                       +---databinding
+¦   ¦   ¦   ¦   ¦                       +---di
+¦   ¦   ¦   ¦   ¦                       +---feature
+¦   ¦   ¦   ¦   ¦                           +---admin
+¦   ¦   ¦   ¦   ¦                           +---auth
+¦   ¦   ¦   ¦   ¦                           +---splash
+¦   ¦   ¦   ¦   ¦                           +---student
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---com
+¦   ¦   ¦   ¦                   +---nishant
+¦   ¦   ¦   ¦                       +---smartattendance
+¦   ¦   ¦   +---runtime_symbol_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---signing_config_versions
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---writeDebugSigningConfigVersions
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---writeDebugAndroidTestSigningConfigVersions
+¦   ¦   ¦   +---source_set_path_map
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mapDebugSourceSetPaths
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mapDebugAndroidTestSourceSetPaths
+¦   ¦   ¦   +---stable_resource_ids_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---sub_project_dex_archive
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---dexBuilderDebug
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---symbol_list_with_package_name
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---tmp
+¦   ¦   ¦   ¦   +---manifest
+¦   ¦   ¦   ¦       +---androidTest
+¦   ¦   ¦   ¦           +---debug
+¦   ¦   ¦   +---validate_signing_config
+¦   ¦   ¦       +---debug
+¦   ¦   ¦       ¦   +---validateSigningDebug
+¦   ¦   ¦       +---debugAndroidTest
+¦   ¦   ¦           +---validateSigningDebugAndroidTest
+¦   ¦   +---kotlin
+¦   ¦   ¦   +---compileDebugAndroidTestKotlin
+¦   ¦   ¦   ¦   +---cacheable
+¦   ¦   ¦   ¦   ¦   +---caches-jvm
+¦   ¦   ¦   ¦   ¦       +---inputs
+¦   ¦   ¦   ¦   ¦       +---jvm
+¦   ¦   ¦   ¦   ¦       ¦   +---kotlin
+¦   ¦   ¦   ¦   ¦       +---lookups
+¦   ¦   ¦   ¦   +---classpath-snapshot
+¦   ¦   ¦   ¦   +---local-state
+¦   ¦   ¦   +---compileDebugKotlin
+¦   ¦   ¦       +---cacheable
+¦   ¦   ¦       ¦   +---caches-jvm
+¦   ¦   ¦       ¦       +---inputs
+¦   ¦   ¦       ¦       +---jvm
+¦   ¦   ¦       ¦       ¦   +---kotlin
+¦   ¦   ¦       ¦       +---lookups
+¦   ¦   ¦       +---classpath-snapshot
+¦   ¦   ¦       +---local-state
+¦   ¦   +---outputs
+¦   ¦   ¦   +---apk
+¦   ¦   ¦   ¦   +---androidTest
+¦   ¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   +---logs
+¦   ¦   +---tmp
+¦   ¦       +---compileDebugJavaWithJavac
+¦   ¦       +---kotlin-classes
+¦   ¦           +---debug
+¦   ¦           ¦   +---com
+¦   ¦           ¦   ¦   +---nishant
+¦   ¦           ¦   ¦       +---smartattendance
+¦   ¦           ¦   ¦           +---base
+¦   ¦           ¦   ¦           +---di
+¦   ¦           ¦   ¦           +---feature
+¦   ¦           ¦   ¦               +---admin
+¦   ¦           ¦   ¦               +---auth
+¦   ¦           ¦   ¦               +---splash
+¦   ¦           ¦   ¦               +---student
+¦   ¦           ¦   +---META-INF
+¦   ¦           +---debugAndroidTest
+¦   ¦               +---com
+¦   ¦               ¦   +---nishant
+¦   ¦               ¦       +---smartattendance
+¦   ¦               +---META-INF
+¦   +---src
+¦       +---androidTest
+¦       ¦   +---java
+¦       ¦       +---com
+¦       ¦           +---nishant
+¦       ¦               +---smartattendance
+¦       +---main
+¦           +---java
+¦           ¦   +---com
+¦           ¦       +---nishant
+¦           ¦           +---smartattendance
+¦           ¦               +---base
+¦           ¦               +---di
+¦           ¦               +---feature
+¦           ¦                   +---admin
+¦           ¦                   +---auth
+¦           ¦                   +---splash
+¦           ¦                   +---student
+¦           +---res
+¦               +---drawable
+¦               +---layout
+¦               +---menu
+¦               +---mipmap-anydpi-v26
+¦               +---mipmap-hdpi
+¦               +---mipmap-mdpi
+¦               +---mipmap-xhdpi
+¦               +---mipmap-xxhdpi
+¦               +---mipmap-xxxhdpi
+¦               +---navigation
+¦               +---values
+¦               +---xml
++---core
+¦   +---build
+¦   ¦   +---.transforms
+¦   ¦   ¦   +---8b3de6a18a2d114afd0d8d55507ff654
+¦   ¦   ¦       +---transformed
+¦   ¦   ¦           +---bundleLibRuntimeToDirDebug
+¦   ¦   ¦               +---com
+¦   ¦   ¦                   +---nishant
+¦   ¦   ¦                       +---smartattendance
+¦   ¦   ¦                           +---core
+¦   ¦   ¦                               +---constants
+¦   ¦   +---generated
+¦   ¦   ¦   +---res
+¦   ¦   ¦       +---pngs
+¦   ¦   ¦       ¦   +---debug
+¦   ¦   ¦       +---resValues
+¦   ¦   ¦           +---androidTest
+¦   ¦   ¦           ¦   +---debug
+¦   ¦   ¦           +---debug
+¦   ¦   +---intermediates
+¦   ¦   ¦   +---aapt_friendly_merged_manifests
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugManifest
+¦   ¦   ¦   ¦           +---aapt
+¦   ¦   ¦   +---aar_libs_directory
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---syncDebugLibJars
+¦   ¦   ¦   ¦           +---libs
+¦   ¦   ¦   +---aar_main_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---syncDebugLibJars
+¦   ¦   ¦   +---aar_metadata
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---writeDebugAarMetadata
+¦   ¦   ¦   +---aar_metadata_check
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---checkDebugAndroidTestAarMetadata
+¦   ¦   ¦   +---annotations_typedef_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDebugAnnotations
+¦   ¦   ¦   +---annotations_zip
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDebugAnnotations
+¦   ¦   ¦   +---annotation_processor_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---javaPreCompileDebug
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---javaPreCompileDebugAndroidTest
+¦   ¦   ¦   ¦   +---debugUnitTest
+¦   ¦   ¦   ¦       +---javaPreCompileDebugUnitTest
+¦   ¦   ¦   +---apk_ide_redirect_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---createDebugAndroidTestApkListingFileRedirect
+¦   ¦   ¦   +---assets
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestAssets
+¦   ¦   ¦   +---compiled_local_resources
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---compileDebugLibraryResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---compile_and_runtime_not_namespaced_r_class_jar
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---processDebugAndroidTestResources
+¦   ¦   ¦   ¦   +---debugUnitTest
+¦   ¦   ¦   ¦       +---generateDebugUnitTestStubRFile
+¦   ¦   ¦   +---compile_library_classes_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---bundleLibCompileToJarDebug
+¦   ¦   ¦   +---compile_r_class_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---generateDebugRFile
+¦   ¦   ¦   +---compile_symbol_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---generateDebugRFile
+¦   ¦   ¦   +---compressed_assets
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---compressDebugAndroidTestAssets
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_layout_info_type_merge
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_layout_info_type_package
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---desugar_graph
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---currentProject
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_0
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_1
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_2
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_3
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_4
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_5
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_6
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_7
+¦   ¦   ¦   ¦               ¦   +---jar_98a44bcd7291820f32c04d6bd92cbd6da46cba2e2809b3fe0884a5e96bc1f7c3_bucket_0
+¦   ¦   ¦   ¦               ¦   +---jar_98a44bcd7291820f32c04d6bd92cbd6da46cba2e2809b3fe0884a5e96bc1f7c3_bucket_1
+¦   ¦   ¦   ¦               ¦   +---jar_98a44bcd7291820f32c04d6bd92cbd6da46cba2e2809b3fe0884a5e96bc1f7c3_bucket_2
+¦   ¦   ¦   ¦               ¦   +---jar_98a44bcd7291820f32c04d6bd92cbd6da46cba2e2809b3fe0884a5e96bc1f7c3_bucket_3
+¦   ¦   ¦   ¦               ¦   +---jar_98a44bcd7291820f32c04d6bd92cbd6da46cba2e2809b3fe0884a5e96bc1f7c3_bucket_4
+¦   ¦   ¦   ¦               ¦   +---jar_98a44bcd7291820f32c04d6bd92cbd6da46cba2e2809b3fe0884a5e96bc1f7c3_bucket_5
+¦   ¦   ¦   ¦               ¦   +---jar_98a44bcd7291820f32c04d6bd92cbd6da46cba2e2809b3fe0884a5e96bc1f7c3_bucket_6
+¦   ¦   ¦   ¦               ¦   +---jar_98a44bcd7291820f32c04d6bd92cbd6da46cba2e2809b3fe0884a5e96bc1f7c3_bucket_7
+¦   ¦   ¦   ¦               +---externalLibs
+¦   ¦   ¦   ¦               +---mixedScopes
+¦   ¦   ¦   ¦               +---otherProjects
+¦   ¦   ¦   +---dex
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeExtDexDebugAndroidTest
+¦   ¦   ¦   ¦       +---mergeLibDexDebugAndroidTest
+¦   ¦   ¦   ¦       ¦   +---0
+¦   ¦   ¦   ¦       ¦   +---1
+¦   ¦   ¦   ¦       ¦   +---10
+¦   ¦   ¦   ¦       ¦   +---11
+¦   ¦   ¦   ¦       ¦   +---12
+¦   ¦   ¦   ¦       ¦   +---13
+¦   ¦   ¦   ¦       ¦   +---14
+¦   ¦   ¦   ¦       ¦   +---15
+¦   ¦   ¦   ¦       ¦   +---2
+¦   ¦   ¦   ¦       ¦   +---3
+¦   ¦   ¦   ¦       ¦   +---4
+¦   ¦   ¦   ¦       ¦   +---5
+¦   ¦   ¦   ¦       ¦   +---6
+¦   ¦   ¦   ¦       ¦   +---7
+¦   ¦   ¦   ¦       ¦   +---8
+¦   ¦   ¦   ¦       ¦   +---9
+¦   ¦   ¦   ¦       +---mergeProjectDexDebugAndroidTest
+¦   ¦   ¦   ¦           +---0
+¦   ¦   ¦   ¦           +---1
+¦   ¦   ¦   ¦           +---10
+¦   ¦   ¦   ¦           +---11
+¦   ¦   ¦   ¦           +---12
+¦   ¦   ¦   ¦           +---13
+¦   ¦   ¦   ¦           +---14
+¦   ¦   ¦   ¦           +---15
+¦   ¦   ¦   ¦           +---2
+¦   ¦   ¦   ¦           +---3
+¦   ¦   ¦   ¦           +---4
+¦   ¦   ¦   ¦           +---5
+¦   ¦   ¦   ¦           +---6
+¦   ¦   ¦   ¦           +---7
+¦   ¦   ¦   ¦           +---8
+¦   ¦   ¦   ¦           +---9
+¦   ¦   ¦   +---dex_archive_input_jar_hashes
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   +---dex_number_of_buckets_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   +---duplicate_classes_check
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---checkDebugAndroidTestDuplicateClasses
+¦   ¦   ¦   +---external_file_lib_dex_archives
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---desugarDebugAndroidTestFileDependencies
+¦   ¦   ¦   +---external_libs_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---external_libs_dex_archive_with_artifact_transforms
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---incremental
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---packageDebugResources
+¦   ¦   ¦   ¦   ¦       +---merged.dir
+¦   ¦   ¦   ¦   ¦       +---stripped.dir
+¦   ¦   ¦   ¦   +---debug-mergeJavaRes
+¦   ¦   ¦   ¦   ¦   +---zip-cache
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦   ¦       +---merged.dir
+¦   ¦   ¦   ¦   ¦       ¦   +---values
+¦   ¦   ¦   ¦   ¦       ¦   +---values-af
+¦   ¦   ¦   ¦   ¦       ¦   +---values-am
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ar
+¦   ¦   ¦   ¦   ¦       ¦   +---values-as
+¦   ¦   ¦   ¦   ¦       ¦   +---values-az
+¦   ¦   ¦   ¦   ¦       ¦   +---values-b+es+419
+¦   ¦   ¦   ¦   ¦       ¦   +---values-b+sr+Latn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-be
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bg
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bs
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ca
+¦   ¦   ¦   ¦   ¦       ¦   +---values-cs
+¦   ¦   ¦   ¦   ¦       ¦   +---values-da
+¦   ¦   ¦   ¦   ¦       ¦   +---values-de
+¦   ¦   ¦   ¦   ¦       ¦   +---values-el
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rAU
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rCA
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rGB
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rIN
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rXC
+¦   ¦   ¦   ¦   ¦       ¦   +---values-es
+¦   ¦   ¦   ¦   ¦       ¦   +---values-es-rUS
+¦   ¦   ¦   ¦   ¦       ¦   +---values-et
+¦   ¦   ¦   ¦   ¦       ¦   +---values-eu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fa
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fr-rCA
+¦   ¦   ¦   ¦   ¦       ¦   +---values-gl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-gu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h320dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h360dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h480dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h550dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h720dp-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hdpi-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hy
+¦   ¦   ¦   ¦   ¦       ¦   +---values-in
+¦   ¦   ¦   ¦   ¦       ¦   +---values-is
+¦   ¦   ¦   ¦   ¦       ¦   +---values-it
+¦   ¦   ¦   ¦   ¦       ¦   +---values-iw
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ja
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ka
+¦   ¦   ¦   ¦   ¦       ¦   +---values-kk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-km
+¦   ¦   ¦   ¦   ¦       ¦   +---values-kn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ko
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ky
+¦   ¦   ¦   ¦   ¦       ¦   +---values-land
+¦   ¦   ¦   ¦   ¦       ¦   +---values-large-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ldltr-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ldrtl-v17
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lo
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lt
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lv
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ml
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ms
+¦   ¦   ¦   ¦   ¦       ¦   +---values-my
+¦   ¦   ¦   ¦   ¦       ¦   +---values-nb
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ne
+¦   ¦   ¦   ¦   ¦       ¦   +---values-night-v8
+¦   ¦   ¦   ¦   ¦       ¦   +---values-nl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-or
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pa
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-port
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt-rBR
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt-rPT
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ro
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ru
+¦   ¦   ¦   ¦   ¦       ¦   +---values-si
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-small-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sq
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sv
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sw
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sw600dp-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ta
+¦   ¦   ¦   ¦   ¦       ¦   +---values-te
+¦   ¦   ¦   ¦   ¦       ¦   +---values-th
+¦   ¦   ¦   ¦   ¦       ¦   +---values-tl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-tr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-uk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ur
+¦   ¦   ¦   ¦   ¦       ¦   +---values-uz
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v16
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v17
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v18
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v22
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v23
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v24
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v25
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v26
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v28
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v31
+¦   ¦   ¦   ¦   ¦       ¦   +---values-vi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w320dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w360dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w400dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w600dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-watch-v20
+¦   ¦   ¦   ¦   ¦       ¦   +---values-watch-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-xlarge-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rCN
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rHK
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rTW
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zu
+¦   ¦   ¦   ¦   ¦       +---stripped.dir
+¦   ¦   ¦   ¦   +---debugAndroidTest-mergeJavaRes
+¦   ¦   ¦   ¦   ¦   +---zip-cache
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestAssets
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestJniLibFolders
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestShaders
+¦   ¦   ¦   ¦   +---mergeDebugJniLibFolders
+¦   ¦   ¦   ¦   +---mergeDebugShaders
+¦   ¦   ¦   ¦   +---packageDebugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---tmp
+¦   ¦   ¦   ¦   ¦       +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦           +---zip-cache
+¦   ¦   ¦   ¦   +---packageDebugAssets
+¦   ¦   ¦   +---java_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugJavaRes
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   ¦           +---com
+¦   ¦   ¦   ¦   ¦           ¦   +---nishant
+¦   ¦   ¦   ¦   ¦           ¦       +---smartattendance
+¦   ¦   ¦   ¦   ¦           ¦           +---core
+¦   ¦   ¦   ¦   ¦           ¦               +---constants
+¦   ¦   ¦   ¦   ¦           +---META-INF
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestJavaRes
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---com
+¦   ¦   ¦   ¦               ¦   +---nishant
+¦   ¦   ¦   ¦               ¦       +---smartattendance
+¦   ¦   ¦   ¦               ¦           +---core
+¦   ¦   ¦   ¦               +---META-INF
+¦   ¦   ¦   +---library_and_local_jars_jni
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---copyDebugJniLibsProjectAndLocalJars
+¦   ¦   ¦   ¦           +---jni
+¦   ¦   ¦   +---library_assets
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugAssets
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---library_jni
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---copyDebugJniLibsProjectOnly
+¦   ¦   ¦   ¦           +---jni
+¦   ¦   ¦   +---local_only_symbol_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---parseDebugLocalResources
+¦   ¦   ¦   +---manifest_merge_blame_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugManifest
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestManifest
+¦   ¦   ¦   +---merged_consumer_proguard_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---mergeDebugConsumerProguardFiles
+¦   ¦   ¦   +---merged_java_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugJavaResource
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestJavaResource
+¦   ¦   ¦   +---merged_jni_libs
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugJniLibFolders
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestJniLibFolders
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---merged_manifest
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugManifest
+¦   ¦   ¦   +---merged_res
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   +---merged_res_blame_folder
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---multi-v2
+¦   ¦   ¦   +---merged_shaders
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugShaders
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestShaders
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---mixed_scope_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---navigation_json
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDeepLinksDebug
+¦   ¦   ¦   +---nested_resources_validation_report
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---generateDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---generateDebugAndroidTestResources
+¦   ¦   ¦   +---packaged_manifests
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestManifest
+¦   ¦   ¦   +---packaged_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   +---processed_res
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---project_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---com
+¦   ¦   ¦   ¦                   +---nishant
+¦   ¦   ¦   ¦                       +---smartattendance
+¦   ¦   ¦   ¦                           +---core
+¦   ¦   ¦   +---public_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   +---runtime_library_classes_dir
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---bundleLibRuntimeToDirDebug
+¦   ¦   ¦   ¦           +---com
+¦   ¦   ¦   ¦           ¦   +---nishant
+¦   ¦   ¦   ¦           ¦       +---smartattendance
+¦   ¦   ¦   ¦           ¦           +---core
+¦   ¦   ¦   ¦           ¦               +---constants
+¦   ¦   ¦   ¦           +---META-INF
+¦   ¦   ¦   +---runtime_symbol_list
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---signing_config_versions
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---writeDebugAndroidTestSigningConfigVersions
+¦   ¦   ¦   +---source_set_path_map
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mapDebugAndroidTestSourceSetPaths
+¦   ¦   ¦   +---stable_resource_ids_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---sub_project_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---symbol_list_with_package_name
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---generateDebugRFile
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---tmp
+¦   ¦   ¦   ¦   +---manifest
+¦   ¦   ¦   ¦       +---androidTest
+¦   ¦   ¦   ¦           +---debug
+¦   ¦   ¦   +---validate_signing_config
+¦   ¦   ¦       +---debugAndroidTest
+¦   ¦   ¦           +---validateSigningDebugAndroidTest
+¦   ¦   +---kotlin
+¦   ¦   ¦   +---compileDebugAndroidTestKotlin
+¦   ¦   ¦   ¦   +---cacheable
+¦   ¦   ¦   ¦   ¦   +---caches-jvm
+¦   ¦   ¦   ¦   ¦       +---inputs
+¦   ¦   ¦   ¦   ¦       +---jvm
+¦   ¦   ¦   ¦   ¦       ¦   +---kotlin
+¦   ¦   ¦   ¦   ¦       +---lookups
+¦   ¦   ¦   ¦   +---classpath-snapshot
+¦   ¦   ¦   ¦   +---local-state
+¦   ¦   ¦   +---compileDebugKotlin
+¦   ¦   ¦       +---cacheable
+¦   ¦   ¦       ¦   +---caches-jvm
+¦   ¦   ¦       ¦       +---inputs
+¦   ¦   ¦       ¦       +---jvm
+¦   ¦   ¦       ¦       ¦   +---kotlin
+¦   ¦   ¦       ¦       +---lookups
+¦   ¦   ¦       +---classpath-snapshot
+¦   ¦   ¦       +---local-state
+¦   ¦   +---outputs
+¦   ¦   ¦   +---aar
+¦   ¦   ¦   +---apk
+¦   ¦   ¦   ¦   +---androidTest
+¦   ¦   ¦   ¦       +---debug
+¦   ¦   ¦   +---logs
+¦   ¦   +---tmp
+¦   ¦       +---kotlin-classes
+¦   ¦           +---debug
+¦   ¦           ¦   +---com
+¦   ¦           ¦   ¦   +---nishant
+¦   ¦           ¦   ¦       +---smartattendance
+¦   ¦           ¦   ¦           +---core
+¦   ¦           ¦   ¦               +---constants
+¦   ¦           ¦   +---META-INF
+¦   ¦           +---debugAndroidTest
+¦   ¦               +---com
+¦   ¦               ¦   +---nishant
+¦   ¦               ¦       +---smartattendance
+¦   ¦               ¦           +---core
+¦   ¦               +---META-INF
+¦   +---src
+¦       +---androidTest
+¦       ¦   +---java
+¦       ¦       +---com
+¦       ¦           +---nishant
+¦       ¦               +---smartattendance
+¦       ¦                   +---core
+¦       +---main
+¦           +---java
+¦               +---com
+¦                   +---nishant
+¦                       +---smartattendance
+¦                           +---core
+¦                               +---constants
++---data
+¦   +---build
+¦   ¦   +---.transforms
+¦   ¦   ¦   +---429a4198ec2f80777a9c7a06b1b36450
+¦   ¦   ¦       +---transformed
+¦   ¦   ¦           +---bundleLibRuntimeToDirDebug
+¦   ¦   ¦               +---com
+¦   ¦   ¦                   +---nishant
+¦   ¦   ¦                       +---smartattendance
+¦   ¦   ¦                           +---data
+¦   ¦   ¦                               +---repository
+¦   ¦   +---generated
+¦   ¦   ¦   +---res
+¦   ¦   ¦       +---pngs
+¦   ¦   ¦       ¦   +---debug
+¦   ¦   ¦       +---resValues
+¦   ¦   ¦           +---androidTest
+¦   ¦   ¦           ¦   +---debug
+¦   ¦   ¦           +---debug
+¦   ¦   +---intermediates
+¦   ¦   ¦   +---aapt_friendly_merged_manifests
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugManifest
+¦   ¦   ¦   ¦           +---aapt
+¦   ¦   ¦   +---aar_libs_directory
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---syncDebugLibJars
+¦   ¦   ¦   ¦           +---libs
+¦   ¦   ¦   +---aar_main_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---syncDebugLibJars
+¦   ¦   ¦   +---aar_metadata
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---writeDebugAarMetadata
+¦   ¦   ¦   +---aar_metadata_check
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---checkDebugAndroidTestAarMetadata
+¦   ¦   ¦   +---annotations_typedef_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDebugAnnotations
+¦   ¦   ¦   +---annotations_zip
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDebugAnnotations
+¦   ¦   ¦   +---annotation_processor_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---javaPreCompileDebug
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---javaPreCompileDebugAndroidTest
+¦   ¦   ¦   ¦   +---debugUnitTest
+¦   ¦   ¦   ¦       +---javaPreCompileDebugUnitTest
+¦   ¦   ¦   +---apk_ide_redirect_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---createDebugAndroidTestApkListingFileRedirect
+¦   ¦   ¦   +---assets
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestAssets
+¦   ¦   ¦   +---compiled_local_resources
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---compileDebugLibraryResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---compile_and_runtime_not_namespaced_r_class_jar
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---processDebugAndroidTestResources
+¦   ¦   ¦   ¦   +---debugUnitTest
+¦   ¦   ¦   ¦       +---generateDebugUnitTestStubRFile
+¦   ¦   ¦   +---compile_library_classes_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---bundleLibCompileToJarDebug
+¦   ¦   ¦   +---compile_r_class_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---generateDebugRFile
+¦   ¦   ¦   +---compile_symbol_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---generateDebugRFile
+¦   ¦   ¦   +---compressed_assets
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---compressDebugAndroidTestAssets
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_layout_info_type_merge
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_layout_info_type_package
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---desugar_graph
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---currentProject
+¦   ¦   ¦   ¦               ¦   +---jar_0943b5d042a2b3c93ceedd0dfdd9b8c358157596fb72fc9b1ad62183b36e53c0_bucket_0
+¦   ¦   ¦   ¦               ¦   +---jar_0943b5d042a2b3c93ceedd0dfdd9b8c358157596fb72fc9b1ad62183b36e53c0_bucket_1
+¦   ¦   ¦   ¦               ¦   +---jar_0943b5d042a2b3c93ceedd0dfdd9b8c358157596fb72fc9b1ad62183b36e53c0_bucket_2
+¦   ¦   ¦   ¦               ¦   +---jar_0943b5d042a2b3c93ceedd0dfdd9b8c358157596fb72fc9b1ad62183b36e53c0_bucket_3
+¦   ¦   ¦   ¦               ¦   +---jar_0943b5d042a2b3c93ceedd0dfdd9b8c358157596fb72fc9b1ad62183b36e53c0_bucket_4
+¦   ¦   ¦   ¦               ¦   +---jar_0943b5d042a2b3c93ceedd0dfdd9b8c358157596fb72fc9b1ad62183b36e53c0_bucket_5
+¦   ¦   ¦   ¦               ¦   +---jar_0943b5d042a2b3c93ceedd0dfdd9b8c358157596fb72fc9b1ad62183b36e53c0_bucket_6
+¦   ¦   ¦   ¦               ¦   +---jar_0943b5d042a2b3c93ceedd0dfdd9b8c358157596fb72fc9b1ad62183b36e53c0_bucket_7
+¦   ¦   ¦   ¦               +---externalLibs
+¦   ¦   ¦   ¦               +---mixedScopes
+¦   ¦   ¦   ¦               +---otherProjects
+¦   ¦   ¦   +---dex
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeExtDexDebugAndroidTest
+¦   ¦   ¦   ¦       +---mergeLibDexDebugAndroidTest
+¦   ¦   ¦   ¦       ¦   +---0
+¦   ¦   ¦   ¦       ¦   +---1
+¦   ¦   ¦   ¦       ¦   +---10
+¦   ¦   ¦   ¦       ¦   +---11
+¦   ¦   ¦   ¦       ¦   +---12
+¦   ¦   ¦   ¦       ¦   +---13
+¦   ¦   ¦   ¦       ¦   +---14
+¦   ¦   ¦   ¦       ¦   +---15
+¦   ¦   ¦   ¦       ¦   +---2
+¦   ¦   ¦   ¦       ¦   +---3
+¦   ¦   ¦   ¦       ¦   +---4
+¦   ¦   ¦   ¦       ¦   +---5
+¦   ¦   ¦   ¦       ¦   +---6
+¦   ¦   ¦   ¦       ¦   +---7
+¦   ¦   ¦   ¦       ¦   +---8
+¦   ¦   ¦   ¦       ¦   +---9
+¦   ¦   ¦   ¦       +---mergeProjectDexDebugAndroidTest
+¦   ¦   ¦   ¦           +---0
+¦   ¦   ¦   ¦           +---1
+¦   ¦   ¦   ¦           +---10
+¦   ¦   ¦   ¦           +---11
+¦   ¦   ¦   ¦           +---12
+¦   ¦   ¦   ¦           +---13
+¦   ¦   ¦   ¦           +---14
+¦   ¦   ¦   ¦           +---15
+¦   ¦   ¦   ¦           +---2
+¦   ¦   ¦   ¦           +---3
+¦   ¦   ¦   ¦           +---4
+¦   ¦   ¦   ¦           +---5
+¦   ¦   ¦   ¦           +---6
+¦   ¦   ¦   ¦           +---7
+¦   ¦   ¦   ¦           +---8
+¦   ¦   ¦   ¦           +---9
+¦   ¦   ¦   +---dex_archive_input_jar_hashes
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   +---dex_number_of_buckets_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   +---duplicate_classes_check
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---checkDebugAndroidTestDuplicateClasses
+¦   ¦   ¦   +---external_file_lib_dex_archives
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---desugarDebugAndroidTestFileDependencies
+¦   ¦   ¦   +---external_libs_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---external_libs_dex_archive_with_artifact_transforms
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---incremental
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---packageDebugResources
+¦   ¦   ¦   ¦   ¦       +---merged.dir
+¦   ¦   ¦   ¦   ¦       +---stripped.dir
+¦   ¦   ¦   ¦   +---debug-mergeJavaRes
+¦   ¦   ¦   ¦   ¦   +---zip-cache
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦   ¦       +---merged.dir
+¦   ¦   ¦   ¦   ¦       ¦   +---values
+¦   ¦   ¦   ¦   ¦       ¦   +---values-af
+¦   ¦   ¦   ¦   ¦       ¦   +---values-am
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ar
+¦   ¦   ¦   ¦   ¦       ¦   +---values-as
+¦   ¦   ¦   ¦   ¦       ¦   +---values-az
+¦   ¦   ¦   ¦   ¦       ¦   +---values-b+es+419
+¦   ¦   ¦   ¦   ¦       ¦   +---values-b+sr+Latn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-be
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bg
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bs
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ca
+¦   ¦   ¦   ¦   ¦       ¦   +---values-cs
+¦   ¦   ¦   ¦   ¦       ¦   +---values-da
+¦   ¦   ¦   ¦   ¦       ¦   +---values-de
+¦   ¦   ¦   ¦   ¦       ¦   +---values-el
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rAU
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rCA
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rGB
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rIN
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rXC
+¦   ¦   ¦   ¦   ¦       ¦   +---values-es
+¦   ¦   ¦   ¦   ¦       ¦   +---values-es-rUS
+¦   ¦   ¦   ¦   ¦       ¦   +---values-et
+¦   ¦   ¦   ¦   ¦       ¦   +---values-eu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fa
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fr-rCA
+¦   ¦   ¦   ¦   ¦       ¦   +---values-gl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-gu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h320dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h360dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h480dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h550dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h720dp-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hdpi-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hy
+¦   ¦   ¦   ¦   ¦       ¦   +---values-in
+¦   ¦   ¦   ¦   ¦       ¦   +---values-is
+¦   ¦   ¦   ¦   ¦       ¦   +---values-it
+¦   ¦   ¦   ¦   ¦       ¦   +---values-iw
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ja
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ka
+¦   ¦   ¦   ¦   ¦       ¦   +---values-kk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-km
+¦   ¦   ¦   ¦   ¦       ¦   +---values-kn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ko
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ky
+¦   ¦   ¦   ¦   ¦       ¦   +---values-land
+¦   ¦   ¦   ¦   ¦       ¦   +---values-large-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ldltr-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ldrtl-v17
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lo
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lt
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lv
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ml
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ms
+¦   ¦   ¦   ¦   ¦       ¦   +---values-my
+¦   ¦   ¦   ¦   ¦       ¦   +---values-nb
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ne
+¦   ¦   ¦   ¦   ¦       ¦   +---values-night-v8
+¦   ¦   ¦   ¦   ¦       ¦   +---values-nl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-or
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pa
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-port
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt-rBR
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt-rPT
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ro
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ru
+¦   ¦   ¦   ¦   ¦       ¦   +---values-si
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-small-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sq
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sv
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sw
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sw600dp-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ta
+¦   ¦   ¦   ¦   ¦       ¦   +---values-te
+¦   ¦   ¦   ¦   ¦       ¦   +---values-th
+¦   ¦   ¦   ¦   ¦       ¦   +---values-tl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-tr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-uk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ur
+¦   ¦   ¦   ¦   ¦       ¦   +---values-uz
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v16
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v17
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v18
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v22
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v23
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v24
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v25
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v26
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v28
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v31
+¦   ¦   ¦   ¦   ¦       ¦   +---values-vi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w320dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w360dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w400dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w600dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-watch-v20
+¦   ¦   ¦   ¦   ¦       ¦   +---values-watch-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-xlarge-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rCN
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rHK
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rTW
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zu
+¦   ¦   ¦   ¦   ¦       +---stripped.dir
+¦   ¦   ¦   ¦   +---debugAndroidTest-mergeJavaRes
+¦   ¦   ¦   ¦   ¦   +---zip-cache
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestAssets
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestJniLibFolders
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestShaders
+¦   ¦   ¦   ¦   +---mergeDebugJniLibFolders
+¦   ¦   ¦   ¦   +---mergeDebugShaders
+¦   ¦   ¦   ¦   +---packageDebugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---tmp
+¦   ¦   ¦   ¦   ¦       +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦           +---zip-cache
+¦   ¦   ¦   ¦   +---packageDebugAssets
+¦   ¦   ¦   +---java_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugJavaRes
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---com
+¦   ¦   ¦   ¦               ¦   +---nishant
+¦   ¦   ¦   ¦               ¦       +---smartattendance
+¦   ¦   ¦   ¦               ¦           +---data
+¦   ¦   ¦   ¦               ¦               +---repository
+¦   ¦   ¦   ¦               +---META-INF
+¦   ¦   ¦   +---library_and_local_jars_jni
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---copyDebugJniLibsProjectAndLocalJars
+¦   ¦   ¦   ¦           +---jni
+¦   ¦   ¦   +---library_assets
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugAssets
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---library_jni
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---copyDebugJniLibsProjectOnly
+¦   ¦   ¦   ¦           +---jni
+¦   ¦   ¦   +---local_only_symbol_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---parseDebugLocalResources
+¦   ¦   ¦   +---manifest_merge_blame_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugManifest
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestManifest
+¦   ¦   ¦   +---merged_java_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugJavaResource
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestJavaResource
+¦   ¦   ¦   +---merged_jni_libs
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugJniLibFolders
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestJniLibFolders
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---merged_manifest
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugManifest
+¦   ¦   ¦   +---merged_res
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   +---merged_res_blame_folder
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---multi-v2
+¦   ¦   ¦   +---merged_shaders
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugShaders
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestShaders
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---mixed_scope_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---navigation_json
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDeepLinksDebug
+¦   ¦   ¦   +---nested_resources_validation_report
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---generateDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---generateDebugAndroidTestResources
+¦   ¦   ¦   +---packaged_manifests
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestManifest
+¦   ¦   ¦   +---packaged_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   +---processed_res
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---project_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---public_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   +---runtime_library_classes_dir
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---bundleLibRuntimeToDirDebug
+¦   ¦   ¦   ¦           +---com
+¦   ¦   ¦   ¦           ¦   +---nishant
+¦   ¦   ¦   ¦           ¦       +---smartattendance
+¦   ¦   ¦   ¦           ¦           +---data
+¦   ¦   ¦   ¦           ¦               +---repository
+¦   ¦   ¦   ¦           +---META-INF
+¦   ¦   ¦   +---runtime_symbol_list
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---signing_config_versions
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---writeDebugAndroidTestSigningConfigVersions
+¦   ¦   ¦   +---source_set_path_map
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mapDebugAndroidTestSourceSetPaths
+¦   ¦   ¦   +---stable_resource_ids_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---sub_project_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---symbol_list_with_package_name
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---generateDebugRFile
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---tmp
+¦   ¦   ¦   ¦   +---manifest
+¦   ¦   ¦   ¦       +---androidTest
+¦   ¦   ¦   ¦           +---debug
+¦   ¦   ¦   +---validate_signing_config
+¦   ¦   ¦       +---debugAndroidTest
+¦   ¦   ¦           +---validateSigningDebugAndroidTest
+¦   ¦   +---kotlin
+¦   ¦   ¦   +---compileDebugKotlin
+¦   ¦   ¦       +---cacheable
+¦   ¦   ¦       ¦   +---caches-jvm
+¦   ¦   ¦       ¦       +---inputs
+¦   ¦   ¦       ¦       +---jvm
+¦   ¦   ¦       ¦       ¦   +---kotlin
+¦   ¦   ¦       ¦       +---lookups
+¦   ¦   ¦       +---classpath-snapshot
+¦   ¦   ¦       +---local-state
+¦   ¦   +---outputs
+¦   ¦   ¦   +---aar
+¦   ¦   ¦   +---apk
+¦   ¦   ¦   ¦   +---androidTest
+¦   ¦   ¦   ¦       +---debug
+¦   ¦   ¦   +---logs
+¦   ¦   +---tmp
+¦   ¦       +---kotlin-classes
+¦   ¦           +---debug
+¦   ¦               +---com
+¦   ¦               ¦   +---nishant
+¦   ¦               ¦       +---smartattendance
+¦   ¦               ¦           +---data
+¦   ¦               ¦               +---repository
+¦   ¦               +---META-INF
+¦   +---src
+¦       +---main
+¦           +---java
+¦               +---com
+¦                   +---nishant
+¦                       +---smartattendance
+¦                           +---data
+¦                               +---repository
++---domain
+¦   +---build
+¦   ¦   +---.transforms
+¦   ¦   ¦   +---eabef6030e290d39677a6b76c210abf1
+¦   ¦   ¦       +---transformed
+¦   ¦   ¦           +---bundleLibRuntimeToDirDebug
+¦   ¦   ¦               +---com
+¦   ¦   ¦                   +---nishant
+¦   ¦   ¦                       +---smartattendance
+¦   ¦   ¦                           +---domain
+¦   ¦   ¦                               +---model
+¦   ¦   ¦                               +---repository
+¦   ¦   ¦                               +---usecase
+¦   ¦   +---generated
+¦   ¦   ¦   +---res
+¦   ¦   ¦       +---pngs
+¦   ¦   ¦       ¦   +---debug
+¦   ¦   ¦       +---resValues
+¦   ¦   ¦           +---androidTest
+¦   ¦   ¦           ¦   +---debug
+¦   ¦   ¦           +---debug
+¦   ¦   +---intermediates
+¦   ¦   ¦   +---aapt_friendly_merged_manifests
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugManifest
+¦   ¦   ¦   ¦           +---aapt
+¦   ¦   ¦   +---aar_libs_directory
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---syncDebugLibJars
+¦   ¦   ¦   ¦           +---libs
+¦   ¦   ¦   +---aar_main_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---syncDebugLibJars
+¦   ¦   ¦   +---aar_metadata
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---writeDebugAarMetadata
+¦   ¦   ¦   +---aar_metadata_check
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---checkDebugAndroidTestAarMetadata
+¦   ¦   ¦   +---annotations_typedef_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDebugAnnotations
+¦   ¦   ¦   +---annotations_zip
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDebugAnnotations
+¦   ¦   ¦   +---annotation_processor_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---javaPreCompileDebug
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---javaPreCompileDebugAndroidTest
+¦   ¦   ¦   ¦   +---debugUnitTest
+¦   ¦   ¦   ¦       +---javaPreCompileDebugUnitTest
+¦   ¦   ¦   +---apk_ide_redirect_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---createDebugAndroidTestApkListingFileRedirect
+¦   ¦   ¦   +---assets
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestAssets
+¦   ¦   ¦   +---compiled_local_resources
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---compileDebugLibraryResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---compile_and_runtime_not_namespaced_r_class_jar
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---processDebugAndroidTestResources
+¦   ¦   ¦   ¦   +---debugUnitTest
+¦   ¦   ¦   ¦       +---generateDebugUnitTestStubRFile
+¦   ¦   ¦   +---compile_library_classes_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---bundleLibCompileToJarDebug
+¦   ¦   ¦   +---compile_r_class_jar
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---generateDebugRFile
+¦   ¦   ¦   +---compile_symbol_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---generateDebugRFile
+¦   ¦   ¦   +---compressed_assets
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---compressDebugAndroidTestAssets
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_layout_info_type_merge
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---data_binding_layout_info_type_package
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---desugar_graph
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---currentProject
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_0
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_1
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_2
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_3
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_4
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_5
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_6
+¦   ¦   ¦   ¦               ¦   +---dirs_bucket_7
+¦   ¦   ¦   ¦               ¦   +---jar_9d242b7091b6ece1bc61e1aa62da4fb6ce040c84068bf5d5c06f6660afb77689_bucket_0
+¦   ¦   ¦   ¦               ¦   +---jar_9d242b7091b6ece1bc61e1aa62da4fb6ce040c84068bf5d5c06f6660afb77689_bucket_1
+¦   ¦   ¦   ¦               ¦   +---jar_9d242b7091b6ece1bc61e1aa62da4fb6ce040c84068bf5d5c06f6660afb77689_bucket_2
+¦   ¦   ¦   ¦               ¦   +---jar_9d242b7091b6ece1bc61e1aa62da4fb6ce040c84068bf5d5c06f6660afb77689_bucket_3
+¦   ¦   ¦   ¦               ¦   +---jar_9d242b7091b6ece1bc61e1aa62da4fb6ce040c84068bf5d5c06f6660afb77689_bucket_4
+¦   ¦   ¦   ¦               ¦   +---jar_9d242b7091b6ece1bc61e1aa62da4fb6ce040c84068bf5d5c06f6660afb77689_bucket_5
+¦   ¦   ¦   ¦               ¦   +---jar_9d242b7091b6ece1bc61e1aa62da4fb6ce040c84068bf5d5c06f6660afb77689_bucket_6
+¦   ¦   ¦   ¦               ¦   +---jar_9d242b7091b6ece1bc61e1aa62da4fb6ce040c84068bf5d5c06f6660afb77689_bucket_7
+¦   ¦   ¦   ¦               +---externalLibs
+¦   ¦   ¦   ¦               +---mixedScopes
+¦   ¦   ¦   ¦               +---otherProjects
+¦   ¦   ¦   +---dex
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeExtDexDebugAndroidTest
+¦   ¦   ¦   ¦       +---mergeLibDexDebugAndroidTest
+¦   ¦   ¦   ¦       ¦   +---0
+¦   ¦   ¦   ¦       ¦   +---1
+¦   ¦   ¦   ¦       ¦   +---10
+¦   ¦   ¦   ¦       ¦   +---11
+¦   ¦   ¦   ¦       ¦   +---12
+¦   ¦   ¦   ¦       ¦   +---13
+¦   ¦   ¦   ¦       ¦   +---14
+¦   ¦   ¦   ¦       ¦   +---15
+¦   ¦   ¦   ¦       ¦   +---2
+¦   ¦   ¦   ¦       ¦   +---3
+¦   ¦   ¦   ¦       ¦   +---4
+¦   ¦   ¦   ¦       ¦   +---5
+¦   ¦   ¦   ¦       ¦   +---6
+¦   ¦   ¦   ¦       ¦   +---7
+¦   ¦   ¦   ¦       ¦   +---8
+¦   ¦   ¦   ¦       ¦   +---9
+¦   ¦   ¦   ¦       +---mergeProjectDexDebugAndroidTest
+¦   ¦   ¦   ¦           +---0
+¦   ¦   ¦   ¦           +---1
+¦   ¦   ¦   ¦           +---10
+¦   ¦   ¦   ¦           +---11
+¦   ¦   ¦   ¦           +---12
+¦   ¦   ¦   ¦           +---13
+¦   ¦   ¦   ¦           +---14
+¦   ¦   ¦   ¦           +---15
+¦   ¦   ¦   ¦           +---2
+¦   ¦   ¦   ¦           +---3
+¦   ¦   ¦   ¦           +---4
+¦   ¦   ¦   ¦           +---5
+¦   ¦   ¦   ¦           +---6
+¦   ¦   ¦   ¦           +---7
+¦   ¦   ¦   ¦           +---8
+¦   ¦   ¦   ¦           +---9
+¦   ¦   ¦   +---dex_archive_input_jar_hashes
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   +---dex_number_of_buckets_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   +---duplicate_classes_check
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---checkDebugAndroidTestDuplicateClasses
+¦   ¦   ¦   +---external_file_lib_dex_archives
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---desugarDebugAndroidTestFileDependencies
+¦   ¦   ¦   +---external_libs_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---external_libs_dex_archive_with_artifact_transforms
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---incremental
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---packageDebugResources
+¦   ¦   ¦   ¦   ¦       +---merged.dir
+¦   ¦   ¦   ¦   ¦       +---stripped.dir
+¦   ¦   ¦   ¦   +---debug-mergeJavaRes
+¦   ¦   ¦   ¦   ¦   +---zip-cache
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦   ¦       +---merged.dir
+¦   ¦   ¦   ¦   ¦       ¦   +---values
+¦   ¦   ¦   ¦   ¦       ¦   +---values-af
+¦   ¦   ¦   ¦   ¦       ¦   +---values-am
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ar
+¦   ¦   ¦   ¦   ¦       ¦   +---values-as
+¦   ¦   ¦   ¦   ¦       ¦   +---values-az
+¦   ¦   ¦   ¦   ¦       ¦   +---values-b+es+419
+¦   ¦   ¦   ¦   ¦       ¦   +---values-b+sr+Latn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-be
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bg
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-bs
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ca
+¦   ¦   ¦   ¦   ¦       ¦   +---values-cs
+¦   ¦   ¦   ¦   ¦       ¦   +---values-da
+¦   ¦   ¦   ¦   ¦       ¦   +---values-de
+¦   ¦   ¦   ¦   ¦       ¦   +---values-el
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rAU
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rCA
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rGB
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rIN
+¦   ¦   ¦   ¦   ¦       ¦   +---values-en-rXC
+¦   ¦   ¦   ¦   ¦       ¦   +---values-es
+¦   ¦   ¦   ¦   ¦       ¦   +---values-es-rUS
+¦   ¦   ¦   ¦   ¦       ¦   +---values-et
+¦   ¦   ¦   ¦   ¦       ¦   +---values-eu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fa
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-fr-rCA
+¦   ¦   ¦   ¦   ¦       ¦   +---values-gl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-gu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h320dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h360dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h480dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h550dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-h720dp-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hdpi-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hu
+¦   ¦   ¦   ¦   ¦       ¦   +---values-hy
+¦   ¦   ¦   ¦   ¦       ¦   +---values-in
+¦   ¦   ¦   ¦   ¦       ¦   +---values-is
+¦   ¦   ¦   ¦   ¦       ¦   +---values-it
+¦   ¦   ¦   ¦   ¦       ¦   +---values-iw
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ja
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ka
+¦   ¦   ¦   ¦   ¦       ¦   +---values-kk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-km
+¦   ¦   ¦   ¦   ¦       ¦   +---values-kn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ko
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ky
+¦   ¦   ¦   ¦   ¦       ¦   +---values-land
+¦   ¦   ¦   ¦   ¦       ¦   +---values-large-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ldltr-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ldrtl-v17
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lo
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lt
+¦   ¦   ¦   ¦   ¦       ¦   +---values-lv
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ml
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mn
+¦   ¦   ¦   ¦   ¦       ¦   +---values-mr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ms
+¦   ¦   ¦   ¦   ¦       ¦   +---values-my
+¦   ¦   ¦   ¦   ¦       ¦   +---values-nb
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ne
+¦   ¦   ¦   ¦   ¦       ¦   +---values-night-v8
+¦   ¦   ¦   ¦   ¦       ¦   +---values-nl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-or
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pa
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-port
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt-rBR
+¦   ¦   ¦   ¦   ¦       ¦   +---values-pt-rPT
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ro
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ru
+¦   ¦   ¦   ¦   ¦       ¦   +---values-si
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-small-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sq
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sv
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sw
+¦   ¦   ¦   ¦   ¦       ¦   +---values-sw600dp-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ta
+¦   ¦   ¦   ¦   ¦       ¦   +---values-te
+¦   ¦   ¦   ¦   ¦       ¦   +---values-th
+¦   ¦   ¦   ¦   ¦       ¦   +---values-tl
+¦   ¦   ¦   ¦   ¦       ¦   +---values-tr
+¦   ¦   ¦   ¦   ¦       ¦   +---values-uk
+¦   ¦   ¦   ¦   ¦       ¦   +---values-ur
+¦   ¦   ¦   ¦   ¦       ¦   +---values-uz
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v16
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v17
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v18
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v22
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v23
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v24
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v25
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v26
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v28
+¦   ¦   ¦   ¦   ¦       ¦   +---values-v31
+¦   ¦   ¦   ¦   ¦       ¦   +---values-vi
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w320dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w360dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w400dp-port-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-w600dp-land-v13
+¦   ¦   ¦   ¦   ¦       ¦   +---values-watch-v20
+¦   ¦   ¦   ¦   ¦       ¦   +---values-watch-v21
+¦   ¦   ¦   ¦   ¦       ¦   +---values-xlarge-v4
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rCN
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rHK
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zh-rTW
+¦   ¦   ¦   ¦   ¦       ¦   +---values-zu
+¦   ¦   ¦   ¦   ¦       +---stripped.dir
+¦   ¦   ¦   ¦   +---debugAndroidTest-mergeJavaRes
+¦   ¦   ¦   ¦   ¦   +---zip-cache
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestAssets
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestJniLibFolders
+¦   ¦   ¦   ¦   +---mergeDebugAndroidTestShaders
+¦   ¦   ¦   ¦   +---mergeDebugJniLibFolders
+¦   ¦   ¦   ¦   +---mergeDebugShaders
+¦   ¦   ¦   ¦   +---packageDebugAndroidTest
+¦   ¦   ¦   ¦   ¦   +---tmp
+¦   ¦   ¦   ¦   ¦       +---debugAndroidTest
+¦   ¦   ¦   ¦   ¦           +---zip-cache
+¦   ¦   ¦   ¦   +---packageDebugAssets
+¦   ¦   ¦   +---java_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugJavaRes
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   ¦           +---com
+¦   ¦   ¦   ¦   ¦           ¦   +---nishant
+¦   ¦   ¦   ¦   ¦           ¦       +---smartattendance
+¦   ¦   ¦   ¦   ¦           ¦           +---domain
+¦   ¦   ¦   ¦   ¦           ¦               +---model
+¦   ¦   ¦   ¦   ¦           ¦               +---repository
+¦   ¦   ¦   ¦   ¦           ¦               +---usecase
+¦   ¦   ¦   ¦   ¦           +---META-INF
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestJavaRes
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---com
+¦   ¦   ¦   ¦               ¦   +---nishant
+¦   ¦   ¦   ¦               ¦       +---smartattendance
+¦   ¦   ¦   ¦               ¦           +---domain
+¦   ¦   ¦   ¦               +---META-INF
+¦   ¦   ¦   +---library_and_local_jars_jni
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---copyDebugJniLibsProjectAndLocalJars
+¦   ¦   ¦   ¦           +---jni
+¦   ¦   ¦   +---library_assets
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugAssets
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---library_jni
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---copyDebugJniLibsProjectOnly
+¦   ¦   ¦   ¦           +---jni
+¦   ¦   ¦   +---local_only_symbol_list
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---parseDebugLocalResources
+¦   ¦   ¦   +---manifest_merge_blame_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---processDebugManifest
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestManifest
+¦   ¦   ¦   +---merged_consumer_proguard_file
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---mergeDebugConsumerProguardFiles
+¦   ¦   ¦   +---merged_java_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugJavaResource
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestJavaResource
+¦   ¦   ¦   +---merged_jni_libs
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugJniLibFolders
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestJniLibFolders
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---merged_manifest
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---processDebugManifest
+¦   ¦   ¦   +---merged_res
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   +---merged_res_blame_folder
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---multi-v2
+¦   ¦   ¦   +---merged_shaders
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---mergeDebugShaders
+¦   ¦   ¦   ¦   ¦       +---out
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mergeDebugAndroidTestShaders
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---mixed_scope_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---navigation_json
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---extractDeepLinksDebug
+¦   ¦   ¦   +---nested_resources_validation_report
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---generateDebugResources
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---generateDebugAndroidTestResources
+¦   ¦   ¦   +---packaged_manifests
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestManifest
+¦   ¦   ¦   +---packaged_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   +---processed_res
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---project_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   ¦               +---com
+¦   ¦   ¦   ¦                   +---nishant
+¦   ¦   ¦   ¦                       +---smartattendance
+¦   ¦   ¦   ¦                           +---domain
+¦   ¦   ¦   +---public_res
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---packageDebugResources
+¦   ¦   ¦   +---runtime_library_classes_dir
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦       +---bundleLibRuntimeToDirDebug
+¦   ¦   ¦   ¦           +---com
+¦   ¦   ¦   ¦           ¦   +---nishant
+¦   ¦   ¦   ¦           ¦       +---smartattendance
+¦   ¦   ¦   ¦           ¦           +---domain
+¦   ¦   ¦   ¦           ¦               +---model
+¦   ¦   ¦   ¦           ¦               +---repository
+¦   ¦   ¦   ¦           ¦               +---usecase
+¦   ¦   ¦   ¦           +---META-INF
+¦   ¦   ¦   +---runtime_symbol_list
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---signing_config_versions
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---writeDebugAndroidTestSigningConfigVersions
+¦   ¦   ¦   +---source_set_path_map
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---mapDebugAndroidTestSourceSetPaths
+¦   ¦   ¦   +---stable_resource_ids_file
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---sub_project_dex_archive
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---dexBuilderDebugAndroidTest
+¦   ¦   ¦   ¦           +---out
+¦   ¦   ¦   +---symbol_list_with_package_name
+¦   ¦   ¦   ¦   +---debug
+¦   ¦   ¦   ¦   ¦   +---generateDebugRFile
+¦   ¦   ¦   ¦   +---debugAndroidTest
+¦   ¦   ¦   ¦       +---processDebugAndroidTestResources
+¦   ¦   ¦   +---tmp
+¦   ¦   ¦   ¦   +---manifest
+¦   ¦   ¦   ¦       +---androidTest
+¦   ¦   ¦   ¦           +---debug
+¦   ¦   ¦   +---validate_signing_config
+¦   ¦   ¦       +---debugAndroidTest
+¦   ¦   ¦           +---validateSigningDebugAndroidTest
+¦   ¦   +---kotlin
+¦   ¦   ¦   +---compileDebugAndroidTestKotlin
+¦   ¦   ¦   ¦   +---cacheable
+¦   ¦   ¦   ¦   ¦   +---caches-jvm
+¦   ¦   ¦   ¦   ¦       +---inputs
+¦   ¦   ¦   ¦   ¦       +---jvm
+¦   ¦   ¦   ¦   ¦       ¦   +---kotlin
+¦   ¦   ¦   ¦   ¦       +---lookups
+¦   ¦   ¦   ¦   +---classpath-snapshot
+¦   ¦   ¦   ¦   +---local-state
+¦   ¦   ¦   +---compileDebugKotlin
+¦   ¦   ¦   ¦   +---cacheable
+¦   ¦   ¦   ¦   ¦   +---caches-jvm
+¦   ¦   ¦   ¦   ¦       +---inputs
+¦   ¦   ¦   ¦   ¦       +---jvm
+¦   ¦   ¦   ¦   ¦       ¦   +---kotlin
+¦   ¦   ¦   ¦   ¦       +---lookups
+¦   ¦   ¦   ¦   +---classpath-snapshot
+¦   ¦   ¦   ¦   +---local-state
+¦   ¦   ¦   +---compileDebugUnitTestKotlin
+¦   ¦   ¦       +---cacheable
+¦   ¦   ¦       ¦   +---caches-jvm
+¦   ¦   ¦       ¦       +---inputs
+¦   ¦   ¦       ¦       +---jvm
+¦   ¦   ¦       ¦       ¦   +---kotlin
+¦   ¦   ¦       ¦       +---lookups
+¦   ¦   ¦       +---classpath-snapshot
+¦   ¦   ¦       +---local-state
+¦   ¦   +---outputs
+¦   ¦   ¦   +---aar
+¦   ¦   ¦   +---apk
+¦   ¦   ¦   ¦   +---androidTest
+¦   ¦   ¦   ¦       +---debug
+¦   ¦   ¦   +---logs
+¦   ¦   +---tmp
+¦   ¦       +---kotlin-classes
+¦   ¦           +---debug
+¦   ¦           ¦   +---com
+¦   ¦           ¦   ¦   +---nishant
+¦   ¦           ¦   ¦       +---smartattendance
+¦   ¦           ¦   ¦           +---domain
+¦   ¦           ¦   ¦               +---model
+¦   ¦           ¦   ¦               +---repository
+¦   ¦           ¦   ¦               +---usecase
+¦   ¦           ¦   +---META-INF
+¦   ¦           +---debugAndroidTest
+¦   ¦           ¦   +---com
+¦   ¦           ¦   ¦   +---nishant
+¦   ¦           ¦   ¦       +---smartattendance
+¦   ¦           ¦   ¦           +---domain
+¦   ¦           ¦   +---META-INF
+¦   ¦           +---debugUnitTest
+¦   ¦               +---com
+¦   ¦               ¦   +---nishant
+¦   ¦               ¦       +---smartattendance
+¦   ¦               ¦           +---domain
+¦   ¦               +---META-INF
+¦   +---src
+¦       +---androidTest
+¦       ¦   +---java
+¦       ¦       +---com
+¦       ¦           +---nishant
+¦       ¦               +---smartattendance
+¦       ¦                   +---domain
+¦       +---main
+¦       ¦   +---java
+¦       ¦       +---com
+¦       ¦           +---nishant
+¦       ¦               +---smartattendance
+¦       ¦                   +---domain
+¦       ¦                       +---model
+¦       ¦                       +---repository
+¦       ¦                       +---usecase
+¦       +---test
+¦           +---java
+¦               +---com
+¦                   +---nishant
+¦                       +---smartattendance
+¦                           +---domain
++---gradle
+    +---wrapper

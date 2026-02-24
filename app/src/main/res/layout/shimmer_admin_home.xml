@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:shimmer_colored="true"
+    app:shimmer_base_color="#E8EAF6"
+    app:shimmer_highlight_color="#FFFFFF"
+    app:shimmer_duration="1000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <!-- Stat cards placeholder -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_shimmer_rect_20" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_shimmer_rect_20" />
+
+        </LinearLayout>
+
+        <!-- Section label -->
+        <View
+            android:layout_width="120dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_shimmer_rect_8" />
+
+        <!-- Course card 1 -->
+        <View android:layout_width="match_parent" android:layout_height="76dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_shimmer_rect_16" />
+
+        <!-- Course card 2 -->
+        <View android:layout_width="match_parent" android:layout_height="76dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_shimmer_rect_16" />
+
+        <!-- Course card 3 -->
+        <View android:layout_width="match_parent" android:layout_height="76dp"
+            android:background="@drawable/bg_shimmer_rect_16" />
+
+    </LinearLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

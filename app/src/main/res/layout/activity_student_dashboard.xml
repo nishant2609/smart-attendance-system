@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F0F2FF">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/studentNavHostFragment"
@@ -18,6 +19,11 @@
         android:id="@+id/studentBottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:labelVisibilityMode="labeled"
+        app:elevation="16dp"
         app:menu="@menu/student_bottom_nav_menu" />
 
 </LinearLayout>
