@@ -8,14 +8,13 @@
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
     app:cardBackgroundColor="#FFFFFF"
-    app:strokeWidth="0dp"
-    app:rippleColor="#1A1A237E">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="18dp">
+        android:padding="16dp">
 
         <!-- Subject name + percentage -->
         <LinearLayout
@@ -23,7 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/tvSubjectName"
@@ -35,40 +34,64 @@
                 android:textColor="#1A237E" />
 
             <TextView
-                android:id="@+id/tvSubjectPercent"
+                android:id="@+id/tvSubjectPct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#4CAF50" />
+                android:textColor="#2E7D32" />
 
         </LinearLayout>
 
-        <!-- Progress bar track -->
-        <FrameLayout
+        <!-- Progress bar -->
+        <ProgressBar
+            android:id="@+id/progressSubject"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:background="@drawable/bg_attendance_progress"
-            android:layout_marginBottom="8dp">
+            android:layout_height="6dp"
+            android:max="100"
+            android:progress="0"
+            android:progressBackgroundTint="#E8EAF6"
+            android:layout_marginBottom="8dp" />
 
-            <ProgressBar
-                android:id="@+id/progressAttendance"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:max="100"
-                android:progress="0"
-                android:progressDrawable="@drawable/bg_progress_fill_good" />
-
-        </FrameLayout>
-
-        <!-- Classes count -->
-        <TextView
-            android:id="@+id/tvSubjectCount"
-            android:layout_width="wrap_content"
+        <!-- Stats + last date row -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvSubjectStats"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textColor="#7986CB" />
+
+            <TextView
+                android:id="@+id/tvLastDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#9FA8DA"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Warning chip -->
+        <TextView
+            android:id="@+id/tvSubjectWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
             android:textSize="12sp"
-            android:textColor="#9FA8DA" />
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

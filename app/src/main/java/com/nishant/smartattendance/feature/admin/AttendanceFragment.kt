@@ -1,6 +1,7 @@
 package com.nishant.smartattendance.feature.admin
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -143,11 +144,39 @@ class AttendanceFragment : Fragment() {
         dialogBinding.tvSessionDetails.text =
             "${session.courseId} · ${session.section} · Sem ${session.semester}\n${session.subject}"
 
-        val expiryTime = SimpleDateFormat("hh:mm a", Locale.getDefault())
-            .format(Date(session.expiresAt))
-        dialogBinding.tvSessionExpiry.text = "Expires at $expiryTime"
+        // Live countdown timer
+        val remaining = session.expiresAt - System.currentTimeMillis()
+        val timer = object : CountDownTimer(remaining.coerceAtLeast(0L), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val mins = millisUntilFinished / 60000
+                val secs = (millisUntilFinished % 60000) / 1000
+                val color = when {
+                    mins < 2 -> 0xFFD32F2F.toInt()  // red — nearly expired
+                    mins < 5 -> 0xFFF57C00.toInt()  // orange — running low
+                    else     -> 0xFF2E7D32.toInt()  // green — plenty of time
+                }
+                dialogBinding.tvSessionExpiry.text =
+                    "⏱ %02d:%02d remaining".format(mins, secs)
+                dialogBinding.tvSessionExpiry.setTextColor(color)
+            }
+            override fun onFinish() {
+                dialogBinding.tvSessionExpiry.text = "⏱ Session expired"
+                dialogBinding.tvSessionExpiry.setTextColor(0xFFD32F2F.toInt())
+                lifecycleScope.launch {
+                    sessionRepository.deactivateSession(session.sessionId)
+                    activeSession = null
+                    binding.btnStartSession.isEnabled = true
+                    dialog.dismiss()
+                    Toast.makeText(requireContext(),
+                        "Session expired automatically", Toast.LENGTH_SHORT).show()
+                    loadStudentsForAttendance()
+                }
+            }
+        }
+        timer.start()
 
         dialogBinding.btnStopSession.setOnClickListener {
+            timer.cancel()
             lifecycleScope.launch {
                 sessionRepository.deactivateSession(session.sessionId)
                 activeSession = null
@@ -159,6 +188,7 @@ class AttendanceFragment : Fragment() {
         }
 
         dialog.setOnDismissListener {
+            timer.cancel()
             binding.btnStartSession.isEnabled = true
         }
 

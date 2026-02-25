@@ -47,7 +47,6 @@ class StudentAttendanceFragment : Fragment() {
 
         binding.tvSelectedDate.text = ""
         binding.tvSelectedDate.hint = "All subjects · All time"
-
         binding.btnPickDate.setOnClickListener { showDatePicker() }
 
         showShimmer()
@@ -64,6 +63,7 @@ class StudentAttendanceFragment : Fragment() {
         shimmer.startShimmer()
         binding.rvSubjectAttendance.visibility = View.GONE
         binding.emptySubjects.root.visibility = View.GONE
+        binding.cardOverallSummary.visibility = View.GONE
     }
 
     private fun hideShimmer() {
@@ -97,10 +97,7 @@ class StudentAttendanceFragment : Fragment() {
             loadSubjectWiseAttendance()
         }
 
-        picker.addOnNegativeButtonClickListener {
-            clearDateFilter()
-        }
-
+        picker.addOnNegativeButtonClickListener { clearDateFilter() }
         picker.show(parentFragmentManager, "STUDENT_DATE_PICKER")
     }
 
@@ -121,48 +118,82 @@ class StudentAttendanceFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 val student = studentRepository.getStudentByEmail(email) ?: run {
-                    hideShimmer()
-                    return@launch
+                    hideShimmer(); return@launch
                 }
                 currentSrn = student.srn
 
                 val courses = courseRepository.getAllCourses()
                 val course = courses.find { it.name == student.courseId }
-                currentSemester = if (course != null) {
-                    studentRepository.calculateCurrentSemester(
-                        student.joinedAt, course.totalSemesters
-                    )
-                } else student.currentSemester
+                currentSemester = if (course != null)
+                    studentRepository.calculateCurrentSemester(student.joinedAt, course.totalSemesters)
+                else student.currentSemester
 
-                val records = attendanceRepository.getAttendanceBySrnAndSemester(
+                val allRecords = attendanceRepository.getAttendanceBySrnAndSemester(
                     student.srn, currentSemester
-                ).filter { it.subject.isNotEmpty() }.let { all ->
-                    if (selectedDate != null) all.filter { it.date == selectedDate } else all
-                }
+                ).filter { it.subject.isNotEmpty() }
+
+                val records = if (selectedDate != null)
+                    allRecords.filter { it.date == selectedDate }
+                else allRecords
 
                 hideShimmer()
 
                 if (records.isEmpty()) {
                     binding.rvSubjectAttendance.visibility = View.GONE
                     binding.emptySubjects.root.visibility = View.VISIBLE
-                    if (selectedDate != null) {
-                        Toast.makeText(requireContext(),
-                            "No records for this date", Toast.LENGTH_SHORT).show()
-                    }
+                    binding.cardOverallSummary.visibility = View.GONE
+                    if (selectedDate != null)
+                        Toast.makeText(requireContext(), "No records for this date", Toast.LENGTH_SHORT).show()
                     return@launch
                 }
 
+                // ── Overall summary (only meaningful when showing all records) ──
+                if (selectedDate == null) {
+                    val totalClasses = allRecords.size
+                    val totalPresent = allRecords.count { it.status == "present" }
+                    val overallPct = if (totalClasses > 0) (totalPresent * 100f / totalClasses) else 0f
+
+                    binding.cardOverallSummary.visibility = View.VISIBLE
+                    binding.tvOverallPct.text = "%.1f%%".format(overallPct)
+                    binding.tvOverallDetail.text = "$totalPresent present out of $totalClasses classes"
+                    binding.progressOverall.progress = overallPct.toInt()
+
+                    val pctColor = when {
+                        overallPct >= 75f -> 0xFF2E7D32.toInt()
+                        overallPct >= 60f -> 0xFFF57C00.toInt()
+                        else              -> 0xFFD32F2F.toInt()
+                    }
+                    binding.tvOverallPct.setTextColor(pctColor)
+
+                    if (overallPct < 75f) {
+                        binding.tvAttendanceWarning.visibility = View.VISIBLE
+                        binding.tvAttendanceWarning.text = if (overallPct < 60f)
+                            "⚠️ Critical: Attendance below 60%! Contact your teacher immediately."
+                        else
+                            "⚠️ Warning: Attendance below 75%. You may be debarred from exams."
+                    } else {
+                        binding.tvAttendanceWarning.visibility = View.GONE
+                    }
+                } else {
+                    binding.cardOverallSummary.visibility = View.GONE
+                }
+
+                // ── Per-subject list ──
                 binding.emptySubjects.root.visibility = View.GONE
                 binding.rvSubjectAttendance.visibility = View.VISIBLE
 
                 val grouped = records.groupBy { it.subject }
                 val summaries = grouped.map { (subject, subjectRecords) ->
+                    val present = subjectRecords.count { it.status == "present" }
+                    val total = subjectRecords.size
+                    val lastDate = subjectRecords.maxByOrNull { it.date }?.date ?: ""
                     SubjectAttendanceSummary(
                         courseName = subject,
-                        present = subjectRecords.count { it.status == "present" },
-                        total = subjectRecords.size
+                        present = present,
+                        total = total,
+                        lastDate = lastDate
                     )
-                }.sortedBy { it.courseName }
+                }.sortedBy { it.percentage } // lowest first to surface problems
 
                 binding.rvSubjectAttendance.layoutManager = LinearLayoutManager(requireContext())
                 binding.rvSubjectAttendance.adapter = SubjectAttendanceAdapter(summaries)

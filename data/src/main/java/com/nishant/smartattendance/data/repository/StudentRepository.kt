@@ -23,7 +23,6 @@ class StudentRepository {
 
     suspend fun addStudent(student: Student): Boolean {
         return try {
-            val joinedAt = System.currentTimeMillis()
             studentsRef.document(student.srn).set(
                 mapOf(
                     "srn" to student.srn,
@@ -34,7 +33,7 @@ class StudentRepository {
                     "courseId" to student.courseId,
                     "section" to student.section,
                     "currentSemester" to 1,
-                    "joinedAt" to joinedAt,
+                    "joinedAt" to System.currentTimeMillis(),
                     "faceRegistered" to false,
                     "profileComplete" to false,
                     "address" to "",
@@ -42,16 +41,11 @@ class StudentRepository {
                 )
             ).await()
             true
-        } catch (e: Exception) {
-            false
-        }
+        } catch (e: Exception) { false }
     }
 
     suspend fun updateStudentProfile(
-        srn: String,
-        phone: String,
-        address: String,
-        dateOfBirth: String
+        srn: String, phone: String, address: String, dateOfBirth: String
     ): Boolean {
         return try {
             studentsRef.document(srn).update(
@@ -63,9 +57,7 @@ class StudentRepository {
                 )
             ).await()
             true
-        } catch (e: Exception) {
-            false
-        }
+        } catch (e: Exception) { false }
     }
 
     suspend fun getStudentByEmail(email: String): Student? {
@@ -80,15 +72,17 @@ class StudentRepository {
         return mapDocToStudent(doc)
     }
 
-    suspend fun getStudentsByCourseAndSection(
-        courseId: String, section: String
-    ): List<Student> {
+    suspend fun getStudentsByCourseAndSection(courseId: String, section: String): List<Student> {
         return studentsRef
             .whereEqualTo("courseId", courseId)
             .whereEqualTo("section", section)
-            .get()
-            .await()
+            .get().await()
             .documents.map { mapDocToStudent(it) }
+    }
+
+    // NEW: get all students (used for admin dashboard low-attendance alerts)
+    suspend fun getAllStudents(): List<Student> {
+        return studentsRef.get().await().documents.map { mapDocToStudent(it) }
     }
 
     suspend fun getTotalStudentsCount(): Long {

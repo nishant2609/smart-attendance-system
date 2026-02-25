@@ -7,9 +7,7 @@
     android:orientation="vertical"
     android:background="#F0F2FF">
 
-    <!-- ══════════════════════════════════════ -->
-    <!--            GRADIENT HEADER             -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- HEADER -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +34,6 @@
             android:textSize="13sp"
             android:layout_marginTop="4dp" />
 
-        <!-- Date row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -66,42 +63,153 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 app:tint="#FFD54F"
                 android:contentDescription="Pick date"
-                android:padding="10dp"
-                android:minWidth="48dp"
-                android:minHeight="48dp" />
+                android:padding="10dp" />
 
         </LinearLayout>
-
     </LinearLayout>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--     SHIMMER (shown while loading)      -->
-    <!-- ══════════════════════════════════════ -->
-    <include
-        android:id="@+id/shimmerSubjectAttendance"
-        layout="@layout/shimmer_subject_attendance"
-        android:visibility="visible" />
-
-    <!-- ══════════════════════════════════════ -->
-    <!--     SUBJECT LIST + EMPTY STATE         -->
-    <!-- ══════════════════════════════════════ -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSubjectAttendance"
+    <!-- SCROLLABLE CONTENT -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="80dp"
-        android:clipToPadding="false"
-        android:visibility="gone" />
+        android:layout_weight="1">
 
-    <include
-        android:id="@+id/emptySubjects"
-        layout="@layout/layout_empty_subjects"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- OVERALL SUMMARY CARD -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardOverallSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
+                android:visibility="gone"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Section label -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="14dp">
+
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="18dp"
+                            android:background="@drawable/bg_section_accent"
+                            android:layout_marginEnd="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Overall Attendance"
+                            android:textColor="#1A237E"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Big % + detail + progress -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/tvOverallPct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0%"
+                            android:textSize="42sp"
+                            android:textStyle="bold"
+                            android:textColor="#2E7D32"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvOverallDetail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13sp"
+                                android:textColor="#5C6BC0"
+                                android:layout_marginBottom="8dp" />
+
+                            <ProgressBar
+                                android:id="@+id/progressOverall"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:max="100"
+                                android:progress="0"
+                                android:progressBackgroundTint="#E8EAF6" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Warning -->
+                    <TextView
+                        android:id="@+id/tvAttendanceWarning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:textSize="13sp"
+                        android:textColor="#E65100"
+                        android:textStyle="bold"
+                        android:background="#FFF8E1"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- SHIMMER -->
+            <include
+                android:id="@+id/shimmerSubjectAttendance"
+                layout="@layout/shimmer_subject_attendance"
+                android:visibility="visible" />
+
+            <!-- SUBJECT LIST -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSubjectAttendance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="24dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:visibility="gone" />
+
+            <!-- EMPTY STATE -->
+            <include
+                android:id="@+id/emptySubjects"
+                layout="@layout/layout_empty_subjects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

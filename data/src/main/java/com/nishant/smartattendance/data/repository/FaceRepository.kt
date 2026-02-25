@@ -9,10 +9,15 @@ class FaceRepository {
     private val db = FirebaseFirestore.getInstance()
     private val faceRef = db.collection("face_embeddings")
 
+    // Save embedding — auto-deletes old one first so re-registration is clean
     suspend fun saveFaceEmbedding(srn: String, embedding: FloatArray): Boolean {
         return try {
+            val existing = faceRef.document(srn).get().await()
+            if (existing.exists()) faceRef.document(srn).delete().await()
+
             val embeddingList = ArrayList<Float>(embedding.size)
             for (v in embedding) embeddingList.add(v)
+
             faceRef.document(srn).set(
                 mapOf(
                     "srn" to srn,
@@ -23,9 +28,7 @@ class FaceRepository {
             db.collection("students").document(srn)
                 .update("faceRegistered", true).await()
             true
-        } catch (e: Exception) {
-            false
-        }
+        } catch (e: Exception) { false }
     }
 
     suspend fun getFaceEmbedding(srn: String): FloatArray? {
@@ -44,9 +47,7 @@ class FaceRepository {
                 else return null
             }
             result
-        } catch (e: Exception) {
-            null
-        }
+        } catch (e: Exception) { null }
     }
 
     fun cosineSimilarity(a: FloatArray, b: FloatArray): Float {
@@ -61,9 +62,7 @@ class FaceRepository {
         val count = embeddings.size.toFloat()
         val size = embeddings[0].size
         val sum = FloatArray(size)
-        for (e in embeddings) {
-            for (i in 0 until size) sum[i] = sum[i] + e[i]
-        }
+        for (e in embeddings) for (i in 0 until size) sum[i] = sum[i] + e[i]
         val avg = FloatArray(size)
         for (i in 0 until size) avg[i] = sum[i] / count
         var sqSum = 0f
@@ -76,7 +75,7 @@ class FaceRepository {
     }
 
     companion object {
-        const val EMBEDDING_SIZE  = 128   // matches facenet.tflite output
+        const val EMBEDDING_SIZE  = 128
         const val MATCH_THRESHOLD = 0.60f
         const val FRAMES_REQUIRED = 5
     }
