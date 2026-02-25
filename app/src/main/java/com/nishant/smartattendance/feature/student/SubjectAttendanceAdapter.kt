@@ -1,48 +1,82 @@
 package com.nishant.smartattendance.feature.student
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.nishant.smartattendance.databinding.ItemSubjectAttendanceBinding
-
-data class SubjectAttendanceSummary(
-    val courseName: String,
-    val present: Int,
-    val total: Int
-) {
-    val percentage: Int get() = if (total == 0) 0 else (present * 100) / total
-}
+import com.nishant.smartattendance.R
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class SubjectAttendanceAdapter(
     private val items: List<SubjectAttendanceSummary>
-) : RecyclerView.Adapter<SubjectAttendanceAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SubjectAttendanceAdapter.VH>() {
 
-    inner class ViewHolder(val binding: ItemSubjectAttendanceBinding) :
-        RecyclerView.ViewHolder(binding.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemSubjectAttendanceBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
-        return ViewHolder(binding)
+    inner class VH(view: View) : RecyclerView.ViewHolder(view) {
+        val tvSubject: TextView   = view.findViewById(R.id.tvSubjectName)
+        val tvStats: TextView     = view.findViewById(R.id.tvSubjectStats)
+        val tvPct: TextView       = view.findViewById(R.id.tvSubjectPct)
+        val progress: ProgressBar = view.findViewById(R.id.progressSubject)
+        val tvLastDate: TextView  = view.findViewById(R.id.tvLastDate)
+        val tvWarning: TextView   = view.findViewById(R.id.tvSubjectWarning)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items[position]
-        holder.binding.tvSubjectName.text = item.courseName
-        holder.binding.tvSubjectPercent.text = "${item.percentage}%"
-        holder.binding.progressAttendance.progress = item.percentage
-        holder.binding.tvSubjectCount.text = "${item.present} of ${item.total} classes attended"
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_subject_attendance, parent, false)
+        return VH(view)
+    }
 
-        // Color based on percentage
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        val item = items[position]
+        val pct = item.percentage
+
+        holder.tvSubject.text = item.courseName
+        holder.tvStats.text = "${item.present} / ${item.total} classes attended"
+        holder.tvPct.text = "%.1f%%".format(pct)
+        holder.progress.progress = pct.toInt()
+
         val color = when {
-            item.percentage >= 75 -> android.R.color.holo_green_dark
-            item.percentage >= 50 -> android.R.color.holo_orange_dark
-            else -> android.R.color.holo_red_dark
+            pct >= 75f -> 0xFF2E7D32.toInt()
+            pct >= 60f -> 0xFFF57C00.toInt()
+            else       -> 0xFFD32F2F.toInt()
         }
-        holder.binding.tvSubjectPercent.setTextColor(
-            holder.itemView.context.getColor(color)
-        )
+        holder.tvPct.setTextColor(color)
+        holder.progress.progressTintList = ColorStateList.valueOf(color)
+
+        if (item.lastDate.isNotEmpty()) {
+            holder.tvLastDate.visibility = View.VISIBLE
+            holder.tvLastDate.text = "Last: ${formatDate(item.lastDate)}"
+        } else {
+            holder.tvLastDate.visibility = View.GONE
+        }
+
+        when {
+            pct < 60f -> {
+                holder.tvWarning.visibility = View.VISIBLE
+                holder.tvWarning.text = "⚠ Critical — below 60%"
+                holder.tvWarning.setTextColor(0xFFD32F2F.toInt())
+                holder.tvWarning.setBackgroundColor(0xFFFFEBEE.toInt())
+            }
+            pct < 75f -> {
+                holder.tvWarning.visibility = View.VISIBLE
+                holder.tvWarning.text = "⚠ Below 75% threshold"
+                holder.tvWarning.setTextColor(0xFFF57C00.toInt())
+                holder.tvWarning.setBackgroundColor(0xFFFFF8E1.toInt())
+            }
+            else -> holder.tvWarning.visibility = View.GONE
+        }
+    }
+
+    private fun formatDate(dateStr: String): String {
+        return try {
+            val from = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val to = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+            to.format(from.parse(dateStr)!!)
+        } catch (e: Exception) { dateStr }
     }
 
     override fun getItemCount() = items.size

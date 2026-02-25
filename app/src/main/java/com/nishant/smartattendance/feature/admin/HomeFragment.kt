@@ -15,7 +15,6 @@ import com.nishant.smartattendance.data.repository.StudentRepository
 import com.nishant.smartattendance.databinding.FragmentHomeBinding
 import com.nishant.smartattendance.domain.model.Course
 import com.nishant.smartattendance.feature.auth.LoginActivity
-import com.facebook.shimmer.ShimmerFrameLayout
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -49,26 +48,7 @@ class HomeFragment : Fragment() {
             requireActivity().finishAffinity()
         }
 
-        showShimmer()
         loadData()
-    }
-
-    // ════════════════════════════════════════
-    // SHIMMER
-    // ════════════════════════════════════════
-
-    private fun showShimmer() {
-        val shimmer = binding.shimmerAdminHome.root as ShimmerFrameLayout
-        shimmer.visibility = View.VISIBLE
-        shimmer.startShimmer()
-        binding.layoutContent.visibility = View.GONE
-    }
-
-    private fun hideShimmer() {
-        val shimmer = binding.shimmerAdminHome.root as ShimmerFrameLayout
-        shimmer.stopShimmer()
-        shimmer.visibility = View.GONE
-        binding.layoutContent.visibility = View.VISIBLE
     }
 
     // ════════════════════════════════════════
@@ -84,17 +64,16 @@ class HomeFragment : Fragment() {
                 val todayPresent = attendanceRepository.getTodayAttendanceCount()
                 val courses = courseRepository.getAllCourses()
 
-                hideShimmer()
-
                 binding.tvTotalStudents.text = totalStudents.toString()
                 binding.tvTodayPresent.text = todayPresent.toString()
 
+                // Low attendance alerts — students below 75% in any subject
+                loadLowAttendanceAlerts()
+
                 if (courses.isEmpty()) {
                     binding.rvCourses.visibility = View.GONE
-                    binding.emptyCourses.root.visibility = View.VISIBLE
                 } else {
                     binding.rvCourses.visibility = View.VISIBLE
-                    binding.emptyCourses.root.visibility = View.GONE
                     binding.rvCourses.layoutManager = LinearLayoutManager(requireContext())
                     binding.rvCourses.adapter = CourseAdapter(courses) { course ->
                         openSubjectManagement(course)
@@ -103,10 +82,61 @@ class HomeFragment : Fragment() {
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                hideShimmer()
             }
         }
     }
+
+    // ════════════════════════════════════════
+    // LOW ATTENDANCE ALERTS
+    // ════════════════════════════════════════
+
+    private fun loadLowAttendanceAlerts() {
+        lifecycleScope.launch {
+            try {
+                val allStudents = studentRepository.getAllStudents()
+                val alerts = mutableListOf<LowAttendanceAlert>()
+
+                for (student in allStudents) {
+                    val records = attendanceRepository.getAttendanceBySrnAndSemester(
+                        student.srn, student.currentSemester
+                    ).filter { it.subject.isNotEmpty() }
+
+                    val grouped = records.groupBy { it.subject }
+                    for ((subject, subjectRecords) in grouped) {
+                        val total = subjectRecords.size
+                        if (total < 3) continue  // skip subjects with too few classes
+                        val present = subjectRecords.count { it.status == "present" }
+                        val pct = present * 100f / total
+                        if (pct < 75f) {
+                            alerts.add(LowAttendanceAlert(
+                                studentName = student.name,
+                                srn = student.srn,
+                                subject = subject,
+                                percentage = pct
+                            ))
+                        }
+                    }
+                }
+
+                if (alerts.isEmpty()) {
+                    binding.cardLowAttendance.visibility = View.GONE
+                } else {
+                    val sorted = alerts.sortedBy { it.percentage }
+                    val displayList = sorted.take(10)
+                    binding.cardLowAttendance.visibility = View.VISIBLE
+                    binding.tvLowAttendanceCount.text = "${alerts.size} alert(s)"
+                    binding.rvLowAttendance.layoutManager = LinearLayoutManager(requireContext())
+                    binding.rvLowAttendance.adapter = LowAttendanceAdapter(displayList)
+                }
+            } catch (e: Exception) {
+                binding.cardLowAttendance.visibility = View.GONE
+            }
+        }
+    }
+
+    // ════════════════════════════════════════
+    // NAVIGATION
+    // ════════════════════════════════════════
 
     private fun openSubjectManagement(course: Course) {
         val intent = Intent(requireContext(), SubjectManagementActivity::class.java).apply {

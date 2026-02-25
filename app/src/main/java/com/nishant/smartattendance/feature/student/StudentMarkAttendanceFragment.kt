@@ -278,6 +278,14 @@ class StudentMarkAttendanceFragment : Fragment() {
 
             val similarity = faceRepository.cosineSimilarity(embedding, stored)
             android.util.Log.d("FaceVerify", "Similarity: $similarity (threshold: ${FaceRepository.MATCH_THRESHOLD})")
+            // DEBUG: show similarity score on screen — remove before production
+            withContext(Dispatchers.Main) {
+                if (_binding != null) {
+                    android.widget.Toast.makeText(requireContext(),
+                        "Face score: ${"%.3f".format(similarity)} (need ≥${FaceRepository.MATCH_THRESHOLD})",
+                        android.widget.Toast.LENGTH_SHORT).show()
+                }
+            }
 
             if (similarity >= FaceRepository.MATCH_THRESHOLD) {
                 updateFaceStatus("✅ Identity verified!", "#2E7D32")
